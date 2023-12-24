@@ -1,0 +1,408 @@
+[@MAIN]
+#IF
+  SMALL <$RUNDATEMIN> 90
+#ACT
+  MOV N$名人堂剩余时间 90
+  DEC N$名人堂剩余时间 <$RUNDATEMIN>
+  MessAgeBox <名人堂在正式开区1小时候后正式开放！/SCOLOR=58>\\<当前剩余时间/SCOLOR=58><<$STR(N$名人堂剩余时间)>/SCOLOR=254><分钟！/SCOLOR=58>
+BREAK
+
+#IF
+#ACT
+  GOTO @MRT
+BREAK
+
+
+[@MRT]
+{
+
+#IF
+#ACT
+  MOV N$名人堂总页签 3
+
+#IF
+  SMALL N$名人堂当前页 1
+#ACT
+  MOV N$名人堂当前页 1
+
+#IF
+  equal N$名人堂当前页 1
+#ACT
+  MOV N$名人堂行标 0
+
+#IF
+  equal N$名人堂当前页 2
+#ACT
+  MOV N$名人堂行标 10
+
+#IF
+  equal N$名人堂当前页 3
+#ACT
+  MOV N$名人堂行标 20
+
+
+#IF
+  SMALL N$名人堂行标 1
+  LARGE N$名人堂行标 30
+#ACT
+  MOV N$名人堂行标 0
+
+#IF
+#ACT
+  MOV S$名人角色名1 虚位以待
+  MOV N$名人等级1 0
+  MOV S$名人角色名2 虚位以待
+  MOV N$名人等级2 0
+  MOV S$名人角色名3 虚位以待
+  MOV N$名人等级3 0
+  MOV S$名人角色名4 虚位以待
+  MOV N$名人等级4 0
+  MOV S$名人角色名5 虚位以待
+  MOV N$名人等级5 0
+  MOV S$名人角色名6 虚位以待
+  MOV N$名人等级6 0
+  MOV S$名人角色名7 虚位以待
+  MOV N$名人等级7 0
+  MOV S$名人角色名8 虚位以待
+  MOV N$名人等级8 0
+  MOV S$名人角色名9 虚位以待
+  MOV N$名人等级9 0
+  MOV S$名人角色名10 虚位以待
+  MOV N$名人等级10 0
+
+  GetListString ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt <$STR(N$名人堂行标)> S$名人角色名1 N$名人等级1
+  INC N$名人堂行标 1
+  GetListString ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt <$STR(N$名人堂行标)> S$名人角色名2 N$名人等级2
+  INC N$名人堂行标 1
+  GetListString ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt <$STR(N$名人堂行标)> S$名人角色名3 N$名人等级3
+  INC N$名人堂行标 1
+  GetListString ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt <$STR(N$名人堂行标)> S$名人角色名4 N$名人等级4
+  INC N$名人堂行标 1
+  GetListString ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt <$STR(N$名人堂行标)> S$名人角色名5 N$名人等级5
+  INC N$名人堂行标 1
+  GetListString ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt <$STR(N$名人堂行标)> S$名人角色名6 N$名人等级6
+  INC N$名人堂行标 1
+  GetListString ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt <$STR(N$名人堂行标)> S$名人角色名7 N$名人等级7
+  INC N$名人堂行标 1
+  GetListString ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt <$STR(N$名人堂行标)> S$名人角色名8 N$名人等级8
+  INC N$名人堂行标 1
+  GetListString ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt <$STR(N$名人堂行标)> S$名人角色名9 N$名人等级9
+  INC N$名人堂行标 1
+  GetListString ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt <$STR(N$名人堂行标)> S$名人角色名10 N$名人等级10
+  INC N$名人堂行标 1
+
+
+#IF
+  Gender Man
+#ACT
+  MOV S$展示特效 UIsucai.wil:789:8:150:0
+#ELSEACT
+  MOV S$展示特效 UIsucai.wil:797:8:150:0
+
+#IF
+  EQUAL <$STR(N$名人堂当前页)> 1
+#ACT
+  MOV <$STR(S$第一名标识)> [No.1]　
+  MOV <$STR(S$第二名标识)> [No.2]　
+  MOV <$STR(S$第三名标识)> [No.3]　
+#ELSEACT
+  MOV <$STR(S$第一名标识)> 　
+  MOV <$STR(S$第二名标识)> 　
+  MOV <$STR(S$第三名标识)> 　
+
+#IF
+#ACT
+  UIDLG Close ALL
+  UIDLG Open jiaoben008 110 100 0 0 1
+  UIDLG LockItemSlot jiaoben008 item_001:1
+  UIDLG SetItemSlot jiaoben008 item_001:注释
+  UIDLG ItemSlotTip jiaoben008 item_001:<50级以上的玩家才有资格竞争名人堂排名/SCOLOR=253/>\\<第1名：/SCOLOR=254/6><　攻防+100点，生命值+1000点/SCOLOR=250>\\<第2名：/SCOLOR=254/6><　攻防+70点，生命值+700点/SCOLOR=250>\\<第3名：/SCOLOR=254/6><　攻防+50点，生命值+500点/SCOLOR=250>\\<第4-10名：/SCOLOR=254/6><　攻防+30点，生命值+300点/SCOLOR=250>\\<第11-20名：/SCOLOR=254/6><　攻防+20点，生命值+200点/SCOLOR=250>\\<第21-30名：/SCOLOR=254/6><　攻防+10点，生命值+100点/SCOLOR=250>\\
+  UIDLG SetRichText jiaoben008 WBK_001:<<$STR(S$第一名标识)>/SCOLOR=58/><<$STR(S$名人角色名1)>/SCOLOR=168/8><战斗力：/SCOLOR=251><<$STR(N$名人等级1)>/SCOLOR=250>
+  UIDLG SetRichText jiaoben008 WBK_002:<<$STR(S$第二名标识)>/SCOLOR=253/><<$STR(S$名人角色名2)>/SCOLOR=168/8><战斗力：/SCOLOR=251><<$STR(N$名人等级2)>/SCOLOR=250>
+  UIDLG SetRichText jiaoben008 WBK_003:<<$STR(S$第三名标识)>/SCOLOR=254/><<$STR(S$名人角色名3)>/SCOLOR=168/8><战斗力：/SCOLOR=251><<$STR(N$名人等级3)>/SCOLOR=250>
+  UIDLG SetRichText jiaoben008 WBK_004:　<<$STR(S$名人角色名4)>/SCOLOR=168/8><战斗力：/SCOLOR=251><<$STR(N$名人等级4)>/SCOLOR=250>
+  UIDLG SetRichText jiaoben008 WBK_005:　<<$STR(S$名人角色名5)>/SCOLOR=168/8><战斗力：/SCOLOR=251><<$STR(N$名人等级5)>/SCOLOR=250>
+  UIDLG SetRichText jiaoben008 WBK_006:　<<$STR(S$名人角色名6)>/SCOLOR=168/8><战斗力：/SCOLOR=251><<$STR(N$名人等级6)>/SCOLOR=250>
+  UIDLG SetRichText jiaoben008 WBK_007:　<<$STR(S$名人角色名7)>/SCOLOR=168/8><战斗力：/SCOLOR=251><<$STR(N$名人等级7)>/SCOLOR=250>
+  UIDLG SetRichText jiaoben008 WBK_008:　<<$STR(S$名人角色名8)>/SCOLOR=168/8><战斗力：/SCOLOR=251><<$STR(N$名人等级8)>/SCOLOR=250>
+  UIDLG SetRichText jiaoben008 WBK_009:　<<$STR(S$名人角色名9)>/SCOLOR=168/8><战斗力：/SCOLOR=251><<$STR(N$名人等级9)>/SCOLOR=250>
+  UIDLG SetRichText jiaoben008 WBK_010:　<<$STR(S$名人角色名10)>/SCOLOR=168/8><战斗力：/SCOLOR=251><<$STR(N$名人等级10)>/SCOLOR=250>
+  UIDLG SetRichText jiaoben008 WBK_011:　<$STR(N$名人堂当前页)>/<$STR(N$名人堂总页签)>
+  UIDLG PlayEffect jiaoben008 effect_001:<$STR(S$展示特效)>
+  UIDLG SetButtonGOTO jiaoben008 btn_011:@名人堂上一页
+  UIDLG SetButtonGOTO jiaoben008 btn_012:@名人堂下一页
+  UIDLG SetButtonGOTO jiaoben008 btn_001:@名人堂查看1
+  UIDLG SetButtonGOTO jiaoben008 btn_002:@名人堂查看2
+  UIDLG SetButtonGOTO jiaoben008 btn_003:@名人堂查看3
+  UIDLG SetButtonGOTO jiaoben008 btn_004:@名人堂查看4
+  UIDLG SetButtonGOTO jiaoben008 btn_005:@名人堂查看5
+  UIDLG SetButtonGOTO jiaoben008 btn_006:@名人堂查看6
+  UIDLG SetButtonGOTO jiaoben008 btn_007:@名人堂查看7
+  UIDLG SetButtonGOTO jiaoben008 btn_008:@名人堂查看8
+  UIDLG SetButtonGOTO jiaoben008 btn_009:@名人堂查看9
+  UIDLG SetButtonGOTO jiaoben008 btn_0010:@名人堂查看10
+
+
+
+#SAY
+  UICMD
+  <名人堂上一页/@名人堂上一页>\
+  <名人堂下一页/@名人堂下一页>\
+  <名人堂查看/@名人堂查看1>\
+  <名人堂查看/@名人堂查看2>\
+  <名人堂查看/@名人堂查看3>\
+  <名人堂查看/@名人堂查看4>\
+  <名人堂查看/@名人堂查看5>\
+  <名人堂查看/@名人堂查看6>\
+  <名人堂查看/@名人堂查看7>\
+  <名人堂查看/@名人堂查看8>\
+  <名人堂查看/@名人堂查看9>\
+  <名人堂查看/@名人堂查看10>\
+BREAK
+
+
+
+[@名人堂下一页]
+#IF
+  SMALL N$名人堂当前页 N$名人堂总页签
+#ACT
+  INC N$名人堂当前页 1
+  GOTO @MAIN
+#ELSEACT
+  MessAgeBox <已经是最后一页！/SCOLOR=58>
+BREAK
+
+[@名人堂上一页]
+#IF
+  LARGE N$名人堂当前页 1
+#ACT
+  DEC N$名人堂当前页 1
+  GOTO @MAIN
+#ELSEACT
+  MessAgeBox <已经是第一页！/SCOLOR=58>
+BREAK
+
+[@名人堂查看1]
+#IF
+  CheckOnline <$STR(S$名人角色名1)>
+#ACT
+  LOOK <$STR(S$名人角色名1)>
+#ELSEACT
+  MESSAGEBOX <玩家不在线或没有查看对象，无法查看信息!/SCOLOR=58>
+BREAK
+[@名人堂查看2]
+#IF
+  CheckOnline <$STR(S$名人角色名2)>
+#ACT
+  LOOK <$STR(S$名人角色名2)>
+#ELSEACT
+  MESSAGEBOX <玩家不在线或没有查看对象，无法查看信息!/SCOLOR=58>
+BREAK
+[@名人堂查看3]
+#IF
+  CheckOnline <$STR(S$名人角色名3)>
+#ACT
+  LOOK <$STR(S$名人角色名3)>
+#ELSEACT
+  MESSAGEBOX <玩家不在线或没有查看对象，无法查看信息!/SCOLOR=58>
+BREAK
+[@名人堂查看4]
+#IF
+  CheckOnline <$STR(S$名人角色名4)>
+#ACT
+  LOOK <$STR(S$名人角色名4)>
+#ELSEACT
+  MESSAGEBOX <玩家不在线或没有查看对象，无法查看信息!/SCOLOR=58>
+BREAK
+[@名人堂查看5]
+#IF
+  CheckOnline <$STR(S$名人角色名5)>
+#ACT
+  LOOK <$STR(S$名人角色名5)>
+#ELSEACT
+  MESSAGEBOX <玩家不在线或没有查看对象，无法查看信息!/SCOLOR=58>
+BREAK
+[@名人堂查看6]
+#IF
+  CheckOnline <$STR(S$名人角色名6)>
+#ACT
+  LOOK <$STR(S$名人角色名6)>
+#ELSEACT
+  MESSAGEBOX <玩家不在线或没有查看对象，无法查看信息!/SCOLOR=58>
+BREAK
+[@名人堂查看7]
+#IF
+  CheckOnline <$STR(S$名人角色名7)>
+#ACT
+  LOOK <$STR(S$名人角色名7)>
+#ELSEACT
+  MESSAGEBOX <玩家不在线或没有查看对象，无法查看信息!/SCOLOR=58>
+BREAK
+[@名人堂查看8]
+#IF
+  CheckOnline <$STR(S$名人角色名8)>
+#ACT
+  LOOK <$STR(S$名人角色名8)>
+#ELSEACT
+  MESSAGEBOX <玩家不在线或没有查看对象，无法查看信息!/SCOLOR=58>
+BREAK
+[@名人堂查看9]
+#IF
+  CheckOnline <$STR(S$名人角色名9)>
+#ACT
+  LOOK <$STR(S$名人角色名9)>
+#ELSEACT
+  MESSAGEBOX <玩家不在线或没有查看对象，无法查看信息!/SCOLOR=58>
+BREAK
+[@名人堂查看10]
+#IF
+  CheckOnline <$STR(S$名人角色名10)>
+#ACT
+  LOOK <$STR(S$名人角色名10)>
+#ELSEACT
+  MESSAGEBOX <玩家不在线或没有查看对象，无法查看信息!/SCOLOR=58>
+BREAK
+
+
+[@名人堂配置]
+#IF
+#ACT
+  MOV N$战斗力综合 0
+  GETPLAYERATTR 23 N$战斗力暴击 1
+  GETPLAYERATTR 25 N$战斗力减伤 1
+  GETPLAYERATTR 24 N$战斗力曾伤 1
+  GETPLAYERATTR 27 N$战斗力破甲 1
+  GETPLAYERATTR 52 N$战斗力吸血 1
+  MOV <$STR(N$战斗力1)> <$MAXHP>
+  MUL <$STR(N$战斗力2)> <$MAXDC> 16
+  MUL <$STR(N$战斗力3)> <$MAXAC> 11
+  MUL <$STR(N$战斗力4)> <$STR(N$战斗力暴击)> 42
+  MUL <$STR(N$战斗力5)> <$STR(N$战斗力减伤)> 55
+  MUL <$STR(N$战斗力6)> <$STR(N$战斗力曾伤)> 26
+  MUL <$STR(N$战斗力7)> <$STR(N$战斗力破甲)> 51
+  MUL <$STR(N$战斗力8)> <$STR(N$战斗力吸血)> 21
+  INC <$STR(N$战斗力综合)> <$STR(N$战斗力1)>
+  INC <$STR(N$战斗力综合)> <$STR(N$战斗力2)>
+  INC <$STR(N$战斗力综合)> <$STR(N$战斗力3)>
+  INC <$STR(N$战斗力综合)> <$STR(N$战斗力4)>
+  INC <$STR(N$战斗力综合)> <$STR(N$战斗力5)>
+  INC <$STR(N$战斗力综合)> <$STR(N$战斗力6)>
+  INC <$STR(N$战斗力综合)> <$STR(N$战斗力7)>
+  INC <$STR(N$战斗力综合)> <$STR(N$战斗力8)>
+  SAVEVAR HUMAN N$战斗力综合 ..\QuestDiary\游戏数据\名人堂数据\等级榜.txt
+  SortHumVarToListEx N$战斗力综合  ..\QuestDiary\游戏数据\名人堂数据\等级榜.txt 1 ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt 1
+BREAK
+
+[@名人堂称号]
+#IF
+#ACT
+  GetListStringEX ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt <$USERNAME> N$名人堂个人等级 N$名人堂个人排行
+  INC N$名人堂个人排行 1
+  MOV N$名人堂排名提示 N$名人堂个人排行
+
+#IF
+  LARGE N$名人堂排名提示 30
+#ACT
+BREAK
+
+#IF
+  SMALL U6 N$名人堂排名提示
+#ACT
+  SendNewLineMsg 1 250 50 0 0 0 0 <当前名人堂排名下降，当前排名第/SCOLOR=251><<$STR(N$名人堂排名提示)>名/SCOLOR=250><你需要更努力的提升自己哦！/SCOLOR=251>
+
+#IF
+  LARGE U6 N$名人堂排名提示
+#ACT
+  SendNewLineMsg 1 250 50 0 0 0 0 <恭喜你在名人堂的排名提升，当前排名第/SCOLOR=253><<$STR(N$名人堂排名提示)>名/SCOLOR=250><请再接再厉！/SCOLOR=253>
+
+
+#IF
+  EQUAL N$名人堂个人排行 1
+  NOT CHECKFENGHAO 天下第6
+#ACT
+  RECYCFENGHAO SELF 天下第1
+  RECYCFENGHAO SELF 天下第2
+  RECYCFENGHAO SELF 天下第3
+  RECYCFENGHAO SELF 天下第4
+  RECYCFENGHAO SELF 天下第5
+  RECYCFENGHAO SELF 天下第6
+  GIVEFENGHAO SELF 天下第6
+  MOV U6 N$名人堂个人排行
+BREAK
+
+#IF
+  EQUAL N$名人堂个人排行 2
+  NOT CHECKFENGHAO 天下第5
+#ACT
+  RECYCFENGHAO SELF 天下第1
+  RECYCFENGHAO SELF 天下第2
+  RECYCFENGHAO SELF 天下第3
+  RECYCFENGHAO SELF 天下第4
+  RECYCFENGHAO SELF 天下第5
+  RECYCFENGHAO SELF 天下第6
+  GIVEFENGHAO SELF 天下第5
+  MOV U6 N$名人堂个人排行
+BREAK
+
+#IF
+  EQUAL N$名人堂个人排行 3
+  NOT CHECKFENGHAO 天下第4
+#ACT
+  RECYCFENGHAO SELF 天下第1
+  RECYCFENGHAO SELF 天下第2
+  RECYCFENGHAO SELF 天下第3
+  RECYCFENGHAO SELF 天下第4
+  RECYCFENGHAO SELF 天下第5
+  RECYCFENGHAO SELF 天下第6
+  GIVEFENGHAO SELF 天下第4
+  MOV U6 N$名人堂个人排行
+BREAK
+
+#IF
+  LARGE N$名人堂个人排行 3
+  SMALL N$名人堂个人排行 11
+  NOT CHECKFENGHAO 天下第3
+#ACT
+  RECYCFENGHAO SELF 天下第1
+  RECYCFENGHAO SELF 天下第2
+  RECYCFENGHAO SELF 天下第3
+  RECYCFENGHAO SELF 天下第4
+  RECYCFENGHAO SELF 天下第5
+  RECYCFENGHAO SELF 天下第6
+  GIVEFENGHAO SELF 天下第3
+  MOV U6 N$名人堂个人排行
+BREAK
+
+#IF
+  LARGE N$名人堂个人排行 10
+  SMALL N$名人堂个人排行 21
+  NOT CHECKFENGHAO 天下第2
+#ACT
+  RECYCFENGHAO SELF 天下第1
+  RECYCFENGHAO SELF 天下第2
+  RECYCFENGHAO SELF 天下第3
+  RECYCFENGHAO SELF 天下第4
+  RECYCFENGHAO SELF 天下第5
+  RECYCFENGHAO SELF 天下第6
+  GIVEFENGHAO SELF 天下第2
+  MOV U6 N$名人堂个人排行
+BREAK
+
+#IF
+  LARGE N$名人堂个人排行 20
+  SMALL N$名人堂个人排行 31
+  NOT CHECKFENGHAO 天下第1
+#ACT
+  RECYCFENGHAO SELF 天下第2
+  RECYCFENGHAO SELF 天下第1
+  RECYCFENGHAO SELF 天下第4
+  RECYCFENGHAO SELF 天下第5
+  RECYCFENGHAO SELF 天下第3
+  RECYCFENGHAO SELF 天下第7
+  GIVEFENGHAO SELF 天下第1
+  MOV U6 N$名人堂个人排行
+BREAK
+
+
+
+}

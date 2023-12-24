@@ -1,0 +1,750 @@
+[@MAIN]
+#IF
+#ACT
+  UIDLG Close jiaoben015
+  UIDLG Open jiaoben015 200 130 0 0 1
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_001
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_002
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_003
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_004
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_005
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_006
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_007
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_008
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_009
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_010
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_011
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_012
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_013
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_014
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_015
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_016
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_017
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_018
+  UIDLG AddListViewItem jiaoben015  gion_001#ListItem_019
+  MOV S$传送目的 无
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_001#CheckBox_001:祖玛大殿
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_002#CheckBox_001:冰风谷
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_003#CheckBox_001:蛇魔殿
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_004#CheckBox_001:教皇殿
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_005#CheckBox_001:武帝陵
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_006#CheckBox_001:堕落神殿
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_007#CheckBox_001:黄泉陵墓
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_008#CheckBox_001:失落古迹
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_009#CheckBox_001:时空迷城
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_010#CheckBox_001:圣域
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_011#CheckBox_001:自然神庙
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_012#CheckBox_001:古战场遗址
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_013#CheckBox_001:亚特斯戈壁
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_014#CheckBox_001:玛雅神庙一层
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_015#CheckBox_001:地狱之门
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_016#CheckBox_001:火龙长廊
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_017#CheckBox_001:寒冰地宫一层
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_018#CheckBox_001:幽冥炼狱
+  UIDLG SetbuttonText jiaoben015 gion_001#ListItem_019#CheckBox_001:黄金神殿
+
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_001#CheckBox_001:N$祖玛大殿
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_002#CheckBox_001:N$冰风谷
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_003#CheckBox_001:N$蛇魔殿
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_004#CheckBox_001:N$教皇殿
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_005#CheckBox_001:N$武帝陵
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_006#CheckBox_001:N$堕落神殿
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_007#CheckBox_001:N$黄泉陵墓
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_008#CheckBox_001:N$失落古迹
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_009#CheckBox_001:N$时空迷城
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_010#CheckBox_001:N$圣域
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_011#CheckBox_001:N$自然神庙
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_012#CheckBox_001:N$古战场遗址
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_013#CheckBox_001:N$亚特斯戈壁
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_014#CheckBox_001:N$玛雅神庙一层
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_015#CheckBox_001:N$地狱之门
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_016#CheckBox_001:N$火龙长廊
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_017#CheckBox_001:N$寒冰地宫一层
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_018#CheckBox_001:N$幽冥炼狱
+  UIDLG BindCheckBox jiaoben015 gion_001#ListItem_019#CheckBox_001:N$黄金神殿
+
+  UIDLG SetRichText jiaoben015 WBK_001:\\　\\　\\　\\　\\　\\　　　　　　　<左侧选择地图进行传送/SCOLOR=254>
+  UIDLG SetCheckBoxRadio jiaoben015 gion_001#ListItem_001#CheckBox_001:gion_001#ListItem_002#CheckBox_001:gion_001#ListItem_003#CheckBox_001:gion_001#ListItem_004#CheckBox_001:gion_001#ListItem_005#CheckBox_001:gion_001#ListItem_006#CheckBox_001:gion_001#ListItem_007#CheckBox_001:gion_001#ListItem_008#CheckBox_001:gion_001#ListItem_009#CheckBox_001:gion_001#ListItem_010#CheckBox_001:gion_001#ListItem_011#CheckBox_001:gion_001#ListItem_012#CheckBox_001:gion_001#ListItem_013#CheckBox_001:gion_001#ListItem_014#CheckBox_001:gion_001#ListItem_015#CheckBox_001:gion_001#ListItem_016#CheckBox_001:gion_001#ListItem_017#CheckBox_001:gion_001#ListItem_018#CheckBox_001:gion_001#ListItem_019#CheckBox_001
+
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_001#CheckBox_001:@祖玛大殿
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_002#CheckBox_001:@冰风谷
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_003#CheckBox_001:@蛇魔殿
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_004#CheckBox_001:@教皇殿
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_005#CheckBox_001:@武帝陵
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_006#CheckBox_001:@堕落神殿
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_007#CheckBox_001:@黄泉陵墓
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_008#CheckBox_001:@失落古迹
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_009#CheckBox_001:@时空迷城
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_010#CheckBox_001:@圣域
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_011#CheckBox_001:@自然神庙
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_012#CheckBox_001:@古战场遗址
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_013#CheckBox_001:@亚特斯戈壁
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_014#CheckBox_001:@玛雅神庙一层
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_015#CheckBox_001:@地狱之门
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_016#CheckBox_001:@火龙长廊
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_017#CheckBox_001:@寒冰地宫一层
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_018#CheckBox_001:@幽冥炼狱
+  UIDLG SetCheckBoxGOTO jiaoben015 gion_001#ListItem_019#CheckBox_001:@黄金神殿
+  UIDLG SetButtonGOTO jiaoben015 btn_001:@开始传送
+  GOTO @传送按钮禁用配置
+#SAY
+  UICMD
+  <土城/@祖玛大殿>\
+  <土城/@冰风谷>\
+  <土城/@蛇魔殿>\
+  <土城/@教皇殿>\
+  <土城/@武帝陵>\
+  <土城/@堕落神殿>\
+  <土城/@黄泉陵墓>\
+  <土城/@失落古迹>\
+  <土城/@时空迷城>\
+  <土城/@圣域>\
+  <土城/@自然神庙>\
+  <土城/@古战场遗址>\
+  <土城/@亚特斯戈壁>\
+  <土城/@玛雅神庙一层>\
+  <土城/@地狱之门>\
+  <土城/@火龙长廊>\
+  <土城/@寒冰地宫一层>\
+  <土城/@幽冥炼狱>\
+  <土城/@黄金神殿>\
+  <土城/@开始传送>\
+BREAK
+
+[@祖玛大殿]
+#IF
+#ACT
+  MOV S$传送目的 WP02
+  MOV N$传送金币 500
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　<【祖玛大殿】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><500金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><简单/SCOLOR=250>
+BREAK
+[@冰风谷]
+#IF
+#ACT
+  MOV S$传送目的 WP04
+  MOV N$传送金币 1000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　　<【冰风谷】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><1000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><简单/SCOLOR=250>
+BREAK
+[@蛇魔殿]
+#IF
+#ACT
+  MOV S$传送目的 WP14
+  MOV N$传送金币 2000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　　<【蛇魔殿】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><2000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><简单/SCOLOR=250>
+BREAK
+[@教皇殿]
+#IF
+#ACT
+  MOV S$传送目的 WP06
+  MOV N$传送金币 3000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　　<【教皇殿】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><3000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><简单/SCOLOR=250>
+BREAK
+[@武帝陵]
+#IF
+#ACT
+  MOV S$传送目的 WP10
+  MOV N$传送金币 4000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　　<【武帝陵】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><4000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><一般/SCOLOR=250>
+BREAK
+[@堕落神殿]
+#IF
+#ACT
+  MOV S$传送目的 WP19
+  MOV N$传送金币 5000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　<【堕落神殿】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><5000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><一般/SCOLOR=250>
+BREAK
+[@黄泉陵墓]
+#IF
+#ACT
+  MOV S$传送目的 WP26
+  MOV N$传送金币 6000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　<【黄泉陵墓】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><6000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><一般/SCOLOR=250>
+BREAK
+[@失落古迹]
+#IF
+#ACT
+  MOV S$传送目的 WP05
+  MOV N$传送金币 7000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　<【失落古迹】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><7000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><一般/SCOLOR=250>
+BREAK
+[@时空迷城]
+#IF
+#ACT
+  MOV S$传送目的 WP30
+  MOV N$传送金币 8000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　<【时空迷城】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><8000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><一般/SCOLOR=250>
+BREAK
+[@圣域]
+#IF
+#ACT
+  MOV S$传送目的 WP00
+  MOV N$传送金币 9000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　　　<【圣域】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><9000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><一般/SCOLOR=250>
+BREAK
+[@自然神庙]
+#IF
+#ACT
+  MOV S$传送目的 WP31
+  MOV N$传送金币 10000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　<【自然神庙】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><10000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><一般/SCOLOR=250>
+BREAK
+[@古战场遗址]
+#IF
+#ACT
+  MOV S$传送目的 WP32
+  MOV N$传送金币 12000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　<【古战场遗址】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><12000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><一般/SCOLOR=250>
+BREAK
+[@亚特斯戈壁]
+#IF
+#ACT
+  MOV S$传送目的 WP33
+  MOV N$传送金币 14000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　<【亚特斯戈壁】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><14000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><一般/SCOLOR=250>
+BREAK
+[@玛雅神庙一层]
+#IF
+#ACT
+  MOV S$传送目的 WP20
+  MOV N$传送金币 16000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　<【玛雅神庙一层】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><16000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><困难/SCOLOR=250>
+BREAK
+[@地狱之门]
+#IF
+#ACT
+  MOV S$传送目的 WP24
+  MOV N$传送金币 18000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　<【地狱之门】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><18000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><困难/SCOLOR=250>
+BREAK
+[@火龙长廊]
+#IF
+#ACT
+  MOV S$传送目的 WP12
+  MOV N$传送金币 20000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　<【火龙长廊】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><20000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><困难/SCOLOR=250>
+BREAK
+[@寒冰地宫一层]
+#IF
+#ACT
+  MOV S$传送目的 WP15
+  MOV N$传送金币 22000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　<【寒冰地宫一层】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><22000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><困难/SCOLOR=250>
+BREAK
+[@幽冥炼狱]
+#IF
+#ACT
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　　　　<【幽冥炼狱】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><24000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><极难/SCOLOR=250>
+  MOV S$传送目的 WP28
+  MOV N$传送金币 24000
+BREAK
+[@黄金神殿]
+#IF
+#ACT
+  MOV S$传送目的 WP11
+  MOV N$传送金币 30000
+  UIDLG SetRichText jiaoben015 WBK_001:　　　　　　<【黄金神殿】/SCOLOR=254/16>\\　\\<货币需求：/SCOLOR=251><30000金币/SCOLOR=250>\\<怪物难度：/SCOLOR=251><极难/SCOLOR=250>
+BREAK
+
+[@开始传送]
+#IF
+  CompareText S$传送目的 无
+#ACT
+  MessAgeBox \\　\\　\\　　　　　<请先选择地图!/SCOLOR=58>
+BREAK
+
+#IF
+  CheckGold <$STR(N$传送金币)>
+#ACT
+  TAKE 金币 <$STR(N$传送金币)>
+  MAPMOVE <$STR(S$传送目的)>
+  UIDLG Close jiaoben015
+#ELSEACT
+  MessAgeBox \\　\\　\\　　　　　　　<你身上没有<$STR(N$传送金币)>金币!/SCOLOR=58>
+BREAK
+
+
+
+
+[@传送按钮禁用配置]
+#IF
+  CHECKLEVELEX > 98
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:1
+BREAK
+#IF
+  CHECKLEVELEX > 95
+  CHECKLEVELEX < 99
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 92
+  CHECKLEVELEX < 96
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 88
+  CHECKLEVELEX < 93
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 85
+  CHECKLEVELEX < 89
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 81
+  CHECKLEVELEX < 86
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 78
+  CHECKLEVELEX < 82
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 75
+  CHECKLEVELEX < 79
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 72
+  CHECKLEVELEX < 76
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 68
+  CHECKLEVELEX < 73
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 66
+  CHECKLEVELEX < 69
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 62
+  CHECKLEVELEX < 67
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 59
+  CHECKLEVELEX < 63
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 56
+  CHECKLEVELEX < 60
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 52
+  CHECKLEVELEX < 57
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 47
+  CHECKLEVELEX < 53
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 42
+  CHECKLEVELEX < 48
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX > 34
+  CHECKLEVELEX < 43
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:1
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_020#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_021#CheckBox_001:0
+BREAK
+#IF
+  CHECKLEVELEX < 35
+#ACT
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_001#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_002#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_003#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_004#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_005#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_006#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_007#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_008#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_009#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_010#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_011#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_012#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_013#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_014#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_015#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_016#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_017#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_018#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_019#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_020#CheckBox_001:0
+  UIDLG SetEnable jiaoben015 gion_001#ListItem_021#CheckBox_001:0
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

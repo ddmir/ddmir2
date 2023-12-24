@@ -1,0 +1,6 @@
+[@MAIN]
+#IF
+#ACT
+  UIDLG Close ALL
+  UIDLG Open jiaoben017 -450 420 2 2 1 0 http://47.104.6.57:888/111.php 0
+

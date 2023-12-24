@@ -1,0 +1,139 @@
+[@拾取衣服触发]
+{
+#IF
+CHECKJOB warrior
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\战士佩戴列表.txt <$STR(S$衣服名称)>
+#ACT
+DELAYGOTO 500 @战士替换衣服
+BREAK
+
+#IF
+CHECKJOB wizard
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\法师佩戴列表.txt <$STR(S$衣服名称)>
+#ACT
+DELAYGOTO 500 @法师替换衣服
+BREAK
+
+#IF
+CHECKJOB taoist
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\道士佩戴列表.txt <$STR(S$衣服名称)>
+#ACT
+DELAYGOTO 500 @道士替换衣服
+BREAK
+;-------------------------------------------------
+[@战士替换衣服]
+#IF
+CHECKUSEITEM 0
+#ACT
+MOV N60 <$DC>
+MOV M60 <$MAXDC>
+MOV D60 <$MAXAC>
+MOV S$原始衣服 <$DRESS>
+TakeOnItem <$STR(S$衣服名称)> 0
+#ELSEACT
+TakeOnItem <$STR(S$衣服名称)> 0
+DELAYGOTO 1 @保存衣服数据
+BREAK
+
+#IF
+LARGE <$MAXDC> M60
+#ACT
+DELAYGOTO 1 @保存衣服数据
+BREAK
+
+#IF
+LARGE <$DC> N60
+#ACT
+DELAYGOTO 1 @保存衣服数据
+BREAK
+
+#IF
+LARGE <$MAXAC> D60
+#ACT
+DELAYGOTO 1 @保存衣服数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始衣服)> 0
+BREAK
+
+;-------------------------------------------------
+
+[@法师替换衣服]
+#IF
+CHECKUSEITEM 0
+#ACT
+MOV N60 <$MC>
+MOV M60 <$MAXMC>
+MOV D60 <$MAXAC>
+MOV S$原始衣服 <$DRESS>
+TakeOnItem <$STR(S$衣服名称)> 0
+#ELSEACT
+TakeOnItem <$STR(S$衣服名称)> 0
+DELAYGOTO 1 @保存衣服数据
+BREAK
+
+#IF
+LARGE <$MAXMC> M60
+#ACT
+DELAYGOTO 1 @保存衣服数据
+BREAK
+
+#IF
+LARGE <$MC> N60
+#ACT
+DELAYGOTO 1 @保存衣服数据
+BREAK
+
+#IF
+LARGE <$MAXAC> D60
+#ACT
+DELAYGOTO 1 @保存衣服数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始衣服)> 0
+
+;-------------------------------------------------
+
+[@道士替换衣服]
+#IF
+CHECKUSEITEM 0
+#ACT
+MOV N60 <$SC>
+MOV M60 <$MAXSC>
+MOV D60 <$MAXAC>
+MOV S$原始衣服 <$DRESS>
+TakeOnItem <$STR(S$衣服名称)> 0
+#ELSEACT
+TakeOnItem <$STR(S$衣服名称)> 0
+DELAYGOTO 1 @保存衣服数据
+BREAK
+
+#IF
+LARGE <$MAXSC> M60
+#ACT
+DELAYGOTO 1 @保存衣服数据
+BREAK
+
+#IF
+LARGE <$SC> N60
+#ACT
+DELAYGOTO 1 @保存衣服数据
+BREAK
+
+#IF
+LARGE <$MAXAC> D60
+#ACT
+DELAYGOTO 1 @保存衣服数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始衣服)> 0
+
+;-------------------------------------------------
+[@保存衣服数据]
+#IF
+#ACT
+
+}

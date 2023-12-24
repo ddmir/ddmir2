@@ -1,0 +1,119 @@
+[@拾取武器触发]
+{
+#IF
+CHECKJOB warrior
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\战士佩戴列表.txt <$STR(S$武器名称)>
+#ACT
+DELAYGOTO 500 @战士替换武器
+BREAK
+
+#IF
+CHECKJOB wizard
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\法师佩戴列表.txt <$STR(S$武器名称)>
+#ACT
+DELAYGOTO 500 @法师替换武器
+BREAK
+
+#IF
+CHECKJOB taoist
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\道士佩戴列表.txt <$STR(S$武器名称)>
+#ACT
+DELAYGOTO 500 @道士替换武器
+BREAK
+;-------------------------------------------------
+[@战士替换武器]
+#IF
+CHECKUSEITEM 1
+#ACT
+MOV N61 <$DC>
+MOV M61 <$MAXDC>
+MOV S$原始武器 <$WEAPON>
+TakeOnItem <$STR(S$武器名称)> 1
+#ELSEACT
+TakeOnItem <$STR(S$武器名称)> 1
+DELAYGOTO 1 @保存武器数据
+BREAK
+
+#IF
+LARGE <$MAXDC> M61
+#ACT
+DELAYGOTO 1 @保存武器数据
+BREAK
+
+#IF
+LARGE <$DC> N61
+#ACT
+DELAYGOTO 1 @保存武器数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始武器)> 1
+
+;-------------------------------------------------
+
+[@法师替换武器]
+#IF
+CHECKUSEITEM 1
+#ACT
+MOV N61 <$MC>
+MOV M61 <$MAXMC>
+MOV S$原始武器 <$WEAPON>
+TakeOnItem <$STR(S$武器名称)> 1
+#ELSEACT
+TakeOnItem <$STR(S$武器名称)> 1
+DELAYGOTO 1 @保存武器数据
+BREAK
+
+#IF
+LARGE <$MAXMC> M61
+#ACT
+DELAYGOTO 1 @保存武器数据
+BREAK
+
+#IF
+LARGE <$MC> N61
+#ACT
+DELAYGOTO 1 @保存武器数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始武器)> 1
+BREAK
+
+;-------------------------------------------------
+
+[@道士替换武器]
+#IF
+CHECKUSEITEM 1
+#ACT
+MOV N61 <$SC>
+MOV M61 <$MAXSC>
+MOV S$原始武器 <$WEAPON>
+TakeOnItem <$STR(S$武器名称)> 1
+#ELSEACT
+TakeOnItem <$STR(S$武器名称)> 1
+DELAYGOTO 1 @保存武器数据
+BREAK
+
+#IF
+LARGE <$MAXSC> M61
+#ACT
+DELAYGOTO 1 @保存武器数据
+BREAK
+
+#IF
+LARGE <$SC> N61
+#ACT
+DELAYGOTO 1 @保存武器数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始武器)> 1
+BREAK
+
+[@保存武器数据]
+#IF
+#ACT
+
+}
+

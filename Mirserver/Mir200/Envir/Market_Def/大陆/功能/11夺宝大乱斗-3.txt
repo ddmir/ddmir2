@@ -1,0 +1,99 @@
+[@MAIN]
+#IF
+#ACT
+  GOTO @夺宝界面
+
+
+[@夺宝界面]
+{
+#IF
+#ACT
+  PlayMusic zHDKQ.ogg
+  UIDLG Close ALL
+  UIDLG Open jiaoben007 340 200 0 0 1
+  UIDLG SetRichText jiaoben007 WBK_001:<1.50级以上才能参与该活动/SCOLOR=254>\\<2.活动地图刷新一只宝箱BOSS,打死后爆出宝箱/SCOLOR=254>\\<3.连续5分钟携带宝箱者获得最终胜利/SCOLOR=254>\\<4.携带宝箱期间离线或被杀死必爆出宝箱/SCOLOR=254>\\<活动胜利者奖励宝箱一个/SCOLOR=58>
+  UIDLG SetButtonGOTO jiaoben007 btn_001:@进入夺宝大乱斗
+#SAY
+UICMD
+<进入夺宝大乱斗/@进入夺宝大乱斗>\
+BREAK
+
+
+[@进入夺宝大乱斗]
+#IF
+CHECKLEVELEX > 49
+#ELSEACT
+  MESSAGEBOX <等级不足50级,无法参与活动!/SCOLOR=58>
+BREAK
+
+#IF
+  EQUAL G1 1
+#ACT
+  MAPMOVE DBDT 68 79 10
+  UIDLG Close ALL
+#ELSEACT
+  MESSAGEBOX <活动还未开启!/SCOLOR=58>
+BREAK
+
+[@夺宝开启规则配置]
+#IF
+  ISONMAP DBDT
+  CheckItem 夺宝宝箱 1
+#ACT
+  SendNewLineMsg 0 250 50 0 0 0 0 <宝箱携带者/SCOLOR=254><[<$USERNAME>]/SCOLOR=250><当前坐标：/SCOLOR=254><[夺宝大乱斗]/SCOLOR=253><%x/SCOLOR=253><：/SCOLOR=253><%y/SCOLOR=253><【打他】/SCOLOR=58>
+  GIVEFENGHAO SELF 夺宝箱
+#ELSEACT
+  RECYCFENGHAO SELF 夺宝箱
+  MOV N1 0
+BREAK
+
+
+[@夺宝携带规则配置]
+#IF
+  CheckItem 夺宝宝箱 1
+#ACT
+  INC N1 3
+
+#IF
+  LARGE N1 300
+  CheckItem 夺宝宝箱 1
+#ACT
+  MOV G1 0
+  TAKE  夺宝宝箱 1
+  RECYCFENGHAO SELF 夺宝箱
+  GIVE 夺宝胜利宝箱 1 4 夺宝活动获得 1
+  SendNewLineMsg 0 250 50 0 0 0 0 <玩家/SCOLOR=254><[<$USERNAME>]/SCOLOR=250><连续携带宝箱时长达到5分钟，获得最终胜利，奖励：/SCOLOR=254><【夺宝胜利宝箱】/SCOLOR=253><1个，活动结束，谢谢参与！/SCOLOR=254>
+BREAK
+
+[@夺宝离线配置]
+#IF
+  CheckItem 夺宝宝箱 1
+#ACT
+  TAKE  夺宝宝箱 1
+  RECYCFENGHAO SELF 夺宝箱
+  THROWITEM DBDT <$X> <$Y> 1 夺宝宝箱 1
+  SendNewLineMsg 0 250 50 0 0 0 0 <[夺宝宝箱]/SCOLOR=251><从/SCOLOR=254><[<$USERNAME>]/SCOLOR=250><的身上掉落在：/SCOLOR=254><%x/SCOLOR=253><：/SCOLOR=253><%y/SCOLOR=253>
+
+[@夺宝关闭规则配置]
+#IF
+  ISONMAP DBDT
+#ACT
+  TAKE  夺宝宝箱 1
+  RECYCFENGHAO SELF 夺宝箱
+  MAPMOVE 3 561 525 5
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

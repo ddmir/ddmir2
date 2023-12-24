@@ -1,0 +1,44 @@
+;此文件放在 D:\Mirserver\Mir200\Envir\MonUseItems
+
+;=============================人形宝宝配制文件=======================
+[BaseInfo]
+;职业
+Job = 1
+;性别
+Gender = 1
+;头发
+Hair = 5
+;使用魔法
+Magic = 魔法盾,雷电术,疾光电影,抗拒火环,冰咆哮,火墙
+;==============================身上装备============================
+[UseItems]
+;衣服
+DRESSNAME = 梵天灵衣(男)
+;武器
+WEAPONNAME = 梵天蚀骨杖
+;照明物
+RIGHTHANDNAME = 梵天琮
+;项链
+NECKLACENAME = 梵天神链
+;头盔
+HELMETNAME = 梵天冠
+;左手镯
+ARMRINGLNAME = 梵天手
+;右手镯
+ARMRINGRNAME = 梵天手
+;左戒指
+RINGLNAME = 梵天戒指.护身
+;右戒指
+RINGRNAME = 梵天戒指.复活
+;物品
+BUJUKNAME =
+;腰带
+BELTNAME = 梵天腰带
+;鞋子
+BOOTSNAME =梵天靴
+;宝石
+CHARMNAME = 梵天舍利
+;出身时背包物品
+INITITEMS = 超级金创药,超级魔法药
+;死亡掉装备几率 数字越小掉装备几率越高
+DieDropUseItemRate = 2000

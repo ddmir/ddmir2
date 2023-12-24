@@ -1,0 +1,656 @@
+(@bigstorage @biggetback @getnextpage @getPreviouspage)
+
+[@MAIN]
+#IF
+#ACT
+  GOTO @ZBHS
+BREAK
+
+
+[@ZBHS]
+{
+#IF
+#ACT
+  MOV N$经验回收 1
+  MOV N$元宝回收 0
+  GOTO @回收货币调配
+#IF
+#ACT
+  UIDLG Close ALL
+  UIDLG Open jiaoben012 240 150 0 0 1
+  UIDLG LockItemSlot jiaoben012 item_001:1
+  UIDLG SetItemSlot jiaoben012 item_001:注释
+  UIDLG ItemSlotTip jiaoben012 item_001:<回收价格介绍：/SCOLOR=251>\\<雷霆套单件：/SCOLOR=254><10元宝/SCOLOR=250/6>　　<战魂套单件：/SCOLOR=254><20元宝/SCOLOR=250/6>\\<赤金套单件：/SCOLOR=254><30元宝/SCOLOR=250/6>\\<介绍太多不写了！/SCOLOR=58>\\
+  UIDLG SetCheckBoxRadio jiaoben012 CheckBox_020:CheckBox_021
+
+  UIDLG SetRichText jiaoben012 WBK_001:<$STR(S$装备回收1)>
+  UIDLG SetRichText jiaoben012 WBK_002:<$STR(S$装备回收2)>
+  UIDLG SetRichText jiaoben012 WBK_003:<$STR(S$装备回收3)>
+  UIDLG SetRichText jiaoben012 WBK_004:<$STR(S$装备回收4)>
+  UIDLG SetRichText jiaoben012 WBK_005:<$STR(S$装备回收5)>
+  UIDLG SetRichText jiaoben012 WBK_006:<$STR(S$装备回收6)>
+  UIDLG SetRichText jiaoben012 WBK_007:<$STR(S$装备回收7)>
+  UIDLG SetRichText jiaoben012 WBK_008:<$STR(S$装备回收8)>
+  UIDLG SetRichText jiaoben012 WBK_009:<$STR(S$装备回收9)>
+  UIDLG SetRichText jiaoben012 WBK_010:<$STR(S$装备回收10)>
+  UIDLG SetRichText jiaoben012 WBK_011:<$STR(S$装备回收11)>
+  UIDLG SetRichText jiaoben012 WBK_012:<$STR(S$装备回收12)>
+  UIDLG SetRichText jiaoben012 WBK_013:<$STR(S$装备回收13)>
+  UIDLG SetRichText jiaoben012 WBK_014:<$STR(S$装备回收14)>
+  UIDLG SetRichText jiaoben012 WBK_015:<$STR(S$装备回收15)>
+  UIDLG SetRichText jiaoben012 WBK_016:<$STR(S$装备回收16)>
+  UIDLG SetRichText jiaoben012 WBK_017:<$STR(S$装备回收17)>
+  UIDLG SetRichText jiaoben012 WBK_018:<$STR(S$装备回收18)>
+
+  UIDLG BindCheckBox jiaoben012 CheckBox_001:N$回收标签1
+  UIDLG BindCheckBox jiaoben012 CheckBox_002:N$回收标签2
+  UIDLG BindCheckBox jiaoben012 CheckBox_003:N$回收标签3
+  UIDLG BindCheckBox jiaoben012 CheckBox_004:N$回收标签4
+  UIDLG BindCheckBox jiaoben012 CheckBox_005:N$回收标签5
+  UIDLG BindCheckBox jiaoben012 CheckBox_006:N$回收标签6
+  UIDLG BindCheckBox jiaoben012 CheckBox_007:N$回收标签7
+  UIDLG BindCheckBox jiaoben012 CheckBox_008:N$回收标签8
+  UIDLG BindCheckBox jiaoben012 CheckBox_009:N$回收标签9
+  UIDLG BindCheckBox jiaoben012 CheckBox_010:N$回收标签10
+  UIDLG BindCheckBox jiaoben012 CheckBox_011:N$回收标签11
+  UIDLG BindCheckBox jiaoben012 CheckBox_012:N$回收标签12
+  UIDLG BindCheckBox jiaoben012 CheckBox_013:N$回收标签13
+  UIDLG BindCheckBox jiaoben012 CheckBox_014:N$回收标签14
+  UIDLG BindCheckBox jiaoben012 CheckBox_015:N$回收标签15
+  UIDLG BindCheckBox jiaoben012 CheckBox_016:N$回收标签16
+  UIDLG BindCheckBox jiaoben012 CheckBox_017:N$回收标签17
+  UIDLG BindCheckBox jiaoben012 CheckBox_018:N$回收标签18
+  UIDLG BindCheckBox jiaoben012 CheckBox_019:N$自动回收
+
+  UIDLG BindCheckBox jiaoben012 CheckBox_020:N$经验回收
+  UIDLG BindCheckBox jiaoben012 CheckBox_021:N$元宝回收
+
+  UIDLG CheckBox jiaoben012 CheckBox_001:<$STR(N$回收标签1)>
+  UIDLG CheckBox jiaoben012 CheckBox_002:<$STR(N$回收标签2)>
+  UIDLG CheckBox jiaoben012 CheckBox_003:<$STR(N$回收标签3)>
+  UIDLG CheckBox jiaoben012 CheckBox_004:<$STR(N$回收标签4)>
+  UIDLG CheckBox jiaoben012 CheckBox_005:<$STR(N$回收标签5)>
+  UIDLG CheckBox jiaoben012 CheckBox_006:<$STR(N$回收标签6)>
+  UIDLG CheckBox jiaoben012 CheckBox_007:<$STR(N$回收标签7)>
+  UIDLG CheckBox jiaoben012 CheckBox_008:<$STR(N$回收标签8)>
+  UIDLG CheckBox jiaoben012 CheckBox_009:<$STR(N$回收标签9)>
+  UIDLG CheckBox jiaoben012 CheckBox_010:<$STR(N$回收标签10)>
+  UIDLG CheckBox jiaoben012 CheckBox_011:<$STR(N$回收标签11)>
+  UIDLG CheckBox jiaoben012 CheckBox_012:<$STR(N$回收标签12)>
+  UIDLG CheckBox jiaoben012 CheckBox_013:<$STR(N$回收标签13)>
+  UIDLG CheckBox jiaoben012 CheckBox_014:<$STR(N$回收标签14)>
+  UIDLG CheckBox jiaoben012 CheckBox_015:<$STR(N$回收标签15)>
+  UIDLG CheckBox jiaoben012 CheckBox_016:<$STR(N$回收标签16)>
+  UIDLG CheckBox jiaoben012 CheckBox_017:<$STR(N$回收标签17)>
+  UIDLG CheckBox jiaoben012 CheckBox_018:<$STR(N$回收标签18)>
+
+  UIDLG CheckBox jiaoben012 CheckBox_020:<$STR(N$经验回收)>
+  UIDLG CheckBox jiaoben012 CheckBox_021:<$STR(N$元宝回收)>
+
+  UIDLG SetButtonGOTO jiaoben012 btn_001:@一键回收
+  UIDLG SetButtonGOTO jiaoben012 btn_002:@随身仓库
+  UIDLG SetCheckBoxGOTO jiaoben012 CheckBox_019:@自动回收
+  UIDLG SetCheckBoxGOTO jiaoben012 CheckBox_020:@MAIN
+  UIDLG SetCheckBoxGOTO jiaoben012 CheckBox_021:@元宝回收
+#SAY
+UICMD
+<随身仓库/@随身仓库>\
+<一键回收/@一键回收>\
+<自动回收/@自动回收>\
+<元宝回收/@元宝回收>\
+BREAK
+
+
+[@元宝回收]
+#IF
+#ACT
+  MOV N$经验回收 0
+  MOV N$元宝回收 1
+  GOTO @回收货币调配
+  UIDLG SetRichText jiaoben012 WBK_001:<$STR(S$装备回收1)>
+  UIDLG SetRichText jiaoben012 WBK_002:<$STR(S$装备回收2)>
+  UIDLG SetRichText jiaoben012 WBK_003:<$STR(S$装备回收3)>
+  UIDLG SetRichText jiaoben012 WBK_004:<$STR(S$装备回收4)>
+  UIDLG SetRichText jiaoben012 WBK_005:<$STR(S$装备回收5)>
+  UIDLG SetRichText jiaoben012 WBK_006:<$STR(S$装备回收6)>
+  UIDLG SetRichText jiaoben012 WBK_007:<$STR(S$装备回收7)>
+  UIDLG SetRichText jiaoben012 WBK_008:<$STR(S$装备回收8)>
+  UIDLG SetRichText jiaoben012 WBK_009:<$STR(S$装备回收9)>
+  UIDLG SetRichText jiaoben012 WBK_010:<$STR(S$装备回收10)>
+  UIDLG SetRichText jiaoben012 WBK_011:<$STR(S$装备回收11)>
+  UIDLG SetRichText jiaoben012 WBK_012:<$STR(S$装备回收12)>
+  UIDLG SetRichText jiaoben012 WBK_013:<$STR(S$装备回收13)>
+  UIDLG SetRichText jiaoben012 WBK_014:<$STR(S$装备回收14)>
+  UIDLG SetRichText jiaoben012 WBK_015:<$STR(S$装备回收15)>
+  UIDLG SetRichText jiaoben012 WBK_016:<$STR(S$装备回收16)>
+  UIDLG SetRichText jiaoben012 WBK_017:<$STR(S$装备回收17)>
+  UIDLG SetRichText jiaoben012 WBK_018:<$STR(S$装备回收18)>
+
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+[@随身仓库]
+<----------------------------------------------------------------------------------------/SCOLOR=35>\
+<请放入你的物品！！！/SCOLOR=254>\
+<----------------------------------------------------------------------------------------/SCOLOR=35>\　\
+<存放物品/@bigstorage>　　<取回物品/@biggetback>　　<(关闭)/@EXIT>\
+<----------------------------------------------------------------------------------------/SCOLOR=35>\
+
+
+[@bigstorage]
+<----------------------------------------------------------------------------------------/SCOLOR=35>\
+<请放入你的物品！！！/SCOLOR=254>\
+<----------------------------------------------------------------------------------------/SCOLOR=35>\　\
+　　　　　　　　<(关闭)/@EXIT>\
+<----------------------------------------------------------------------------------------/SCOLOR=35>\
+
+[@biggetback]
+<----------------------------------------------------------------------------------------/SCOLOR=35>\
+<请取出你的物品！！！/SCOLOR=254>\
+<----------------------------------------------------------------------------------------/SCOLOR=35>\　\
+<上一页/@getPreviouspage>　　<下一页/@getnextpage>　　<(关闭)/@EXIT>\
+<----------------------------------------------------------------------------------------/SCOLOR=35>\
+
+[@getPreviouspage]
+#IF
+#ACT
+goto @biggetback
+BREAK
+
+[@getnextpage]
+#ACT
+goto @biggetback
+BREAK
+
+[@自动回收]
+#IF
+  SMALL U3 3
+#ACT
+  MOV N$自动回收 0
+  MessAgeBox <自动回收开启失败，需要!/SCOLOR=58><白银特权/SCOLOR=250><以上特权才能开启!/SCOLOR=58>
+  GOTO @MAIN
+BREAK
+
+#IF
+  EQUAL N$自动回收 0
+#ACT
+  SetOffTimer 1
+  SendNewLineMsg 1 250 0 0 0 0 0 自动回收已关闭！
+BREAK
+
+#IF
+  EQUAL N$自动回收 1
+#ACT
+  SetOnTimer 1 3
+  SendNewLineMsg 1 250 0 0 0 0 0 自动回收已开启！
+BREAK
+
+
+[@一键回收]
+#ACT
+LOG 经验回收<$STR(N$经验回收)>元宝回收<$STR(N$元宝回收)>
+
+#IF
+  EQUAL N$经验回收 1
+#ACT
+  GOTO @经验回收装备
+BREAK
+
+#IF
+  EQUAL N$元宝回收 1
+#ACT
+  GOTO @元宝回收装备
+BREAK
+
+[@经验回收装备]
+#IF
+  EQUAL N$回收标签1 0
+  EQUAL N$回收标签2 0
+  EQUAL N$回收标签3 0
+  EQUAL N$回收标签4 0
+  EQUAL N$回收标签5 0
+  EQUAL N$回收标签6 0
+  EQUAL N$回收标签7 0
+  EQUAL N$回收标签8 0
+  EQUAL N$回收标签9 0
+  EQUAL N$回收标签10 0
+  EQUAL N$回收标签11 0
+  EQUAL N$回收标签12 0
+  EQUAL N$回收标签13 0
+  EQUAL N$回收标签14 0
+  EQUAL N$回收标签15 0
+  EQUAL N$回收标签16 0
+  EQUAL N$回收标签17 0
+  EQUAL N$回收标签18 0
+#ACT
+  SendNewLineMsg 1 58 0 0 0 0 0 你没有勾选回收装备！
+BREAK
+
+#IF
+#ACT
+  MOV N$经验全部回收总价 0
+  MOV N$经验全部回收总数 0
+  MOV N$雷霆套回收数量 0
+  MOV N$雷霆套回收总价 0
+  MOV N$战魂套回收数量 0
+  MOV N$战魂套回收总价 0
+  MOV N$赤金套回收数量 0
+  MOV N$赤金套回收总价 0
+  MOV N$倚天套回收数量 0
+  MOV N$倚天套回收总价 0
+  MOV N$白虎套回收数量 0
+  MOV N$白虎套回收总价 0
+  MOV N$火龙套回收数量 0
+  MOV N$火龙套回收总价 0
+  MOV N$主宰套回收数量 0
+  MOV N$主宰套回收总价 0
+  MOV N$金牛套回收数量 0
+  MOV N$金牛套回收总价 0
+  MOV N$虎威套回收数量 0
+  MOV N$虎威套回收总价 0
+  MOV N$传奇套回收数量 0
+  MOV N$传奇套回收总价 0
+  MOV N$皓月套回收数量 0
+  MOV N$皓月套回收总价 0
+  MOV N$荣耀套回收数量 0
+  MOV N$荣耀套回收总价 0
+  MOV N$制裁套回收数量 0
+  MOV N$制裁套回收总价 0
+  MOV N$泣血套回收数量 0
+  MOV N$泣血套回收总价 0
+  MOV N$九霄套回收数量 0
+  MOV N$九霄套回收总价 0
+  MOV N$人皇套回收数量 0
+  MOV N$人皇套回收总价 0
+  MOV N$金龙套回收数量 0
+  MOV N$金龙套回收总价 0
+  MOV N$天谕套回收数量 0
+  MOV N$天谕套回收总价 0
+
+#IF
+  EQUAL N$回收标签1 1
+#ACT
+  TakeBagItem 怒斩|雷霆战甲|雷霆战衣|雷霆头盔|雷霆项链|雷霆勋章|雷霆手镯|雷霆戒指|雷霆腰带|雷霆靴子 46 0 0 0 1000 N$雷霆套回收数量 0 1 
+  MUL N$雷霆套回收总价 N$雷霆套回收数量 1000
+
+#IF
+  EQUAL N$回收标签2 1
+#ACT
+  TakeBagItem 战魂之刃|战魂战甲|战魂战衣|战魂头盔|战魂项链|战魂勋章|战魂手镯|战魂戒指|战魂腰带|战魂靴子 46 0 0 0 2000 N$战魂套回收数量 0 1 
+  MUL N$战魂套回收总价 N$战魂套回收数量 2000
+
+#IF
+  EQUAL N$回收标签3 1
+#ACT
+  TakeBagItem 赤金之刃|赤金战甲|赤金战衣|赤金头盔|赤金项链|赤金勋章|赤金手镯|赤金戒指|赤金腰带|赤金靴子 46 0 0 0 3000 N$赤金套回收数量 0 1 
+  MUL N$赤金套回收总价 N$赤金套回收数量 3000
+
+#IF
+  EQUAL N$回收标签4 1
+#ACT
+  TakeBagItem 倚天剑|倚天战甲|倚天战衣|倚天头盔|倚天项链|倚天勋章|倚天手镯|倚天戒指|倚天腰带|倚天靴子 46 0 0 0 4000 N$倚天套回收数量 0 1 
+  MUL N$倚天套回收总价 N$倚天套回收数量 4000
+
+#IF
+  EQUAL N$回收标签5 1
+#ACT
+  TakeBagItem 白虎之刃|白虎战甲|白虎战衣|白虎头盔|白虎项链|白虎勋章|白虎手镯|白虎戒指|白虎腰带|白虎靴子 46 0 0 0 5000 N$白虎套回收数量 0 1 
+  MUL N$白虎套回收总价 N$白虎套回收数量 5000
+
+#IF
+  EQUAL N$回收标签6 1
+#ACT
+  TakeBagItem 火龙神剑|火龙战甲|火龙战衣|火龙头盔|火龙项链|火龙勋章|火龙手镯|火龙戒指|火龙腰带|火龙靴子 46 0 0 0 6000 N$火龙套回收数量 0 1 
+  MUL N$火龙套回收总价 N$火龙套回收数量 6000
+
+#IF
+  EQUAL N$回收标签7 1
+#ACT
+  TakeBagItem 主宰之刃|主宰战甲|主宰战衣|主宰头盔|主宰项链|主宰勋章|主宰手镯|主宰戒指|主宰腰带|主宰靴子 46 0 0 0 7000 N$主宰套回收数量 0 1 
+  MUL N$主宰套回收总价 N$主宰套回收数量 7000
+
+#IF
+  EQUAL N$回收标签8 1
+#ACT
+  TakeBagItem 金牛之刃|金牛战甲|金牛战衣|金牛头盔|金牛项链|金牛勋章|金牛手镯|金牛戒指|金牛腰带|金牛靴子 46 0 0 0 8000 N$金牛套回收数量 0 1 
+  MUL N$金牛套回收总价 N$金牛套回收数量 8000
+
+#IF
+  EQUAL N$回收标签9 1
+#ACT
+  TakeBagItem 虎威之刃|虎威战甲|虎威战衣|虎威头盔|虎威项链|虎威勋章|虎威手镯|虎威戒指|虎威腰带|虎威靴子 46 0 0 0 9000 N$虎威套回收数量 0 1 
+  MUL N$虎威套回收总价 N$虎威套回收数量 9000
+
+#IF
+  EQUAL N$回收标签10 1
+#ACT
+  TakeBagItem 传奇之刃|传奇战甲|传奇战衣|传奇头盔|传奇项链|传奇勋章|传奇手镯|传奇戒指|传奇腰带|传奇靴子 46 0 0 0 10000 N$传奇套回收数量 0 1 
+  MUL N$传奇套回收总价 N$传奇套回收数量 10000
+
+#IF
+  EQUAL N$回收标签11 1
+#ACT
+  TakeBagItem 皓月之刃|皓月战甲|皓月战衣|皓月头盔|皓月项链|皓月勋章|皓月手镯|皓月戒指|皓月腰带|皓月靴子 46 0 0 0 11000 N$皓月套回收数量 0 1 
+  MUL N$皓月套回收总价 N$皓月套回收数量 11000
+
+#IF
+  EQUAL N$回收标签12 1
+#ACT
+  TakeBagItem 荣耀之刃|荣耀战甲|荣耀战衣|荣耀头盔|荣耀项链|荣耀勋章|荣耀手镯|荣耀戒指|荣耀腰带|荣耀靴子 46 0 0 0 12000 N$荣耀套回收数量 0 1 
+  MUL N$荣耀套回收总价 N$荣耀套回收数量 12000
+
+#IF
+  EQUAL N$回收标签13 1
+#ACT
+  TakeBagItem 制裁之刃|制裁战甲|制裁战衣|制裁头盔|制裁项链|制裁勋章|制裁手镯|制裁戒指|制裁腰带|制裁靴子 46 0 0 0 13000 N$制裁套回收数量 0 1 
+  MUL N$制裁套回收总价 N$制裁套回收数量 13000
+
+#IF
+  EQUAL N$回收标签14 1
+#ACT
+  TakeBagItem 泣血之刃|泣血战甲|泣血战衣|泣血头盔|泣血项链|泣血勋章|泣血手镯|泣血戒指|泣血腰带|泣血靴子 46 0 0 0 14000 N$泣血套回收数量 0 1 
+  MUL N$泣血套回收总价 N$泣血套回收数量 14000
+
+#IF
+  EQUAL N$回收标签15 1
+#ACT
+  TakeBagItem 九霄之刃|九霄战甲|九霄战衣|九霄头盔|九霄项链|九霄勋章|九霄手镯|九霄戒指|九霄腰带|九霄靴子 46 0 0 0 15000 N$九霄套回收数量 0 1 
+  MUL N$九霄套回收总价 N$九霄套回收数量 15000
+
+#IF
+  EQUAL N$回收标签16 1
+#ACT
+  TakeBagItem 人皇之刃|人皇战甲|人皇战衣|人皇头盔|人皇项链|人皇勋章|人皇手镯|人皇戒指|人皇腰带|人皇靴子 46 0 0 0 16000 N$人皇套回收数量 0 1 
+  MUL N$人皇套回收总价 N$人皇套回收数量 16000
+
+#IF
+  EQUAL N$回收标签17 1
+#ACT
+  TakeBagItem 金龙之刃|金龙战甲|金龙战衣|金龙头盔|金龙项链|金龙勋章|金龙手镯|金龙戒指|金龙腰带|金龙靴子 46 0 0 0 17000 N$金龙套回收数量 0 1 
+  MUL N$金龙套回收总价 N$金龙套回收数量 17000
+
+#IF
+  EQUAL N$回收标签18 1
+#ACT
+  TakeBagItem 天谕之刃|天谕战甲|天谕战衣|天谕头盔|天谕项链|天谕勋章|天谕手镯|天谕戒指|天谕腰带|天谕靴子 46 0 0 0 18000 N$天谕套回收数量 0 1 
+  MUL N$天谕套回收总价 N$天谕套回收数量 18000
+
+#OR
+  LARGE N$雷霆套回收数量 0
+  LARGE N$战魂套回收数量 0
+  LARGE N$赤金套回收数量 0
+  LARGE N$倚天套回收数量 0
+  LARGE N$白虎套回收数量 0
+  LARGE N$火龙套回收数量 0
+  LARGE N$主宰套回收数量 0
+  LARGE N$金牛套回收数量 0
+  LARGE N$虎威套回收数量 0
+  LARGE N$传奇套回收数量 0
+  LARGE N$皓月套回收数量 0
+  LARGE N$荣耀套回收数量 0
+  LARGE N$制裁套回收数量 0
+  LARGE N$泣血套回收数量 0
+  LARGE N$九霄套回收数量 0
+  LARGE N$人皇套回收数量 0
+  LARGE N$金龙套回收数量 0
+  LARGE N$天谕套回收数量 0
+#ACT
+  INC N$经验全部回收总数 N$雷霆套回收数量
+  INC N$经验全部回收总数 N$战魂套回收数量
+  INC N$经验全部回收总数 N$赤金套回收数量
+  INC N$经验全部回收总数 N$倚天套回收数量
+  INC N$经验全部回收总数 N$白虎套回收数量
+  INC N$经验全部回收总数 N$火龙套回收数量
+  INC N$经验全部回收总数 N$主宰套回收数量
+  INC N$经验全部回收总数 N$金牛套回收数量
+  INC N$经验全部回收总数 N$虎威套回收数量
+  INC N$经验全部回收总数 N$传奇套回收数量
+  INC N$经验全部回收总数 N$皓月套回收数量
+  INC N$经验全部回收总数 N$荣耀套回收数量
+  INC N$经验全部回收总数 N$制裁套回收数量
+  INC N$经验全部回收总数 N$泣血套回收数量
+  INC N$经验全部回收总数 N$九霄套回收数量
+  INC N$经验全部回收总数 N$人皇套回收数量
+  INC N$经验全部回收总数 N$金龙套回收数量
+  INC N$经验全部回收总数 N$天谕套回收数量
+  INC N$经验全部回收总价 N$雷霆套回收总价
+  INC N$经验全部回收总价 N$战魂套回收总价
+  INC N$经验全部回收总价 N$赤金套回收总价
+  INC N$经验全部回收总价 N$倚天套回收总价
+  INC N$经验全部回收总价 N$白虎套回收总价
+  INC N$经验全部回收总价 N$火龙套回收总价
+  INC N$经验全部回收总价 N$主宰套回收总价
+  INC N$经验全部回收总价 N$金牛套回收总价
+  INC N$经验全部回收总价 N$虎威套回收总价
+  INC N$经验全部回收总价 N$传奇套回收总价
+  INC N$经验全部回收总价 N$皓月套回收总价
+  INC N$经验全部回收总价 N$荣耀套回收总价
+  INC N$经验全部回收总价 N$制裁套回收总价
+  INC N$经验全部回收总价 N$泣血套回收总价
+  INC N$经验全部回收总价 N$九霄套回收总价
+  INC N$经验全部回收总价 N$人皇套回收总价
+  INC N$经验全部回收总价 N$金龙套回收总价
+  INC N$经验全部回收总价 N$天谕套回收总价
+  SendNewLineMsg 1 250 0 0 0 0 0 成功回收<$STR(N$经验全部回收总数)>件装备,获得<$STR(N$经验全部回收总价)>经验。
+BREAK
+
+
+[@元宝回收装备]
+#IF
+  EQUAL N$回收标签1 0
+  EQUAL N$回收标签2 0
+  EQUAL N$回收标签3 0
+  EQUAL N$回收标签4 0
+  EQUAL N$回收标签5 0
+  EQUAL N$回收标签6 0
+  EQUAL N$回收标签7 0
+  EQUAL N$回收标签8 0
+  EQUAL N$回收标签9 0
+  EQUAL N$回收标签10 0
+  EQUAL N$回收标签11 0
+  EQUAL N$回收标签12 0
+#ACT
+  SendNewLineMsg 1 58 0 0 0 0 0 你没有勾选回收装备！
+BREAK
+
+#IF
+#ACT
+  MOV N$元宝全部回收总价 0
+  MOV N$元宝全部回收总数 0
+  MOV N$极虎威套回收数量 0
+  MOV N$极虎威套回收总价 0
+  MOV N$极传奇套回收数量 0
+  MOV N$极传奇套回收总价 0
+  MOV N$极皓月套回收数量 0
+  MOV N$极皓月套回收总价 0
+  MOV N$极荣耀套回收数量 0
+  MOV N$极荣耀套回收总价 0
+  MOV N$极制裁套回收数量 0
+  MOV N$极制裁套回收总价 0
+  MOV N$极泣血套回收数量 0
+  MOV N$极泣血套回收总价 0
+  MOV N$极九霄套回收数量 0
+  MOV N$极九霄套回收总价 0
+  MOV N$极人皇套回收数量 0
+  MOV N$极人皇套回收总价 0
+  MOV N$极金龙套回收数量 0
+  MOV N$极金龙套回收总价 0
+  MOV N$极天谕套回收数量 0
+  MOV N$极天谕套回收总价 0
+  MOV N$特殊装备回收数量 0
+  MOV N$特殊装备回收总价 0
+  MOV N$稀有宝石回收数量 0
+  MOV N$稀有宝石回收总价 0
+
+#IF
+  EQUAL N$回收标签1 1
+#ACT
+  TakeBagItem 极々虎威之刃|极々虎威战甲|极々虎威战衣|极々虎威头盔|极々虎威项链|极々虎威勋章|极々虎威手镯|极々虎威戒指|极々虎威腰带|极々虎威靴子 46 100 0 0 0 N$极虎威套回收数量 0 1 
+  MUL N$极虎威套回收总价 N$极虎威套回收数量 100
+
+#IF
+  EQUAL N$回收标签2 1
+#ACT
+  TakeBagItem 极々传奇之刃|极々传奇战甲|极々传奇战衣|极々传奇头盔|极々传奇项链|极々传奇勋章|极々传奇手镯|极々传奇戒指|极々传奇腰带|极々传奇靴子 46 200 0 0 0 N$极传奇套回收数量 0 1 
+  MUL N$极传奇套回收总价 N$极传奇套回收数量 200
+
+#IF
+  EQUAL N$回收标签3 1
+#ACT
+  TakeBagItem 极々皓月之刃|极々皓月战甲|极々皓月战衣|极々皓月头盔|极々皓月项链|极々皓月勋章|极々皓月手镯|极々皓月戒指|极々皓月腰带|极々皓月靴子 46 300 0 0 0 N$极皓月套回收数量 0 1 
+  MUL N$极皓月套回收总价 N$极皓月套回收数量 300
+
+#IF
+  EQUAL N$回收标签4 1
+#ACT
+  TakeBagItem 极々荣耀之刃|极々荣耀战甲|极々荣耀战衣|极々荣耀头盔|极々荣耀项链|极々荣耀勋章|极々荣耀手镯|极々荣耀戒指|极々荣耀腰带|极々荣耀靴子 46 400 0 0 0 N$极荣耀套回收数量 0 1 
+  MUL N$极荣耀套回收总价 N$极荣耀套回收数量 400
+
+#IF
+  EQUAL N$回收标签5 1
+#ACT
+  TakeBagItem 极々制裁之刃|极々制裁战甲|极々制裁战衣|极々制裁头盔|极々制裁项链|极々制裁勋章|极々制裁手镯|极々制裁戒指|极々制裁腰带|极々制裁靴子 46 500 0 0 0 N$极制裁套回收数量 0 1 
+  MUL N$极制裁套回收总价 N$极制裁套回收数量 500
+
+#IF
+  EQUAL N$回收标签6 1
+#ACT
+  TakeBagItem 极々泣血之刃|极々泣血战甲|极々泣血战衣|极々泣血头盔|极々泣血项链|极々泣血勋章|极々泣血手镯|极々泣血戒指|极々泣血腰带|极々泣血靴子 46 600 0 0 0 N$极泣血套回收数量 0 1 
+  MUL N$极泣血套回收总价 N$极泣血套回收数量 600
+
+#IF
+  EQUAL N$回收标签7 1
+#ACT
+  TakeBagItem 极々九霄之刃|极々九霄战甲|极々九霄战衣|极々九霄头盔|极々九霄项链|极々九霄勋章|极々九霄手镯|极々九霄戒指|极々九霄腰带|极々九霄靴子 46 700 0 0 0 N$极九霄套回收数量 0 1 
+  MUL N$极九霄套回收总价 N$极九霄套回收数量 700
+
+#IF
+  EQUAL N$回收标签8 1
+#ACT
+  TakeBagItem 极々人皇之刃|极々人皇战甲|极々人皇战衣|极々人皇头盔|极々人皇项链|极々人皇勋章|极々人皇手镯|极々人皇戒指|极々人皇腰带|极々人皇靴子 46 800 0 0 0 N$极人皇套回收数量 0 1 
+  MUL N$极人皇套回收总价 N$极人皇套回收数量 800
+
+#IF
+  EQUAL N$回收标签9 1
+#ACT
+  TakeBagItem 极々金龙之刃|极々金龙战甲|极々金龙战衣|极々金龙头盔|极々金龙项链|极々金龙勋章|极々金龙手镯|极々金龙戒指|极々金龙腰带|极々金龙靴子 46 900 0 0 0 N$极金龙套回收数量 0 1 
+  MUL N$极金龙套回收总价 N$极金龙套回收数量 900
+
+#IF
+  EQUAL N$回收标签10 1
+#ACT
+  TakeBagItem 极々天谕之刃|极々天谕战甲|极々天谕战衣|极々天谕头盔|极々天谕项链|极々天谕勋章|极々天谕手镯|极々天谕戒指|极々天谕腰带|极々天谕靴子 46 1000 0 0 0 N$极天谕套回收数量 0 1 
+  MUL N$极天谕套回收总价 N$极天谕套回收数量 1000
+
+#IF
+  EQUAL N$回收标签11 1
+#ACT
+  TakeBagItem 1级战旗|2级战旗|3级战旗|4级战旗|1级战鼓|2级战鼓|3级战鼓|4级战鼓|1级法宝|2级法宝|3级法宝|4级法宝|5级法宝|1级盾牌|2级盾牌|3级盾牌|4级盾牌|5级盾牌|6级盾牌|7级盾牌|8级盾牌|9级盾牌|10级盾牌 46 100 0 0 0 N$特殊装备回收数量 0 1 
+  MUL N$特殊装备回收总价 N$特殊装备回收数量 100
+
+#IF
+  EQUAL N$回收标签12 1
+#ACT
+  TakeBagItem 1级阿瑞斯之石|2级阿瑞斯之石|3级阿瑞斯之石|4级阿瑞斯之石|5级阿瑞斯之石|1级赫卡忒之石|2级赫卡忒之石|3级赫卡忒之石|4级赫卡忒之石|5级赫卡忒之石|1级克利俄斯之石|2级克利俄斯之石|3级克利俄斯之石|4级克利俄斯之石|5级克利俄斯之石|1级赫拉之石|2级赫拉之石|3级赫拉之石|4级赫拉之石|5级赫拉之石|1级盖亚之石|2级盖亚之石|3级盖亚之石|4级盖亚之石|5级盖亚之石|1级波塞东之石|2级波塞东之石|3级波塞东之石|4级波塞东之石|5级波塞东之石|1级雅典娜之石|2级雅典娜之石|3级雅典娜之石|4级雅典娜之石|5级雅典娜之石|1级泰坦之石|2级泰坦之石|3级泰坦之石|4级泰坦之石|5级泰坦之石 46 200 0 0 0 N$稀有宝石回收数量 0 1 
+  MUL N$稀有宝石回收总价 N$稀有宝石回收数量 200
+
+#OR
+  LARGE N$极虎威套回收数量 0
+  LARGE N$极传奇套回收数量 0
+  LARGE N$极皓月套回收数量 0
+  LARGE N$极荣耀套回收数量 0
+  LARGE N$极制裁套回收数量 0
+  LARGE N$极泣血套回收数量 0
+  LARGE N$极九霄套回收数量 0
+  LARGE N$极人皇套回收数量 0
+  LARGE N$极金龙套回收数量 0
+  LARGE N$极天谕套回收数量 0
+  LARGE N$特殊装备回收数量 0
+  LARGE N$稀有宝石回收数量 0
+#ACT
+  INC N$元宝全部回收总数 N$极虎威套回收数量
+  INC N$元宝全部回收总数 N$极传奇套回收数量
+  INC N$元宝全部回收总数 N$极皓月套回收数量
+  INC N$元宝全部回收总数 N$极荣耀套回收数量
+  INC N$元宝全部回收总数 N$极制裁套回收数量
+  INC N$元宝全部回收总数 N$极泣血套回收数量
+  INC N$元宝全部回收总数 N$极九霄套回收数量
+  INC N$元宝全部回收总数 N$极人皇套回收数量
+  INC N$元宝全部回收总数 N$极金龙套回收数量
+  INC N$元宝全部回收总数 N$极天谕套回收数量
+  INC N$元宝全部回收总数 N$特殊装备回收数量
+  INC N$元宝全部回收总数 N$稀有宝石回收数量
+  INC N$元宝全部回收总价 N$极虎威套回收总价
+  INC N$元宝全部回收总价 N$极传奇套回收总价
+  INC N$元宝全部回收总价 N$极皓月套回收总价
+  INC N$元宝全部回收总价 N$极荣耀套回收总价
+  INC N$元宝全部回收总价 N$极制裁套回收总价
+  INC N$元宝全部回收总价 N$极泣血套回收总价
+  INC N$元宝全部回收总价 N$极九霄套回收总价
+  INC N$元宝全部回收总价 N$极人皇套回收总价
+  INC N$元宝全部回收总价 N$极金龙套回收总价
+  INC N$元宝全部回收总价 N$极天谕套回收总价
+  INC N$元宝全部回收总价 N$特殊装备回收总价
+  INC N$元宝全部回收总价 N$稀有宝石回收总价
+  SendNewLineMsg 1 250 0 0 0 0 0 成功回收<$STR(N$元宝全部回收总数)>件装备,获得<$STR(N$元宝全部回收总价)>元宝。
+BREAK
+
+
+
+[@回收货币调配]
+#IF
+  EQUAL N$经验回收 1
+#ACT
+  MOV S$装备回收1 <雷霆套/SCOLOR=250>
+  MOV S$装备回收2 <战魂套/SCOLOR=250>
+  MOV S$装备回收3 <赤金套/SCOLOR=250>
+  MOV S$装备回收4 <倚天套/SCOLOR=250>
+  MOV S$装备回收5 <白虎套/SCOLOR=250>
+  MOV S$装备回收6 <火龙套/SCOLOR=250>
+  MOV S$装备回收7 <主宰套/SCOLOR=250>
+  MOV S$装备回收8 <金牛套/SCOLOR=250>
+  MOV S$装备回收9 <虎威套/SCOLOR=250>
+  MOV S$装备回收10 <传奇套/SCOLOR=250>
+  MOV S$装备回收11 <皓月套/SCOLOR=250>
+  MOV S$装备回收12 <荣耀套/SCOLOR=250>
+  MOV S$装备回收13 <制裁套/SCOLOR=250>
+  MOV S$装备回收14 <泣血套/SCOLOR=250>
+  MOV S$装备回收15 <九霄套/SCOLOR=250>
+  MOV S$装备回收16 <人皇套/SCOLOR=250>
+  MOV S$装备回收17 <金龙套/SCOLOR=250>
+  MOV S$装备回收18 <天谕套/SCOLOR=250>
+BREAK
+
+#IF
+  EQUAL N$元宝回收 1
+#ACT
+  MOV S$装备回收1 <极々虎威套/SCOLOR=254>
+  MOV S$装备回收2 <极々传奇套/SCOLOR=254>
+  MOV S$装备回收3 <极々皓月套/SCOLOR=254>
+  MOV S$装备回收4 <极々荣耀套/SCOLOR=254>
+  MOV S$装备回收5 <极々制裁套/SCOLOR=254>
+  MOV S$装备回收6 <极々泣血套/SCOLOR=254>
+  MOV S$装备回收7 <极々九霄套/SCOLOR=254>
+  MOV S$装备回收8 <极々人皇套/SCOLOR=254>
+  MOV S$装备回收9 <极々金龙套/SCOLOR=254>
+  MOV S$装备回收10 <极々天谕套/SCOLOR=254>
+  MOV S$装备回收11 <特殊装备回收/SCOLOR=253>
+  MOV S$装备回收12 <宝石回收/SCOLOR=253>
+  MOV S$装备回收13 <待开放/SCOLOR=114>
+  MOV S$装备回收14 <待开放/SCOLOR=114>
+  MOV S$装备回收15 <待开放/SCOLOR=114>
+  MOV S$装备回收16 <待开放/SCOLOR=114>
+  MOV S$装备回收17 <待开放/SCOLOR=114>
+  MOV S$装备回收18 <待开放/SCOLOR=114>
+BREAK
+
+}

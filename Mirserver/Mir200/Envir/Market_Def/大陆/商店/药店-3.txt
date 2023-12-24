@@ -1,0 +1,6 @@
+(@trading @buy)
+%100
+
+[@MAIN]
+#ACT
+#CALL [\NPC…ÃµÍ\“©µÍ.txt] @“©µÍ

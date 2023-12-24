@@ -1,0 +1,316 @@
+[@拾取戒指触发]
+{
+
+#IF
+CHECKJOB warrior
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\战士佩戴列表.txt <$STR(S$戒指名称)>
+#ACT
+DELAYGOTO 100 @战士替换戒指
+BREAK
+
+#IF
+CHECKJOB wizard
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\法师佩戴列表.txt <$STR(S$戒指名称)>
+#ACT
+DELAYGOTO 100 @法师替换戒指
+BREAK
+
+#IF
+CHECKJOB taoist
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\道士佩戴列表.txt <$STR(S$戒指名称)>
+#ACT
+DELAYGOTO 100 @道士替换戒指
+BREAK
+;-------------------------------------------------
+[@战士替换戒指]
+#IF
+CHECKUSEITEM 8
+#ACT
+#ELSEACT
+TakeOnItem <$STR(S$戒指名称)> 8
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#IF
+CHECKUSEITEM 7
+#ACT
+#ELSEACT
+TakeOnItem <$STR(S$戒指名称)> 7
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#IF
+EQUAL <$STR(S$戒指名称)> <$RING_R>
+EQUAL <$STR(S$戒指名称)> <$RING_L>
+#ACT
+MOV N68 <$DC>
+MOV M68 <$MAXDC>
+MOV S$原始戒指 <$RING_R>
+TakeOnItem <$STR(S$戒指名称)> 8
+GOTO @战士替换戒指8
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$戒指名称)> <$RING_R>
+#ACT
+MOV N68 <$DC>
+MOV M68 <$MAXDC>
+MOV S$原始戒指 <$RING_R>
+TakeOnItem <$STR(S$戒指名称)> 8
+GOTO @战士替换戒指8
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$戒指名称)> <$RING_L>
+#ACT
+MOV N67 <$DC>
+MOV M67 <$MAXDC>
+MOV S$原始戒指 <$RING_L>
+TakeOnItem <$STR(S$戒指名称)> 7
+GOTO @战士替换戒指7
+BREAK
+
+[@战士替换戒指8]
+#IF
+LARGE <$MAXDC> M68
+#ACT
+TakeOnItem <$STR(S$原始戒指)> 7
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#IF
+LARGE <$DC> N68
+#ACT
+TakeOnItem <$STR(S$原始戒指)> 7
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始戒指)> 8
+
+#IF
+NOT EQUAL <$STR(S$戒指名称)> <$RING_L>
+#ACT
+MOV N67 <$DC>
+MOV M67 <$MAXDC>
+MOV S$原始戒指 <$RING_L>
+TakeOnItem <$STR(S$戒指名称)> 7
+GOTO @战士替换戒指7
+BREAK
+
+[@战士替换戒指7]
+#IF
+LARGE <$MAXDC> M67
+#ACT
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#IF
+LARGE <$DC> N67
+#ACT
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始戒指)> 7
+BREAK
+
+;-------------------------------------------------
+
+[@法师替换戒指]
+#IF
+CHECKUSEITEM 8
+#ACT
+#ELSEACT
+TakeOnItem <$STR(S$戒指名称)> 8
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#IF
+CHECKUSEITEM 7
+#ACT
+#ELSEACT
+TakeOnItem <$STR(S$戒指名称)> 7
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#IF
+EQUAL <$STR(S$戒指名称)> <$RING_R>
+EQUAL <$STR(S$戒指名称)> <$RING_L>
+#ACT
+MOV N68 <$MC>
+MOV M68 <$MAXMC>
+MOV S$原始戒指 <$RING_R>
+TakeOnItem <$STR(S$戒指名称)> 8
+GOTO @法师替换戒指8
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$戒指名称)> <$RING_R>
+#ACT
+MOV N68 <$MC>
+MOV M68 <$MAXMC>
+MOV S$原始戒指 <$RING_R>
+TakeOnItem <$STR(S$戒指名称)> 8
+GOTO @法师替换戒指8
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$戒指名称)> <$RING_L>
+#ACT
+MOV N67 <$MC>
+MOV M67 <$MAXMC>
+MOV S$原始戒指 <$RING_L>
+TakeOnItem <$STR(S$戒指名称)> 7
+GOTO @法师替换戒指7
+BREAK
+
+[@法师替换戒指8]
+#IF
+LARGE <$MAXMC> M68
+#ACT
+TakeOnItem <$STR(S$原始戒指)> 7
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#IF
+LARGE <$MC> N68
+#ACT
+TakeOnItem <$STR(S$原始戒指)> 7
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始戒指)> 8
+
+#IF
+NOT EQUAL <$STR(S$戒指名称)> <$RING_L>
+#ACT
+MOV N67 <$MC>
+MOV M67 <$MAXMC>
+MOV S$原始戒指 <$RING_L>
+TakeOnItem <$STR(S$戒指名称)> 7
+GOTO @法师替换戒指7
+BREAK
+
+[@法师替换戒指7]
+#IF
+LARGE <$MAXMC> M67
+#ACT
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#IF
+LARGE <$MC> N67
+#ACT
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始戒指)> 7
+BREAK
+
+;-------------------------------------------------
+
+[@道士替换戒指]
+#IF
+CHECKUSEITEM 8
+#ACT
+#ELSEACT
+TakeOnItem <$STR(S$戒指名称)> 8
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#IF
+CHECKUSEITEM 7
+#ACT
+#ELSEACT
+TakeOnItem <$STR(S$戒指名称)> 7
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#IF
+EQUAL <$STR(S$戒指名称)> <$RING_R>
+EQUAL <$STR(S$戒指名称)> <$RING_L>
+#ACT
+MOV N68 <$SC>
+MOV M68 <$MAXSC>
+MOV S$原始戒指 <$RING_R>
+TakeOnItem <$STR(S$戒指名称)> 8
+GOTO @道士替换戒指8
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$戒指名称)> <$RING_R>
+#ACT
+MOV N68 <$SC>
+MOV M68 <$MAXSC>
+MOV S$原始戒指 <$RING_R>
+TakeOnItem <$STR(S$戒指名称)> 8
+GOTO @道士替换戒指8
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$戒指名称)> <$RING_L>
+#ACT
+MOV N67 <$SC>
+MOV M67 <$MAXSC>
+MOV S$原始戒指 <$RING_L>
+TakeOnItem <$STR(S$戒指名称)> 7
+GOTO @道士替换戒指7
+BREAK
+
+[@道士替换戒指8]
+#IF
+LARGE <$MAXSC> M68
+#ACT
+TakeOnItem <$STR(S$原始戒指)> 7
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#IF
+LARGE <$SC> N68
+#ACT
+TakeOnItem <$STR(S$原始戒指)> 7
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始戒指)> 8
+
+#IF
+NOT EQUAL <$STR(S$戒指名称)> <$RING_L>
+#ACT
+MOV N67 <$SC>
+MOV M67 <$MAXSC>
+MOV S$原始戒指 <$RING_L>
+TakeOnItem <$STR(S$戒指名称)> 7
+GOTO @道士替换戒指7
+BREAK
+
+[@道士替换戒指7]
+#IF
+LARGE <$MAXSC> M67
+#ACT
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#IF
+LARGE <$SC> N67
+#ACT
+DELAYGOTO 1 @保存戒指数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始戒指)> 7
+BREAK
+
+;-------------------------------------------------
+[@保存戒指数据]
+#IF
+#ACT
+
+
+
+
+}

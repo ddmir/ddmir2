@@ -1,0 +1,119 @@
+[@拾取项链触发]
+{
+#IF
+CHECKJOB warrior
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\战士佩戴列表.txt <$STR(S$项链名称)>
+#ACT
+DELAYGOTO 100 @战士替换项链
+BREAK
+
+#IF
+CHECKJOB wizard
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\法师佩戴列表.txt <$STR(S$项链名称)>
+#ACT
+DELAYGOTO 100 @法师替换项链
+BREAK
+
+#IF
+CHECKJOB taoist
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\道士佩戴列表.txt <$STR(S$项链名称)>
+#ACT
+DELAYGOTO 100 @道士替换项链
+BREAK
+;-------------------------------------------------
+[@战士替换项链]
+#IF
+CHECKUSEITEM 3
+#ACT
+MOV N63 <$DC>
+MOV M63 <$MAXDC>
+MOV S$原始项链 <$NECKLACE>
+TakeOnItem <$STR(S$项链名称)> 3
+#ELSEACT
+TakeOnItem <$STR(S$项链名称)> 3
+DELAYGOTO 1 @保存项链数据
+BREAK
+
+#IF
+LARGE <$MAXDC> M63
+#ACT
+DELAYGOTO 1 @保存项链数据
+BREAK
+
+#IF
+LARGE <$DC> N63
+#ACT
+DELAYGOTO 1 @保存项链数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始项链)> 3
+
+;-------------------------------------------------
+
+[@法师替换项链]
+#IF
+CHECKUSEITEM 3
+#ACT
+MOV N63 <$MC>
+MOV M63 <$MAXMC>
+MOV S$原始项链 <$NECKLACE>
+TakeOnItem <$STR(S$项链名称)> 3
+#ELSEACT
+TakeOnItem <$STR(S$项链名称)> 3
+DELAYGOTO 1 @保存项链数据
+BREAK
+
+#IF
+LARGE <$MAXMC> M63
+#ACT
+DELAYGOTO 1 @保存项链数据
+BREAK
+
+#IF
+LARGE <$MC> N63
+#ACT
+DELAYGOTO 1 @保存项链数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始项链)> 3
+BREAK
+;-------------------------------------------------
+
+[@道士替换项链]
+#IF
+CHECKUSEITEM 3
+#ACT
+MOV N63 <$SC>
+MOV M63 <$MAXSC>
+MOV S$原始项链 <$NECKLACE>
+TakeOnItem <$STR(S$项链名称)> 3
+#ELSEACT
+TakeOnItem <$STR(S$项链名称)> 3
+DELAYGOTO 1 @保存项链数据
+BREAK
+
+#IF
+LARGE <$MAXSC> M63
+#ACT
+DELAYGOTO 1 @保存项链数据
+BREAK
+
+#IF
+LARGE <$SC> N63
+#ACT
+DELAYGOTO 1 @保存项链数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始项链)> 3
+BREAK
+;-------------------------------------------------
+[@保存项链数据]
+#IF
+#ACT
+
+
+}
+

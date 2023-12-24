@@ -1,0 +1,37 @@
+[@假人复活]
+{
+#IF
+ISDUMMY
+#ACT
+MOVR N$坐标X1 320 340
+MOVR N$坐标Y1 622 629
+mapmove 0 <$str(N$坐标X1)> <$STR(N$坐标Y1)>
+DELAYCALL 5000 @提示a
+REALIVE
+HUMANHP = <$MAXHP>
+HUMANMP = <$MAXMP>
+DUMMYSTOP
+Break
+
+[@提示a]
+#IF
+ISDUMMY
+#ACT
+movr N$X <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$Y <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+mapmove <$GLOBAL(假人_盟重地图号)> <$str(N$X)> <$str(N$Y)>
+DUMMYSTOP
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+Break
+
+
+
+
+
+
+
+
+
+}

@@ -1,0 +1,193 @@
+[@MAIN]
+#IF
+#ACT
+  GOTO @BSXT
+BREAK
+
+
+[@BSXT]
+{
+
+#IF
+#ACT
+  UIDLG Close ALL
+  UIDLG Open jiaoben011 320 150 0 0 1
+  UIDLG LimitItemSlot jiaoben011 item_001:5:10:11:15:19:26:22:64:62:202:204:53:51:16:200:30
+  UIDLG LimitItemSlot jiaoben011 item_002:44
+  UIDLG LockItemSlot jiaoben011 item_003:1
+  UIDLG SetItemSlot jiaoben011 item_003:注释
+  UIDLG ItemSlotTip jiaoben011 item_003:<装备打孔介绍：/SCOLOR=251>\\<每件装备最多可以打两个宝石孔/SCOLOR=254>\\<一孔打孔成功率30%/SCOLOR=94>\\<二孔打孔成功率10%/SCOLOR=94>\\<材料需求：/SCOLOR=251>\\<金锥*1/SCOLOR=250>\\<金币*10万/SCOLOR=250>
+  UIDLG SetRichText jiaoben011 WBK_001:<　　放入需要打孔的装备和打孔石/SCOLOR=168>
+  UIDLG BindItemSlot jiaoben011 item_001:N$待打孔装备
+  UIDLG BindItemSlot jiaoben011 item_002:N$装备打孔石
+  UIDLG BindCheckBox jiaoben011 CheckBox_001:N$装备打孔
+  UIDLG BindCheckBox jiaoben011 CheckBox_002:N$宝石镶嵌
+  UIDLG BindCheckBox jiaoben011 CheckBox_003:N$宝石摘除
+  UIDLG CheckBox jiaoben011 CheckBox_001:1
+  UIDLG CheckBox jiaoben011 CheckBox_002:0
+  UIDLG CheckBox jiaoben011 CheckBox_003:0
+  UIDLG SetbuttonText jiaoben011 btn_001:打　孔
+  UIDLG SetCheckBoxRadio jiaoben011 CheckBox_001:CheckBox_002:CheckBox_003
+  UIDLG SetCheckBoxGOTO jiaoben011 CheckBox_001:@MAIN
+  UIDLG SetCheckBoxGOTO jiaoben011 CheckBox_002:@宝石镶嵌界面
+  UIDLG SetCheckBoxGOTO jiaoben011 CheckBox_003:@宝石摘除界面
+  UIDLG SetButtonGOTO  jiaoben011 btn_001:@开始装备打孔
+#SAY
+UICMD
+<MAIN/@MAIN>\
+<宝石镶嵌界面/@宝石镶嵌界面>\
+<宝石摘除界面/@宝石摘除界面>\
+<开始装备打孔/@开始装备打孔>\
+BREAK
+
+[@开始装备打孔]
+#IF
+  CheckItemSlot N$待打孔装备
+#ELSEACT
+  MessAgeBox <你还没有放入需要打孔的装备!/SCOLOR=58>
+BREAK
+
+#IF
+  CheckItemSlot N$装备打孔石
+#ELSEACT
+  MessAgeBox <你还没有放入金锥!/SCOLOR=58>
+BREAK
+
+#IF
+  CheckGold 100000
+#ELSEACT
+  MessAgeBox <你的身上没有100000金币/SCOLOR=58>
+BREAK
+
+#IF
+#ACT
+  PlayMusic duanzao.ogg
+  TAKE 金币 100000
+  GEMITEMS N$装备打孔石 N$待打孔装备
+BREAK
+
+
+
+
+[@宝石镶嵌界面]
+#IF
+#ACT
+  UIDLG Close jiaoben011
+  UIDLG Open jiaoben011 320 150 0 0 1
+  UIDLG LimitItemSlot jiaoben011 item_001:5:10:11:15:19:26:22:64:62:202:204:53:51:16:200:30
+  UIDLG LimitItemSlot jiaoben011 item_002:42
+  UIDLG LockItemSlot jiaoben011 item_003:1
+  UIDLG SetItemSlot jiaoben011 item_003:注释
+  UIDLG ItemSlotTip jiaoben011 item_003:<宝石镶嵌介绍：/SCOLOR=251>\\<每件装备最多可以镶嵌两颗宝石/SCOLOR=254>\\<宝石镶嵌成功率100%/SCOLOR=94>\\<材料需求：/SCOLOR=251>\\<属性宝石*1/SCOLOR=250>\\<金币*10000/SCOLOR=250>
+  UIDLG SetRichText jiaoben011 WBK_001:<　　放入需要镶嵌的装备和宝石/SCOLOR=168>
+  UIDLG BindItemSlot jiaoben011 item_001:N$待镶嵌装备
+  UIDLG BindItemSlot jiaoben011 item_002:N$待镶嵌宝石
+  UIDLG BindCheckBox jiaoben011 CheckBox_001:N$装备打孔
+  UIDLG BindCheckBox jiaoben011 CheckBox_002:N$宝石镶嵌
+  UIDLG BindCheckBox jiaoben011 CheckBox_003:N$宝石摘除
+  UIDLG CheckBox jiaoben011 CheckBox_001:0
+  UIDLG CheckBox jiaoben011 CheckBox_002:1
+  UIDLG CheckBox jiaoben011 CheckBox_003:0
+  UIDLG SetbuttonText jiaoben011 btn_001:镶　嵌
+  UIDLG SetCheckBoxRadio jiaoben011 CheckBox_001:CheckBox_002:CheckBox_003
+  UIDLG SetCheckBoxGOTO jiaoben011 CheckBox_001:@MAIN
+  UIDLG SetCheckBoxGOTO jiaoben011 CheckBox_002:@宝石镶嵌界面
+  UIDLG SetCheckBoxGOTO jiaoben011 CheckBox_003:@宝石摘除界面
+  UIDLG SetButtonGOTO  jiaoben011 btn_001:@开始宝石镶嵌
+#SAY
+UICMD
+<MAIN/@MAIN>\
+<宝石镶嵌界面/@宝石镶嵌界面>\
+<宝石摘除界面/@宝石摘除界面>\
+<开始宝石镶嵌/@开始宝石镶嵌>\
+BREAK
+
+[@开始宝石镶嵌]
+#IF
+  CheckItemSlot N$待镶嵌装备
+#ELSEACT
+  MessAgeBox <你还没有放入需要镶嵌的装备!/SCOLOR=58>
+BREAK
+
+#IF
+  CheckItemSlot N$待镶嵌宝石
+#ELSEACT
+  MessAgeBox <你还没有放入宝石!/SCOLOR=58>
+BREAK
+
+#IF
+  CheckGold 10000
+#ELSEACT
+  MessAgeBox <你的身上没有10000金币/SCOLOR=58>
+BREAK
+
+#IF
+#ACT
+  PlayMusic duanzao.ogg
+  TAKE 金币 10000
+  GEMITEMS N$待镶嵌宝石 N$待镶嵌装备
+BREAK
+
+
+
+[@宝石摘除界面]
+#IF
+#ACT
+  UIDLG Close jiaoben011
+  UIDLG Open jiaoben011 320 150 0 0 1
+  UIDLG LimitItemSlot jiaoben011 item_001:5:10:11:15:19:26:22:64:62:202:204:53:51:16:200:30
+  UIDLG LimitItemSlot jiaoben011 item_002:45
+  UIDLG LockItemSlot jiaoben011 item_003:1
+  UIDLG SetItemSlot jiaoben011 item_003:注释
+  UIDLG ItemSlotTip jiaoben011 item_003:<宝石拆除介绍：/SCOLOR=251>\\<放入对应孔位的宝石拆除水晶/SCOLOR=254>\\<宝石拆除成功率100%/SCOLOR=94>\\<材料需求：/SCOLOR=251>\\<摘除水晶*1/SCOLOR=250>\\<金币*3万/SCOLOR=250>
+  
+  UIDLG SetRichText jiaoben011 WBK_001:<　放入需要拆除的装备和拆除水晶/SCOLOR=168>
+  UIDLG BindItemSlot jiaoben011 item_001:N$待拆除装备
+  UIDLG BindItemSlot jiaoben011 item_002:N$宝石拆除水晶
+  UIDLG BindCheckBox jiaoben011 CheckBox_001:N$装备打孔
+  UIDLG BindCheckBox jiaoben011 CheckBox_002:N$宝石镶嵌
+  UIDLG BindCheckBox jiaoben011 CheckBox_003:N$宝石摘除
+  UIDLG CheckBox jiaoben011 CheckBox_001:0
+  UIDLG CheckBox jiaoben011 CheckBox_002:0
+  UIDLG CheckBox jiaoben011 CheckBox_003:1
+  UIDLG SetbuttonText jiaoben011 btn_001:摘　除
+  UIDLG SetCheckBoxRadio jiaoben011 CheckBox_001:CheckBox_002:CheckBox_003
+  UIDLG SetCheckBoxGOTO jiaoben011 CheckBox_001:@MAIN
+  UIDLG SetCheckBoxGOTO jiaoben011 CheckBox_002:@宝石镶嵌界面
+  UIDLG SetCheckBoxGOTO jiaoben011 CheckBox_003:@宝石摘除界面
+  UIDLG SetButtonGOTO  jiaoben011 btn_001:@开始宝石摘除
+#SAY
+UICMD
+<MAIN/@MAIN>\
+<宝石镶嵌界面/@宝石镶嵌界面>\
+<宝石摘除界面/@宝石摘除界面>\
+<开始宝石摘除/@开始宝石摘除>\
+BREAK
+
+[@开始宝石摘除]
+#IF
+  CheckItemSlot N$待拆除装备
+#ELSEACT
+  MessAgeBox <你还没有放入需要拆除宝石的装备!/SCOLOR=58>
+BREAK
+#IF
+  CheckItemSlot N$宝石拆除水晶
+#ELSEACT
+  MessAgeBox <你还没有放入拆除水晶!/SCOLOR=58>
+BREAK
+
+#IF
+  CheckGold 30000
+#ELSEACT
+  MessAgeBox <你的身上没有30000金币/SCOLOR=58>
+BREAK
+
+#IF
+#ACT
+  PlayMusic duanzao.ogg
+  TAKE 金币 30000
+  GEMITEMS N$宝石拆除水晶 N$待拆除装备
+BREAK
+
+
+}

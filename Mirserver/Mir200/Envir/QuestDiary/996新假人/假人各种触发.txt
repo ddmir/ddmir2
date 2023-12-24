@@ -1,0 +1,336 @@
+{
+
+[@开始回收AA]
+
+
+
+
+
+
+
+
+[@打怪开关]
+#OR
+CheckItemDura 0 < 1000 0
+CheckItemDura 1 < 1000 0
+#ACT
+REPAIRALL
+
+#IF
+ISDUMMY
+NOT INSAFEZONE
+#ACT
+HUMANHP + 300
+HUMANMP + 300
+
+#IF
+ISDUMMY
+NOT ISONMAP <$GLOBAL(假人_盟重地图号)>
+NOT INSAFEZONE
+#ACT
+DUMMYSTART
+ChangeAttatckMode 6
+
+#IF
+RANDOM 33
+ISDUMMY
+NOT ISONMAP <$GLOBAL(假人_盟重地图号)>
+NOT INSAFEZONE
+#ACT
+map <$MAP>
+
+
+#IF
+RANDOM 26
+CheckRangeHumCount 3 561 524 15 > <$GLOBAL(假人_盟重站街人数)>
+ISONMAP <$GLOBAL(假人_盟重地图号)>
+large <$str(N$充值)> 0
+small <$str(N$充值)> 2
+#ACT
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+BREAK
+
+#IF
+RANDOM 23
+CheckRangeHumCount 3 561 524 15 > <$GLOBAL(假人_盟重站街人数)>
+ISONMAP <$GLOBAL(假人_盟重地图号)>
+large <$str(N$充值)> 1
+small <$str(N$充值)> 3
+#ACT
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+BREAK
+
+
+#IF
+RANDOM 20
+CheckRangeHumCount 3 561 524 15 > <$GLOBAL(假人_盟重站街人数)>
+ISONMAP <$GLOBAL(假人_盟重地图号)>
+large <$str(N$充值)> 2
+small <$str(N$充值)> 4
+#ACT
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+BREAK
+
+#IF
+RANDOM 17
+CheckRangeHumCount 3 561 524 15 > <$GLOBAL(假人_盟重站街人数)>
+ISONMAP <$GLOBAL(假人_盟重地图号)>
+large <$str(N$充值)> 3
+small <$str(N$充值)> 5
+#ACT
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+BREAK
+
+#IF
+RANDOM 14
+CheckRangeHumCount 3 561 524 15 > <$GLOBAL(假人_盟重站街人数)>
+ISONMAP <$GLOBAL(假人_盟重地图号)>
+large <$str(N$充值)> 4
+small <$str(N$充值)> 6
+#ACT
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+BREAK
+
+#IF
+RANDOM 11
+CheckRangeHumCount 3 561 524 15 > <$GLOBAL(假人_盟重站街人数)>
+ISONMAP <$GLOBAL(假人_盟重地图号)>
+large <$str(N$充值)> 5
+small <$str(N$充值)> 7
+#ACT
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+BREAK
+
+#IF
+RANDOM 8
+CheckRangeHumCount 3 561 524 15 > <$GLOBAL(假人_盟重站街人数)>
+ISONMAP <$GLOBAL(假人_盟重地图号)>
+large <$str(N$充值)> 6
+small <$str(N$充值)> 8
+#ACT
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+BREAK
+
+#IF
+RANDOM 5
+CheckRangeHumCount 3 561 524 15 > <$GLOBAL(假人_盟重站街人数)>
+ISONMAP <$GLOBAL(假人_盟重地图号)>
+large <$str(N$充值)> 7
+small <$str(N$充值)> 9
+#ACT
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+BREAK
+
+#IF
+RANDOM 2
+CheckRangeHumCount 3 561 524 15 > <$GLOBAL(假人_盟重站街人数)>
+ISONMAP <$GLOBAL(假人_盟重地图号)>
+large <$str(N$充值)> 8
+small <$str(N$充值)> 10
+#ACT
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+BREAK
+
+#IF
+CheckRangeHumCount 3 561 524 15 > <$GLOBAL(假人_盟重站街人数)>
+ISONMAP <$GLOBAL(假人_盟重地图号)>
+large <$str(N$充值)> 9
+small <$str(N$充值)> 11
+#ACT
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+BREAK
+
+
+[@开始进图]
+
+#IF
+CHECKLEVELEX < 10
+#ACT
+map <$GLOBAL(假人_随机下图1)>
+SENDMSG 0 251 52 勇士<「<$USERNAME>」/SCOLOR=254>，进入了<『新手村』/SCOLOR=250>
+DummyStart
+ChangeAttatckMode 6
+SENDDELAYMSG 回城%s后到达 <$GLOBAL(假人_打怪回城时间为秒)> 255 1 @回城泡点
+BREAK
+
+
+#IF
+CHECKLEVELEX < 50
+#ACT
+mapmove <$GLOBAL(假人_随机下图2)>
+SENDMSG 0 251 52 勇士<「<$USERNAME>」/SCOLOR=254>，进入了<『大陆野区』/SCOLOR=250>
+DummyStart
+ChangeAttatckMode 6
+SENDDELAYMSG 回城%s后到达 <$GLOBAL(假人_打怪回城时间为秒)> 255 1 @回城泡点
+BREAK
+
+
+#IF
+CHECKLEVELEX < 55
+#ACT
+mapmove <$GLOBAL(假人_随机下图3)>
+SENDMSG 0 251 52 勇士<「<$USERNAME>」/SCOLOR=254>，进入了<『祖玛大殿』/SCOLOR=250>
+DummyStart
+ChangeAttatckMode 6
+SENDDELAYMSG 回城%s后到达 <$GLOBAL(假人_打怪回城时间为秒)> 255 1 @回城泡点
+BREAK
+
+
+#IF
+CHECKLEVELEX < 60
+#ACT
+mapmove <$GLOBAL(假人_随机下图4)>
+SENDMSG 0 251 52 勇士<「<$USERNAME>」/SCOLOR=254>，进入了<『冰风谷』/SCOLOR=250>
+DummyStart
+ChangeAttatckMode 6
+SENDDELAYMSG 回城%s后到达 <$GLOBAL(假人_打怪回城时间为秒)> 255 1 @回城泡点
+BREAK
+
+
+#IF
+CHECKLEVELEX < 65
+#ACT
+mapmove <$GLOBAL(假人_随机下图5)>
+SENDMSG 0 251 52 勇士<「<$USERNAME>」/SCOLOR=254>，进入了<『蛇魔殿』/SCOLOR=250>
+DummyStart
+ChangeAttatckMode 6
+SENDDELAYMSG 回城%s后到达 <$GLOBAL(假人_打怪回城时间为秒)> 255 1 @回城泡点
+BREAK
+
+
+#IF
+CHECKLEVELEX < 70
+#ACT
+mapmove <$GLOBAL(假人_随机下图6)>
+SENDMSG 0 251 52 勇士<「<$USERNAME>」/SCOLOR=254>，进入了<『教皇殿』/SCOLOR=250>
+DummyStart
+ChangeAttatckMode 6
+SENDDELAYMSG 回城%s后到达 <$GLOBAL(假人_打怪回城时间为秒)> 255 1 @回城泡点
+BREAK
+
+
+#IF
+CHECKLEVELEX < 75
+#ACT
+mapmove <$GLOBAL(假人_随机下图7)>
+SENDMSG 0 251 52 勇士<「<$USERNAME>」/SCOLOR=254>，进入了<『武帝陵』/SCOLOR=250>
+DummyStart
+ChangeAttatckMode 6
+SENDDELAYMSG 回城%s后到达 <$GLOBAL(假人_打怪回城时间为秒)> 255 1 @回城泡点
+BREAK
+
+
+#IF
+CHECKLEVELEX < 80
+#ACT
+mapmove <$GLOBAL(假人_随机下图8)>
+SENDMSG 0 251 52 勇士<「<$USERNAME>」/SCOLOR=254>，进入了<『堕落神殿』/SCOLOR=250>
+DummyStart
+ChangeAttatckMode 6
+SENDDELAYMSG 回城%s后到达 <$GLOBAL(假人_打怪回城时间为秒)> 255 1 @回城泡点
+BREAK
+
+
+#IF
+CHECKLEVELEX < 85
+#ACT
+mapmove <$GLOBAL(假人_随机下图9)>
+SENDMSG 0 251 52 勇士<「<$USERNAME>」/SCOLOR=254>，进入了<『黄泉陵墓』/SCOLOR=250>
+DummyStart
+ChangeAttatckMode 6
+SENDDELAYMSG 回城%s后到达 <$GLOBAL(假人_打怪回城时间为秒)> 255 1 @回城泡点
+BREAK
+
+
+#IF
+CHECKLEVELEX < 90
+#ACT
+mapmove <$GLOBAL(假人_随机下图10)>
+SENDMSG 0 251 52 勇士<「<$USERNAME>」/SCOLOR=254>，进入了<『失落古迹』/SCOLOR=250>
+DummyStart
+ChangeAttatckMode 6
+SENDDELAYMSG 回城%s后到达 <$GLOBAL(假人_打怪回城时间为秒)> 255 1 @回城泡点
+BREAK
+
+
+
+[@回城泡点]
+#IF  
+ISDUMMY
+CHECKLEVELEX > 0
+#ACT
+movr N$X <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$Y <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+mapmove <$GLOBAL(假人_盟重地图号)> <$str(N$X)> <$str(N$Y)>
+DUMMYSTOP
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

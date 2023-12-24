@@ -1,0 +1,15 @@
+[@¼ÙÈË»¹»÷]
+{
+#IF
+ISDUMMY
+CHECKCURRTARGETRACE = 0
+#ACT
+DUMMYSTART
+ChangeAttatckMode 0
+break
+
+
+
+
+
+}

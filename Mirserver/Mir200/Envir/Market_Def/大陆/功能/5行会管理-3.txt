@@ -1,0 +1,76 @@
+[@MAIN]
+<-------------------------/SCOLOR=13><【行会管理】/SCOLOR=58><-------------------------/SCOLOR=13>\
+<花费3万金币+沃玛号角1个/SCOLOR=254>\
+<就可以在我这里创建属于自己的行会/SCOLOR=254>\
+<创建行会之后就可以和自己的兄弟一起纵横江湖了！/SCOLOR=254>\
+<----------------------------------------------------------------/SCOLOR=13>\
+　　　　　　　　　　　　　　　　<创建行会/@@InputString3>\
+<----------------------------------------------------------------/SCOLOR=13>\
+
+[@InputString3]
+#IF
+  HAVEGUILD
+#ACT
+  MessAgeBox <你已经有行会了！/SCOLOR=58>
+BREAK
+
+#IF
+  CheckGold 30000
+#ELSEACT
+  MessAgeBox <你身上的金币不够！/SCOLOR=58>
+BREAK
+
+#IF
+  CHECKITEM 沃玛号角 1
+#ELSEACT
+  MessAgeBox <你身上没有沃玛号角！/SCOLOR=58>
+BREAK
+
+
+#OR
+  equal S3  
+  CheckStringlength <$STR(S3)> < 4
+  CheckStringlength <$STR(S3)> > 14
+#ACT
+  MessAgeBox <你输入的行会名长度不对,请重新输入！/SCOLOR=58>
+BREAK
+
+
+#OR
+  CheckContainsText <$STR(S3)> GM
+  CheckContainsText <$STR(S3)> 你妈
+  CheckContainsText <$STR(S3)> 操
+  CheckContainsText <$STR(S3)> 日
+  CheckContainsText <$STR(S3)> SB
+  CheckContainsText <$STR(S3)> 妈的
+  CheckContainsText <$STR(S3)> 私服
+  CheckContainsText <$STR(S3)> 群号
+  CheckContainsText <$STR(S3)> QQ
+  CheckContainsText <$STR(S3)> 私聊
+#ACT
+  MessAgeBox <你输入的行会名包含敏感字符,请重新输入！/SCOLOR=58>
+BREAK
+
+#IF
+#ACT
+  TAKE 金币 30000
+  TAKE 沃玛号角 1
+  Gmexecute 添加行会 <$STR(S3)> <$USERNAME>
+  MessAgeBox <恭喜你成功创建行会！/SCOLOR=250>
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

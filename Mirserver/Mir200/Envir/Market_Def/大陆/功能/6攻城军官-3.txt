@@ -1,0 +1,48 @@
+[@MAIN]
+<-------------------------/SCOLOR=13><【攻城管理】/SCOLOR=58><-------------------------/SCOLOR=13>\
+<在我这里花费2000金币，/SCOLOR=254>\
+<就可以快速的传往攻沙区域！/SCOLOR=254>\
+<----------------------------------------------------------------/SCOLOR=13>\
+　　　　<沙城门/@沙城门>　　　　<皇宫大门/@皇宫大门>　　　　<皇宫广场/@皇宫广场>\
+<----------------------------------------------------------------/SCOLOR=13>\
+
+[@沙城门]
+#IF
+  CheckGold 2000
+#ELSEACT
+  MessAgeBox <你身上的金币不够！/SCOLOR=58>
+BREAK
+
+#IF
+#ACT
+  TAKE 金币 2000
+  MAPMOVE 3 105 108
+BREAK
+
+[@皇宫大门]
+#IF
+  CheckGold 2000
+#ELSEACT
+  MessAgeBox <你身上的金币不够！/SCOLOR=58>
+BREAK
+
+#IF
+#ACT
+  TAKE 金币 2000
+  MAPMOVE 3 53 52
+BREAK
+
+[@皇宫广场]
+#IF
+  CheckGold 2000
+#ELSEACT
+  MessAgeBox <你身上的金币不够！/SCOLOR=58>
+BREAK
+
+#IF
+#ACT
+  TAKE 金币 2000
+  MAPMOVE 3 69 69 10
+BREAK
+
+

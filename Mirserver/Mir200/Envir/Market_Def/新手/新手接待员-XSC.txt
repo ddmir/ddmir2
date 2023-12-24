@@ -1,0 +1,23 @@
+[@main]
+#IF
+  equal T1 
+#ACT
+  MessAgeBox <请先设置二级密码！/SCOLOR=254>
+BREAK
+
+#IF
+  SMALL <$RUNDATEMIN> 30
+#ACT
+  MOV N$等待时间 30
+  DEC <$STR(N$等待时间)> <$RUNDATEMIN>
+  MessAgeBox <距离正式开区还有，/SCOLOR=254><<$STR(N$等待时间)>/SCOLOR=58><分钟，请耐心等待/SCOLOR=254>
+BREAK
+
+#IF
+  CHECKLEVELEX > 9
+#ACT
+  MAPMOVE 3 290 614 3
+#ELSEACT
+  MessAgeBox <请先升到/SCOLOR=254><10级/SCOLOR=251><级，才有资格出新手村！/SCOLOR=254>
+BREAK
+

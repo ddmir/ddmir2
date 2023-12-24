@@ -1,0 +1,118 @@
+[@拾取腰带触发]
+{
+
+#IF
+CHECKJOB warrior
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\战士佩戴列表.txt <$STR(S$腰带名称)>
+#ACT
+DELAYGOTO 100 @战士替换腰带
+BREAK
+
+#IF
+CHECKJOB wizard
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\法师佩戴列表.txt <$STR(S$腰带名称)>
+#ACT
+DELAYGOTO 100 @法师替换腰带
+BREAK
+
+#IF
+CHECKJOB taoist
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\道士佩戴列表.txt <$STR(S$腰带名称)>
+#ACT
+DELAYGOTO 100 @道士替换腰带
+BREAK
+;-------------------------------------------------
+[@战士替换腰带]
+#IF
+CHECKUSEITEM 10
+#ACT
+MOV N70 <$DC>
+MOV M70 <$MAXDC>
+MOV S$原始腰带 <$BELT>
+TakeOnItem <$STR(S$腰带名称)> 10
+#ELSEACT
+TakeOnItem <$STR(S$腰带名称)> 10
+DELAYGOTO 1 @保存腰带数据
+BREAK
+
+#IF
+LARGE <$MAXDC> M70
+#ACT
+DELAYGOTO 1 @保存腰带数据
+BREAK
+
+#IF
+LARGE <$DC> N70
+#ACT
+DELAYGOTO 1 @保存腰带数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始腰带)> 10
+
+;-------------------------------------------------
+
+[@法师替换腰带]
+#IF
+CHECKUSEITEM 10
+#ACT
+MOV N70 <$MC>
+MOV M70 <$MAXMC>
+MOV S$原始腰带 <$BELT>
+TakeOnItem <$STR(S$腰带名称)> 10
+#ELSEACT
+TakeOnItem <$STR(S$腰带名称)> 10
+DELAYGOTO 1 @保存腰带数据
+BREAK
+
+#IF
+LARGE <$MAXMC> M70
+#ACT
+DELAYGOTO 1 @保存腰带数据
+BREAK
+
+#IF
+LARGE <$MC> N70
+#ACT
+DELAYGOTO 1 @保存腰带数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始腰带)> 10
+
+;-------------------------------------------------
+
+[@道士替换腰带]
+#IF
+CHECKUSEITEM 10
+#ACT
+MOV N70 <$SC>
+MOV M70 <$MAXSC>
+MOV S$原始腰带 <$BELT>
+TakeOnItem <$STR(S$腰带名称)> 10
+#ELSEACT
+TakeOnItem <$STR(S$腰带名称)> 10
+DELAYGOTO 1 @保存腰带数据
+BREAK
+
+#IF
+LARGE <$MAXSC> M70
+#ACT
+DELAYGOTO 1 @保存腰带数据
+BREAK
+
+#IF
+LARGE <$SC> N70
+#ACT
+DELAYGOTO 1 @保存腰带数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始腰带)> 10
+
+
+[@保存腰带数据]
+#IF
+#ACT
+
+}

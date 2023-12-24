@@ -1,0 +1,9 @@
+[0]
+Source=MySql备份
+Save=数据备份
+Hour=0
+Min=0
+BackMode=2
+GetBack=1
+Zip=1
+Sql=1

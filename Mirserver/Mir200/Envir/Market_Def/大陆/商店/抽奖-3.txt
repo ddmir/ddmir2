@@ -1,0 +1,202 @@
+[@MAIN]
+#IF
+#ACT
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品1
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品2
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品3
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品4
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品5
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品6
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品7
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品8
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品9
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品10
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品11
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品12
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品13
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品14
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品15
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\展示物品.txt S$展示物品16
+
+#IF
+#ACT
+  UIDLG Close jiaoben016
+  UIDLG Open jiaoben016 100 80 0 0 1
+  UIDLG LockItemSlot jiaoben016 item_001:1
+  UIDLG LockItemSlot jiaoben016 item_002:1
+  UIDLG LockItemSlot jiaoben016 item_003:1
+  UIDLG LockItemSlot jiaoben016 item_004:1
+  UIDLG LockItemSlot jiaoben016 item_005:1
+  UIDLG LockItemSlot jiaoben016 item_006:1
+  UIDLG LockItemSlot jiaoben016 item_007:1
+  UIDLG LockItemSlot jiaoben016 item_008:1
+  UIDLG LockItemSlot jiaoben016 item_009:1
+  UIDLG LockItemSlot jiaoben016 item_010:1
+  UIDLG LockItemSlot jiaoben016 item_011:1
+  UIDLG LockItemSlot jiaoben016 item_012:1
+  UIDLG LockItemSlot jiaoben016 item_013:1
+  UIDLG LockItemSlot jiaoben016 item_014:1
+  UIDLG LockItemSlot jiaoben016 item_015:1
+  UIDLG LockItemSlot jiaoben016 item_016:1
+  UIDLG LockItemSlot jiaoben016 item_017:1
+  UIDLG SetItemSlot jiaoben016 item_002:<$STR(S$展示物品2)>
+  UIDLG SetItemSlot jiaoben016 item_003:<$STR(S$展示物品3)>
+  UIDLG SetItemSlot jiaoben016 item_004:<$STR(S$展示物品4)>
+  UIDLG SetItemSlot jiaoben016 item_005:<$STR(S$展示物品5)>
+  UIDLG SetItemSlot jiaoben016 item_006:<$STR(S$展示物品6)>
+  UIDLG SetItemSlot jiaoben016 item_007:<$STR(S$展示物品7)>
+  UIDLG SetItemSlot jiaoben016 item_008:<$STR(S$展示物品8)>
+  UIDLG SetItemSlot jiaoben016 item_009:<$STR(S$展示物品9)>
+  UIDLG SetItemSlot jiaoben016 item_010:<$STR(S$展示物品10)>
+  UIDLG SetItemSlot jiaoben016 item_011:<$STR(S$展示物品11)>
+  UIDLG SetItemSlot jiaoben016 item_012:<$STR(S$展示物品12)>
+  UIDLG SetItemSlot jiaoben016 item_013:<$STR(S$展示物品13)>
+  UIDLG SetItemSlot jiaoben016 item_014:<$STR(S$展示物品14)>
+  UIDLG SetItemSlot jiaoben016 item_015:<$STR(S$展示物品15)>
+  UIDLG SetItemSlot jiaoben016 item_016:<$STR(S$展示物品16)>
+  UIDLG SetItemSlot jiaoben016 item_017:<$STR(S$展示物品1)>
+  UIDLG SetRichText jiaoben016 WBK_001:<　　　　　　　　　抽奖介绍/SCOLOR=251>\\<1.每次抽奖需要消耗一张/SCOLOR=254><抽奖券/SCOLOR=250>\\<2.每日抽奖次数越多,获得稀有物品几率越大/SCOLOR=254>\\
+  UIDLG SetButtonGOTO jiaoben016 btn_001:@开始抽奖
+#SAY
+  UICMD
+  <开始抽奖/@开始抽奖>\
+BREAK
+
+
+
+
+
+
+
+[@开始抽奖]
+#IF
+  CheckItem 抽奖券 1
+#ELSEACT
+  MessAgeBox <你的身上没有抽奖券!/SCOLOR=58>
+BREAK
+
+#IF
+  SMALL J1 10
+#ACT
+  TAKE 抽奖券 1
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\1档.txt S$给抽奖物品
+  UIDLG SetItemSlot jiaoben016 item_001:<$STR(S$给抽奖物品)>
+  GIVE <$STR(S$给抽奖物品)> 1 4 抽奖获得
+  UIDLG PlayEffect jiaoben016 effect_001:UIsucai.wil:12:12:100:0
+  INC J1 1
+
+#IF
+  LARGE J1 9
+  SMALL J1 30
+#ACT
+  TAKE 抽奖券 1
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\2档.txt S$给抽奖物品
+  UIDLG SetItemSlot jiaoben016 item_001:<$STR(S$给抽奖物品)>
+  GIVE <$STR(S$给抽奖物品)> 1 4 抽奖获得
+  UIDLG PlayEffect jiaoben016 effect_001:UIsucai.wil:12:12:100:0
+  INC J1 1
+
+#IF
+  LARGE J1 29
+  SMALL J1 50
+#ACT
+  TAKE 抽奖券 1
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\3档.txt S$给抽奖物品
+  UIDLG SetItemSlot jiaoben016 item_001:<$STR(S$给抽奖物品)>
+  GIVE <$STR(S$给抽奖物品)> 1 4 抽奖获得
+  UIDLG PlayEffect jiaoben016 effect_001:UIsucai.wil:12:12:100:0
+  INC J1 1
+
+#IF
+  LARGE J1 49
+  SMALL J1 80
+#ACT
+  TAKE 抽奖券 1
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\4档.txt S$给抽奖物品
+  UIDLG SetItemSlot jiaoben016 item_001:<$STR(S$给抽奖物品)>
+  GIVE <$STR(S$给抽奖物品)> 1 4 抽奖获得
+  UIDLG PlayEffect jiaoben016 effect_001:UIsucai.wil:12:12:100:0
+  INC J1 1
+
+#IF
+  LARGE J1 79
+  SMALL J1 100
+#ACT
+  TAKE 抽奖券 1
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\5档.txt S$给抽奖物品
+  UIDLG SetItemSlot jiaoben016 item_001:<$STR(S$给抽奖物品)>
+  GIVE <$STR(S$给抽奖物品)> 1 4 抽奖获得
+  UIDLG PlayEffect jiaoben016 effect_001:UIsucai.wil:12:12:100:0
+  INC J1 1
+
+#IF
+  LARGE J1 99
+  SMALL J1 150
+#ACT
+  TAKE 抽奖券 1
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\6档.txt S$给抽奖物品
+  UIDLG SetItemSlot jiaoben016 item_001:<$STR(S$给抽奖物品)>
+  GIVE <$STR(S$给抽奖物品)> 1 4 抽奖获得
+  UIDLG PlayEffect jiaoben016 effect_001:UIsucai.wil:12:12:100:0
+  INC J1 1
+
+#IF
+  LARGE J1 149
+  SMALL J1 200
+#ACT
+  TAKE 抽奖券 1
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\7档.txt S$给抽奖物品
+  UIDLG SetItemSlot jiaoben016 item_001:<$STR(S$给抽奖物品)>
+  GIVE <$STR(S$给抽奖物品)> 1 4 抽奖获得
+  UIDLG PlayEffect jiaoben016 effect_001:UIsucai.wil:12:12:100:0
+  INC J1 1
+
+#IF
+  LARGE J1 199
+#ACT
+  TAKE 抽奖券 1
+  GetRandomText ..\QuestDiary\游戏数据\抽奖\8档.txt S$给抽奖物品
+  UIDLG SetItemSlot jiaoben016 item_001:<$STR(S$给抽奖物品)>
+  GIVE <$STR(S$给抽奖物品)> 1 4 抽奖获得
+  UIDLG PlayEffect jiaoben016 effect_001:UIsucai.wil:12:12:100:0
+  INC J1 1
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

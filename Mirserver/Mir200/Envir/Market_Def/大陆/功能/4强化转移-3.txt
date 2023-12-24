@@ -1,0 +1,294 @@
+[@MAIN]
+
+#IF
+#ACT
+  UIDLG Close ALL
+  UIDLG Open jiaoben013 300 120 0 0 1
+  UIDLG LimitItemSlot jiaoben013 item_001:5:10:11:15:19:26:22:64:62:202:204:53:51:16:200:30
+  UIDLG LimitItemSlot jiaoben013 item_002:转移水晶
+  UIDLG LimitItemSlot jiaoben013 item_003:5:10:11:15:19:26:22:64:62:202:204:53:51:16:200:30
+  UIDLG LockItemSlot jiaoben013 item_004:1
+  UIDLG SetItemSlot jiaoben013 item_004:注释
+  UIDLG ItemSlotTip jiaoben013 item_004:　\\<+6以上的装备才能进行转移/SCOLOR=58>\\　\\<强化转移介绍：/SCOLOR=251>\\<转移只能在同类装备之间进行/SCOLOR=254>\\<转移成功率为100%/SCOLOR=94>\\　\\<转移需求：/SCOLOR=251>\\<转移水晶*1/SCOLOR=250>\\<金币*20万/SCOLOR=250>\\
+  UIDLG BindItemSlot jiaoben013 item_001:N$待转移装备
+  UIDLG BindItemSlot jiaoben013 item_002:N$转移水晶框
+  UIDLG BindItemSlot jiaoben013 item_003:N$接收转移装备
+
+
+  UIDLG SetButtonGOTO  jiaoben013 btn_001:@开始转移强化检查
+
+#SAY
+UICMD
+<开始转移强化检查/@开始转移强化检查>\
+BREAK
+
+[@开始转移强化检查]
+#IF
+  CheckItemSlot N$待转移装备
+#ELSEACT
+  MessAgeBox <你还没有放入要转移强化的装备!/SCOLOR=58>
+BREAK
+#IF
+  CheckItemSlot N$转移水晶框
+#ELSEACT
+  MessAgeBox <你还没有放入转移水晶!/SCOLOR=58>
+BREAK
+#IF
+  CheckItemSlot N$接收转移装备
+#ELSEACT
+  MessAgeBox <你还没有放入接收转移的装备!/SCOLOR=58>
+BREAK
+
+#IF
+  CHECKNEWITEMVALUE 0 101 < 6 4 N$待转移装备
+#ACT
+  MessAgeBox <+6以上的装备才能进行转移!/SCOLOR=58>
+BREAK
+
+#IF
+  CheckGold 200000
+#ELSEACT
+  MessAgeBox <你的身上没有50000金币/SCOLOR=58>
+BREAK
+
+#IF
+  CheckItemLimit N$待转移装备 5
+#ACT
+  GOTO @装备检查类型5
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 10
+#ACT
+  GOTO @装备检查类型10
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 11
+#ACT
+  GOTO @装备检查类型11
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 15
+#ACT
+  GOTO @装备检查类型15
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 19
+#ACT
+  GOTO @装备检查类型19
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 24
+#ACT
+  GOTO @装备检查类型24
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 22
+#ACT
+  GOTO @装备检查类型22
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 64
+#ACT
+  GOTO @装备检查类型64
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 62
+#ACT
+  GOTO @装备检查类型62
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 202
+#ACT
+  GOTO @装备检查类型202
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 204
+#ACT
+  GOTO @装备检查类型204
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 53
+#ACT
+  GOTO @装备检查类型53
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 51
+#ACT
+  GOTO @装备检查类型51
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 16
+#ACT
+  GOTO @装备检查类型16
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 200
+#ACT
+  GOTO @装备检查类型200
+BREAK
+#IF
+  CheckItemLimit N$待转移装备 30
+#ACT
+  GOTO @装备检查类型30
+BREAK
+
+[@装备检查类型5]
+#IF
+  CheckItemLimit N$接收转移装备 5
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型10]
+#IF
+  CheckItemLimit N$接收转移装备 10
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型11]
+#IF
+  CheckItemLimit N$接收转移装备 11
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型15]
+#IF
+  CheckItemLimit N$接收转移装备 15
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型19]
+#IF
+  CheckItemLimit N$接收转移装备 19
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型24]
+#IF
+  CheckItemLimit N$接收转移装备 24
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型22]
+#IF
+  CheckItemLimit N$接收转移装备 22
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型64]
+#IF
+  CheckItemLimit N$接收转移装备 64
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型62]
+#IF
+  CheckItemLimit N$接收转移装备 62
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型202]
+#IF
+  CheckItemLimit N$接收转移装备 202
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型204]
+#IF
+  CheckItemLimit N$接收转移装备 204
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型53]
+#IF
+  CheckItemLimit N$接收转移装备 53
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型51]
+#IF
+  CheckItemLimit N$接收转移装备 51
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型16]
+#IF
+  CheckItemLimit N$接收转移装备 16
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型200]
+#IF
+  CheckItemLimit N$接收转移装备 200
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+[@装备检查类型30]
+#IF
+  CheckItemLimit N$接收转移装备 30
+#ACT
+  GOTO @确认强化转移
+#ELSEACT
+  MessAgeBox <转移类型不符!/SCOLOR=58>
+BREAK
+
+
+
+[@确认强化转移]
+#IF
+#ACT
+  PlayMusic duanzao.ogg
+  TAKE N$转移水晶框 1
+  TAKE 金币 200000
+  GETITEMATTVAL 0 3 101 N$强化转移值 N$待转移装备
+  SETNEWITEMVALUE  0 101 - <$STR(N$强化转移值)> 4 N$待转移装备
+  UPGRADEITEMEX 0 101 0 <$STR(N$强化转移值)> 0 4 N$接收转移装备 1 1
+  GetItemInfo N$待转移装备 3 S$待转移装备名
+  GetItemInfo N$接收转移装备 3 S$接收转移装备名
+  MessAgeBox <恭喜你成功将/SCOLOR=254><<$STR(S$待转移装备名)>/SCOLOR=251><上的/SCOLOR=254><+<$STR(N$强化转移值)>/SCOLOR=70><强化转移到了/SCOLOR=254><<$STR(S$接收转移装备名)>/SCOLOR=250><上！/SCOLOR=254>
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+;#AutoRun NPC SEC 1 @1秒执行
+;#AutoRun NPC MIN  1   @1分执行
+;#AutoRun NPC HOUR 1  @1小时执行
+;#AutoRun NPC DAY 1  @1天执行
+;#AutoRun NPC RUNONDAY 1:23:59 @周1点23分59秒执行
+;#AutoRun NPC RUNONWEEK 23:00 @23点00执行
+;-----------------------------------------------------
+#AutoRun NPC RUNONDAY 12:01 @开启夺宝大乱斗
+#AutoRun NPC RUNONDAY 16:01 @开启夺宝大乱斗
+#AutoRun NPC RUNONDAY 18:01 @开启夺宝大乱斗
+#AutoRun NPC RUNONDAY 21:01 @开启夺宝大乱斗
+#AutoRun NPC RUNONDAY 22:31 @关闭夺宝大乱斗
+#AutoRun NPC RUNONDAY 00:01 @开启夺宝大乱斗
+
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+[@MAIN]
+当前货币：<$ACCOUNTGOLD>\
+当前累计货币：<$ACCOUNTGOLDALL>\
+<获取称号/@获取称号>\
+<删除称号/@删除称号>\
+<物品/@物品>\
+<加攻城/@加攻城>\
+<加充值/@加充值>\
+<检查充值/@检查充值>\
+<清理技能/@清理技能>\
+<添加技能/@添加技能>\
+
+[@添加技能]
+#ACT
+ADDSKILL 灵魂火符 0
+ADDSKILL 施毒术 0
+ADDSKILL 治愈术 0
+ADDSKILL 神圣战甲术 0
+ADDSKILL 幽灵盾 0
+ADDSKILL 隐身术 0
+ADDSKILL 召唤骷髅 0
+ADDSKILL 召唤月灵 0
+ADDSKILL 召唤神兽 0
+ADDSKILL 嗜血术 0
+ADDSKILL 飓风破 0
+
+[@清理技能]
+#ACT
+CLEARSKILL
+
+
+
+[@加充值]
+#ACT
+ACCOUNTGOLD + 10
+
+[@检查充值]
+#IF
+  CHECKRANGEMONCOUNTEX 3 狼 561 524 10 > 2
+#ACT
+  SendNewLineMsg 0 250 50 0 0 0 0 有狼！
+#ELSEACT
+  SendNewLineMsg 0 58 50 0 0 0 0 没有狼！
+
+
+[@加攻城]
+#ACT
+  ADDATTACKSABUKALL 0
+  SendNewLineMsg 0 58 0 0 0 0 0 所有行会加入攻城！
+
+[@物品]
+#ACT
+;GIVE	筝	1
+THROWITEM DBDT 68 79 10 夺宝宝箱 1|60 0 1
+
+
+
+
+
+
+
+[@获取称号]
+#IF
+#ACT
+ GIVEFENGHAO SELF 玲珑5
+BREAK
+[@删除称号]
+#IF
+#ACT
+ RECYCFENGHAO SELF 玲珑1
+ RECYCFENGHAO SELF 玲珑2
+ RECYCFENGHAO SELF 玲珑3
+ RECYCFENGHAO SELF 玲珑4
+ RECYCFENGHAO SELF 玲珑5
+ RECYCFENGHAO SELF 狂血1
+ RECYCFENGHAO SELF 狂血2
+ RECYCFENGHAO SELF 狂血3
+ RECYCFENGHAO SELF 狂血4
+ RECYCFENGHAO SELF 狂血5
+BREAK

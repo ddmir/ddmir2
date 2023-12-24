@@ -1,0 +1,180 @@
+[@Startup]
+;-------------------------------------------------------------------------------------
+;此脚本段，服务器启动时执行一次
+;-------------------------------------------------------------------------------------
+#IF
+#ACT
+MOV G2 120
+MOV G3 120
+MOV G4 120
+MOV G5 120
+MOV G6 120
+#CALL [\996新假人\假人全局变量申明.txt] @申明假人变量
+
+#IF
+  SMALL <$RUNDATEMIN> 2
+#ACT
+  MOV A1 <$MONTH>月<$DAY>
+  CLEARNAMELIST ..\QuestDiary\游戏数据\爵位数据\爵位捐献.txt
+  CLEARNAMELIST ..\QuestDiary\游戏数据\爵位数据\爵位捐献1.txt
+  CLEARNAMELIST ..\QuestDiary\游戏数据\名人堂数据\等级榜.txt
+  CLEARNAMELIST ..\QuestDiary\游戏数据\名人堂数据\等级榜1.txt
+
+
+;//新区清档
+#IF
+#ACT
+  ;CLEARNAMELIST ..\QuestDiary\99临时数据\并肩作战.txt
+  ;COPYFILE ..\QuestDiary\固定数据\首爆\首爆名额.txt ..\QuestDiary\99临时数据\首爆\首爆名额.txt
+BREAK
+
+;------------------------------------------------------------------------------------人物登录配置------------------------------------------------------
+
+[@LOGIN]
+#IF
+  EQUAL <$CLIENTTYPE> 0
+#ELSEACT
+  UIDLG Open jiaoben001 -400 820 2 0 1 S0 0 1
+  UIDLG PlayEffect jiaoben001 effect_001:UIsucai.wil:669:12:120:0
+  UIDLG Open jiaoben002 90 820 2 0 1 S0 0 1
+  UIDLG PlayEffect jiaoben002 effect_001:UIsucai.wil:681:12:120:0
+
+#IF
+ISDUMMY
+#ACT
+  ChangeHumAbility 3 + 400 200000 100
+VAR string HUMAN 假人是否为新人
+LOADVAR HUMAN 假人是否为新人 ..\QuestDiary\996新假人\假人个人信息保存\新人变量\新人变量.txt
+mov S$假人个人信息保存路径 ..\QuestDiary\996新假人\假人个人信息保存\<$USERNAME>.txt
+CreateFile ..\QuestDiary\996新假人\假人个人信息保存\<$USERNAME>.txt
+#CALL [\996新假人\假人登录脚本.txt] @假人登录设置
+BREAK
+
+#IF
+#ACT
+  ;ClientCMD AutoEquip 1 60
+  ClientCmd AutoEquip 0
+  ClientCMD QuickActionItemName 金创药(小量)#魔法药(小量)#金创药(中量)#魔法药(中量)#强效金创药#强效魔法药#太阳水#强效太阳水#万年雪霜#疗伤药#土城传送石#皇城传送石#随机传送石
+  ChangeHumAbility 3 + 30 200000 100
+  ChangeHumAbility 29 + 20 200000 101
+#IF
+  ISNEWHUMAN
+#ACT
+  #CALL [\登录配置\首次登录.txt] @新人登录
+  SetOnTimer 0 3
+#ELSEACT
+  #CALL [\登录配置\普通登录.txt] @正常登录
+  SetOnTimer 0 3
+BREAK
+
+;-----------------------------------------------------------------------------------英雄登录配置---------------------------------------------------------
+[@HeroLogin]
+#IF
+#ACT
+  H.ChangeHumAbility 29 + 15 200000 101
+  SendNewLineMsg 1 253 0 0 0 0 0 英雄召唤成功！
+BREAK
+
+;------------------------------------------------------------------------------------定时器开始----------------------------------------------------------
+[@OnTimer0]
+
+#IF
+#ACT
+  #CALL [\登录配置\信息显示.txt] @角色信息
+  #CALL [\登录配置\强化套加成.txt] @强化套装加成
+  #CALL [Market_Def\大陆\功能\7名人堂-3.txt] @名人堂配置
+
+#IF
+  LARGE <$RUNDATEMIN> 89
+#ACT
+  ;#CALL [Market_Def\大陆\功能\7名人堂-3.txt] @名人堂称号
+
+#IF
+  EQUAL G1 1
+  ISONMAP DBDT
+#ACT
+  #CALL [\Market_Def\大陆\功能\11夺宝大乱斗-3.txt] @夺宝开启规则配置
+  #CALL [\Market_Def\大陆\功能\11夺宝大乱斗-3.txt] @夺宝携带规则配置
+
+#IF
+  EQUAL G1 0
+  ISONMAP DBDT
+#ACT
+  #CALL [\Market_Def\大陆\功能\11夺宝大乱斗-3.txt] @夺宝关闭规则配置
+BREAK
+
+
+
+
+;------------------------------------------------------------------------------------活动相关----------------------------------------------------------
+
+[@开始夺宝]
+#IF
+#ACT
+  #CALL [\Market_Def\大陆\功能\11夺宝大乱斗-3.txt] @夺宝界面
+BREAK
+
+
+;============下图打怪，回收触发===============
+[@OnTimer252]
+#IF
+ISDUMMY
+#ACT
+#CALL [\996新假人\假人各种触发.txt] @打怪开关
+
+#IF
+ISDUMMY
+NOT CHECKBAGSIZE 20
+#ACT
+#CALL [\996新假人\假人各种触发.txt] @开始回收AA
+BREAK
+
+
+
+;============土城走动几率===============
+[@OnTimer253]
+#if
+ISDUMMY
+ISONMAP <$GLOBAL(假人_盟重地图号)>
+RANDOMEX <$GLOBAL(假人_土城走动几率)> 100
+#ACT
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+;============假人随身泡点===============
+[@OnTimer254]
+#if
+ISDUMMY
+LARGE <$GLOBAL(假人_能升最高等级)>  <$LEVEL>
+#ACT
+CHANGEEXP + <$GLOBAL(假人_随身泡点每次经验)>
+
+;============假人装备保存路径==========================================================================================================
+[@ontimer255]
+#if
+ISDUMMY
+checkjob Warr
+#act
+#CALL [\996新假人\假人装备\战士.txt] @战士
+break
+#IF
+ISDUMMY
+CHECKJOB wizard
+#act
+#CALL [\996新假人\假人装备\法师.txt] @法师
+break
+#IF
+ISDUMMY
+CHECKJOB taoist
+#act
+#CALL [\996新假人\假人装备\道士.txt] @道士
+break
+
+
+
+
+
+
+
+
+

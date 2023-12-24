@@ -1,0 +1,8 @@
+(@bigstorage @biggetback @getnextpage @getPreviouspage)
+[@MAIN]
+#IF
+#ACT
+  #CALL [\QuestDiary\功能脚本\二级密码.txt] @仓库和密码
+BREAK
+
+

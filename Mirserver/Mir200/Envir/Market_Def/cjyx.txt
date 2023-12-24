@@ -1,0 +1,80 @@
+(@@CreateHero)
+[@MAIN]
+<-----------------------/SCOLOR=141><【创建英雄】/SCOLOR=58><-----------------------/SCOLOR=141>\
+　　　　　<领取一个属于自己的英雄，/SCOLOR=254>\
+　　　　　<让他和你一起征战大陆！/SCOLOR=254>\
+<----------------------------------------------------------------/SCOLOR=141>\
+　　　　<领取英雄/@@CreateHero>　　　　　<删除英雄/@删除英雄>\
+<----------------------------------------------------------------/SCOLOR=141>\
+[@@CreateHero]
+#IF
+  HAVEHERO
+#ACT
+  MessAgeBox <你已经有英雄了!/SCOLOR=58>
+#ELSESAY
+<-----------------------/SCOLOR=141><【创建英雄】/SCOLOR=58><-----------------------/SCOLOR=141>\
+　　<男英雄战士/@CREATEHERO_WARR_MAN>　　　　　　　<女英雄战士/@CREATEHERO_WARR_WOM>\
+　　<男英雄法师/@CREATEHERO_WIZA_MAN>　　　　　　　<女英雄法师/@CREATEHERO_WIZA_WOM>\
+　　<男英雄道士/@CREATEHERO_TAOS_MAN>　　　　　　　<女英雄道士/@CREATEHERO_TAOS_WOM>\
+<----------------------------------------------------------------/SCOLOR=141>\
+
+[@CREATEHERO_WARR_MAN]
+#ACT
+  CREATEHERO 0 0
+BREAK
+
+[@CREATEHERO_WARR_WOM]
+#ACT
+  CREATEHERO 0 1
+BREAK
+
+[@CREATEHERO_WIZA_MAN]
+#ACT
+  CREATEHERO 1 0
+BREAK
+
+[@CREATEHERO_WIZA_WOM]
+#ACT
+  CREATEHERO 1 1
+BREAK
+
+[@CREATEHERO_TAOS_MAN]
+#ACT
+  CREATEHERO 2 0
+BREAK
+
+[@CREATEHERO_TAOS_WOM]
+#ACT
+  CREATEHERO 2 1
+BREAK
+
+[@删除英雄]
+#IF
+  HAVEHERO
+#ELSEACT
+  MessAgeBox <你还没有英雄，无法进行删除!/SCOLOR=58>
+BREAK
+
+#IF
+  CHECKHEROONLINE
+#ACT
+  MessAgeBox <请先召回英雄，才能进行删除!/SCOLOR=58>
+BREAK
+
+#IF
+#ACT
+  CLEARHEROSKILL
+  DELETEHERO
+  MessAgeBox <英雄删除成功!/SCOLOR=250>
+BREAK
+
+[@CreateingHero]
+<英雄召唤中，请稍后.....!/SCOLOR=250>\
+
+
+
+
+
+
+
+

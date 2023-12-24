@@ -1,0 +1,186 @@
+[@主线任务配置]
+{
+[@任务1]
+#IF
+  EQUAL U4 0
+#ACT
+  SETMISSION + 1
+  MOV U4 1
+BREAK
+
+[@任务2]
+#IF
+  EQUAL U4 1
+#ACT
+  SETMISSION - 1
+  SETMISSION + 2
+  MOV U4 2
+BREAK
+
+
+[@任务3]
+#IF
+  EQUAL U4 2
+#ACT
+  SETMISSION - 2
+  SETMISSION + 3
+  MOV U4 3
+BREAK
+
+[@任务4]
+#IF
+  EQUAL U4 3
+#ACT
+  SETMISSION - 3
+  SETMISSION + 4
+  MOV U4 4
+BREAK
+
+[@任务5]
+#IF
+  EQUAL U4 4
+#ACT
+  SETMISSION - 4
+  SETMISSION + 5
+  MOV U4 5
+BREAK
+
+
+[@任务6]
+#IF
+  EQUAL U4 5
+#ACT
+  SETMISSION - 5
+  SETMISSION + 6
+  MOV U4 6
+  CLIENTCMD HideIconEffects 装备回收 0
+  CHANGELEVEL + 1
+BREAK
+
+[@任务7]
+#IF
+  EQUAL U4 6
+#ACT
+  SETMISSION - 6
+  SETMISSION + 7
+  MOV U4 7
+  CLIENTCMD HideIconEffects 沙城捐献 0
+  CLIENTCMD HideIconEffects 装备回收 1
+  CHANGELEVEL + 1
+BREAK
+
+[@任务8]
+#IF
+  EQUAL U4 7
+#ACT
+  SETMISSION - 7
+  SETMISSION + 8
+  MOV U4 8
+  CLIENTCMD HideIconEffects 爵位捐献 0
+  CLIENTCMD HideIconEffects 沙城捐献 1
+  CHANGELEVEL + 1
+BREAK
+
+[@任务9]
+#IF
+  EQUAL U4 8
+#ACT
+  SETMISSION - 8
+  SETMISSION + 9
+  MOV U4 9
+  CLIENTCMD HideIconEffects 名人堂 0
+  CLIENTCMD HideIconEffects 爵位捐献 1
+  CHANGELEVEL + 1
+BREAK
+
+[@任务10]
+#IF
+  EQUAL U4 9
+#ACT
+  SETMISSION - 9
+  SETMISSION + 10
+  MOV U4 10
+  CLIENTCMD HideIconEffects 至尊特权 0
+  CLIENTCMD HideIconEffects 名人堂 1
+  CHANGELEVEL + 1
+BREAK
+
+[@任务11]
+#IF
+  EQUAL U4 10
+#ACT
+  SETMISSION - 10
+  SETMISSION + 11
+  MOV U4 11
+  CLIENTCMD HideIconEffects 深渊副本 0
+  CLIENTCMD HideIconEffects 至尊特权 1
+  CHANGELEVEL + 1
+BREAK
+
+[@任务12]
+#IF
+  EQUAL U4 11
+#ACT
+  SETMISSION - 11
+  SETMISSION + 12
+  MOV U4 12
+  CLIENTCMD HideIconEffects 战灵系统 0
+  CLIENTCMD HideIconEffects 深渊副本 1
+  CHANGELEVEL + 1
+BREAK
+
+[@任务13]
+#IF
+  EQUAL U4 12
+#ACT
+  SETMISSION - 12
+  SETMISSION + 13
+  MOV U4 13
+  CLIENTCMD HideIconEffects 装备强化 0
+  CLIENTCMD HideIconEffects 战灵系统 1
+  CHANGELEVEL + 1
+BREAK
+
+[@任务14]
+#IF
+  EQUAL U4 13
+#ACT
+  SETMISSION - 13
+  SETMISSION + 14
+  MOV U4 14
+  CLIENTCMD HideIconEffects 装备鉴定 0
+  CLIENTCMD HideIconEffects 装备强化 1
+  CHANGELEVEL + 1
+BREAK
+
+[@任务15]
+#IF
+  EQUAL U4 14
+#ACT
+  SETMISSION - 14
+  SETMISSION + 15
+  MOV U4 15
+  CLIENTCMD HideIconEffects 宝石系统 0
+  CLIENTCMD HideIconEffects 装备鉴定 1
+  CHANGELEVEL + 1
+BREAK
+
+
+[@任务16]
+#IF
+  EQUAL U4 15
+#ACT
+  SETMISSION - 15
+  SETMISSION + 16
+  MOV U4 16
+  CLIENTCMD HideIconEffects 宝石系统 1
+  CHANGELEVEL + 1
+BREAK
+
+
+
+
+
+
+
+}

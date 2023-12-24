@@ -1,0 +1,1255 @@
+(@@sendmsg @storage @getback @trading @buy @sell @repair @s_repair @@offlinemsg   @bigstorage @biggetback @getnextpage @getPreviouspage @@InPutString @@OffLineMsg @@CreateHero)
+
+;---------------------------------------------------------------------------------------------------------------加入行会触发-----------------------------------------------------------------------------
+[@GuildCreate]
+#IF
+#ACT
+BREAK
+
+;---------------------------------------------------------------------------------------------------------------创建行会触发-----------------------------------------------------------------------------
+[@CreateGuild]
+#IF
+#ACT
+BREAK
+
+
+;---------------------------------------------------------------------------------------------------------------人物大退触发-----------------------------------------------------------------------------
+[@PlayOffLine]
+#IF
+  CheckItem 夺宝宝箱 1
+#ACT
+  #CALL [\Market_Def\大陆\功能\11夺宝大乱斗-3.txt] @夺宝离线配置
+BREAK
+
+;---------------------------------------------------------------------------------------------------------------人物小退触发-----------------------------------------------------------------------------
+
+[@PlayReconnection]
+#IF
+  CheckItem 夺宝宝箱 1
+#ACT
+  #CALL [\Market_Def\大陆\功能\11夺宝大乱斗-3.txt] @夺宝离线配置
+BREAK
+
+;---------------------------------------------------------------------------------------------------------------升级触发-----------------------------------------------------------------------------
+[@PlayLevelUp]
+#IF
+#ACT
+BREAK
+
+;---------------------------------------------------------------------------------------------------------------杀人触发-----------------------------------------------------------------------------
+[@KillPlay]
+#IF
+#ACT
+BREAK
+;---------------------------------------------------------------------------------------------------------------杀怪触发-----------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------------------------------死亡触发-----------------------------------------------------------------------------
+[@PlayDie]
+#if
+ISDUMMY
+#act
+DELAYGOTO 3000 @假人复活回城
+BREAK
+
+#IF
+  KillByHum
+#ACT
+SendNewLineMsg 1 58 0 0 0 0 0 你被人物[<$KILLER>]杀死了。
+#ELSEACT
+SendNewLineMsg 1 58 0 0 0 0 0 你被怪物[<$MONKILLER>]杀死了。
+
+#IF
+#ACT
+#SAY
+<--------------------------/SCOLOR=13><【死亡复活】/SCOLOR=58><--------------------------/SCOLOR=13>\
+<回城复活为免费使用，/SCOLOR=254>\
+<原地复活需要消耗一个复活卷轴。/SCOLOR=254>\
+<请选择你的复活方式！/SCOLOR=254>\
+<----------------------------------------------------------------------/SCOLOR=13>\
+　　　　　　　<回城复活/@回城复活>\
+<----------------------------------------------------------------------/SCOLOR=13>\
+[@回城复活]
+#OR
+  SMALL <$RUNDATEMIN> 30
+  EQUAL T1 
+#ACT
+  REALIVE
+  AddhpPer + 2
+  AddMpPer + 2
+  MAPMOVE 3 333 333 4
+BREAK
+
+#IF
+  CHECKLEVELEX < 10
+#ACT
+  REALIVE
+  AddhpPer + 2
+  AddMpPer + 2
+  MAPMOVE 0 296 625 4
+BREAK
+
+#IF
+  CHECKLEVELEX > 9
+  CHECKLEVELEX < 35
+#ACT
+  REALIVE
+  AddhpPer + 4
+  AddMpPer + 4
+  MAPMOVE 0 334 266 3
+#ELSEACT
+  REALIVE
+  AddhpPer + 2
+  AddMpPer + 2
+  MAPMOVE 3 333 333 5
+BREAK
+
+
+[@假人复活回城]
+#if
+ISDUMMY
+#act
+#CALL [\996新假人\假人控制\假人复活.txt] @假人复活
+BREAK
+
+;---------------------------------------------------------------------------------------------------------------被攻击触发-----------------------------------------------------------------------------
+[@MagicStruck]
+#IF
+ISDUMMY
+#ACT
+#CALL [\996新假人\假人控制\假人被打.txt] @假人还击
+
+[@Struck]
+#IF
+ISDUMMY
+#ACT
+#CALL [\996新假人\假人控制\假人被打.txt] @假人还击
+
+#IF
+#ACT 
+;SENDMSG 6 你被玩家【<$CURRRTARGETNAME>】攻击了。使用魔法ID=<$CURRRUSEMAGICID>
+BREAK
+
+;---------------------------------------------------------------------------------------------------------------普攻触发-----------------------------------------------------------------------------
+[@Attack]
+#IF
+#ACT
+BREAK
+
+;---------------------------------------------------------------------------------------------------------------拾取物品触发-----------------------------------------------------------------------------
+[@PickUpItemEx]
+#IF
+ISDUMMY
+#ACT
+LINKPICKUPITEM
+#CALL [\996新假人\假人控制\假人捡物.txt] @捡取开关
+BREAK
+
+#IF
+#ACT
+LinkPickUpItem
+;#CALL [\固定数据\首爆\首爆奖励触发.txt] @首爆奖励触发
+BREAK
+;---------------------------------------------------------------------------------------------------------------拾取物品触发-----------------------------------------------------------------------------
+[@PickUpItem木棍]
+#IF
+#ACT
+  BINDITEM <$PickDropItemMakeIndex>
+  SendNewLineMsg 1 250 0 0 0 0 0 拾取大砍刀
+BREAK
+;---------------------------------------------------------------------------------------------------------------挂机触发-----------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------------------------------发起行会战触发-----------------------------------------------------------------------------
+[@ReQuestGuildWar]
+#IF
+#ACT
+  MOV N0 1
+  SendNewLineMsg 0 250 0 0 0 0 0 <行会战发起成功！/SCOLOR=254>
+#ELSEACT
+  MOV N0 0
+  SendNewLineMsg 1 58 0 0 0 0 0 <行会战发起失败！/SCOLOR=254>
+BREAK
+
+;---------------------------------------------------------------------------------------------------------------删除任务触发-----------------------------------------------------------------------------
+
+[@CancelMission]
+#IF
+#ACT
+  ;LOG <删除任务触发/SCOLOR=254>
+BREAK
+;---------------------------------------------------------------------------------------------------------------穿脱装备触发-----------------------------------------------------------------------------
+[@TakeOff]
+#IF
+#ACT
+BREAK
+
+[@TakeOn]
+#IF
+#ACT
+BREAK
+;---------------------------------------------------------------------------------------------------------------领取英雄成功触发-----------------------------------------------------------------------------
+[@CreateHeroOK]
+#IF
+#ACT
+  MessAgeBox <恭喜你招募到了心仪的英雄！/SCOLOR=250>
+BREAK
+
+;---------------------------------------------------------------------------------------------------------------背包业按钮触发-----------------------------------------------------------------------------
+[@packbtn2]
+#IF
+  SMALL <$MAXBAGITEMSLOT> 49
+#ACT
+  SendNewLineMsg 1 116 0 0 0 0 0 请使用背包扩充券开启带锁的背包栏！
+BREAK
+
+[@packbtn3]
+#IF
+  SMALL <$MAXBAGITEMSLOT> 97
+#ACT
+  SendNewLineMsg 1 116 0 0 0 0 0 请使用背包扩充券开启带锁的背包栏！
+BREAK
+
+[@packbtn4]
+#IF
+  SMALL <$MAXBAGITEMSLOT> 145
+#ACT
+  SendNewLineMsg 1 116 0 0 0 0 0 请使用背包扩充券开启带锁的背包栏！
+BREAK
+
+[@packbtn5]
+#IF
+  SMALL <$MAXBAGITEMSLOT> 193
+#ACT
+  SendNewLineMsg 1 116 0 0 0 0 0 请使用背包扩充券开启带锁的背包栏！
+BREAK
+
+
+;---------------------------------------------------------------------------------------------------------------传送石触发-----------------------------------------------------------------------------
+[@StdModeFunc30]
+#IF
+  CHECKLEVELEX < 34
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<35级以上才能使用！/SCOLOR=254>
+BREAK
+
+#OR
+  ISONMAP XSC
+  ISONMAP DBDT
+#ACT
+  MessAgeBox <当前地图禁止使用传送石！/SCOLOR=254>
+#ELSEACT
+  MAPMOVE 3 330 330 5
+BREAK
+
+[@StdModeFunc31]
+#IF
+  CHECKLEVELEX < 49
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<50级以上才能使用！/SCOLOR=254>
+BREAK
+
+#OR
+  ISONMAP XSC
+  ISONMAP DBDT
+#ACT
+  MessAgeBox <当前地图禁止使用传送石！/SCOLOR=254>
+#ELSEACT
+  MAPMOVE 0 331 270 5
+BREAK
+
+[@StdModeFunc32]
+#IF
+  ISONMAP DBDT
+#ACT
+  MessAgeBox <当前地图禁止使用随机传送石！/SCOLOR=254>
+BREAK
+
+#IF
+#ACT
+  RANDOMMOVE
+BREAK
+
+;---------------------------------------------------------------------------------------------------------------药品触发-----------------------------------------------------------------------------
+;---------------------------------------------------------------------------------------------------------------杂物触发-----------------------------------------------------------------------------
+[@StdModeFunc156]
+#IF
+#ACT
+  USEITEMOK 1
+  GAMEGOLD + 100
+  SendNewLineMsg 1 250 50 0 0 0 0 开启红包获得100元宝。
+BREAK
+[@StdModeFunc166]
+#IF
+#ACT
+  USEITEMOK 1
+  GAMEGOLD + 1000
+  SendNewLineMsg 1 250 50 0 0 0 0 开启红包获得1000元宝。
+BREAK
+[@StdModeFunc167]
+#IF
+#ACT
+  USEITEMOK 1
+  GAMEGOLD + 10000
+  SendNewLineMsg 1 250 50 0 0 0 0 开启红包获得10000元宝。
+BREAK
+
+[@StdModeFunc159]
+#IF
+  CHECKBAGSIZE 240
+#ACT
+  MESSAGEBOX <你的背包已经全开/SCOLOR=58>
+#ELSEACT
+  USEITEMOK 1
+  MOV N$当前背包格子 <$MAXBAGITEMSLOT>
+  INC N$当前背包格子 1
+  SETMAXBAGITEMSLOT <$STR(N$当前背包格子)>
+  MESSAGEBOX <恭喜你！成功将背包容量扩大1格/SCOLOR=254>\\<你当前的背包格子总数为：/SCOLOR=254>{<$MAXBAGITEMSLOT>/SCOLOR=58}<格/SCOLOR=254>
+BREAK
+
+[@StdModeFunc144]
+#IF
+#ACT
+  USEITEMOK 1
+  PlayMusic 107.ogg
+  RepairAll
+  MessAgeBox <成功修复身上所有装备！/SCOLOR=250>
+BREAK
+
+[@StdModeFunc157]
+#IF 
+#ACT
+  USEITEMOK 1
+  #CALL [\QuestDiary\祝福油\普通祝福油.txt] @普通祝福油检查武器
+break 
+
+[@StdModeFunc158]
+#IF 
+#ACT
+  USEITEMOK 1
+  #CALL [\QuestDiary\祝福油\超级祝福油.txt] @超级祝福油检查武器
+break 
+;---------------------------------------------------------------------------------------------------------------技能书触发-----------------------------------------------------------------------------
+[@StdModeFunc185]    ;刺杀剑术
+#IF
+  CheckJob Warrior
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 刺杀剑术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 刺杀剑术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【刺杀剑术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc186]    ;半月弯刀
+#IF
+  CheckJob Warrior
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 半月弯刀 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 半月弯刀 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【半月弯刀】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc187]    ;烈火剑法
+#IF
+  CheckJob Warrior
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 烈火剑法 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 烈火剑法 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【烈火剑法】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc188]    ;野蛮冲撞
+#IF
+  CheckJob Warrior
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 野蛮冲撞 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 野蛮冲撞 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【野蛮冲撞】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc189]    ;逐日剑法
+#IF
+  CheckJob Warrior
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 逐日剑法 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 逐日剑法 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【逐日剑法】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc190]    ;开天斩
+#IF
+  CheckJob Warrior
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 开天斩 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 开天斩 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【开天斩】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc191]    ;十步一杀
+#IF
+  CheckJob Warrior
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 十步一杀 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 十步一杀 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【十步一杀】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc192]    ;擒龙手
+#IF
+  CheckJob Warrior
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 擒龙手 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 擒龙手 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【擒龙手】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc193]    ;护体神盾
+#IF
+  CheckJob Warrior
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 护体神盾 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 护体神盾 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【护体神盾】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc194]    ;分身术
+#IF
+  CheckJob Warrior
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 分身术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 分身术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【分身术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc223]    ;基本剑术
+#IF
+  CheckJob Warrior
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 7
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<7级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 基本剑术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 基本剑术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【基本剑术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc224]    ;攻杀剑术
+#IF
+  CheckJob Warrior
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 11
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<11级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 攻杀剑术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 攻杀剑术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【攻杀剑术】/SCOLOR=250>
+BREAK
+
+
+
+[@StdModeFunc196]    ;大火球术
+#IF
+  CheckJob Wizard
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 11
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<11级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 大火球术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 大火球术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【大火球术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc225]    ;小火球术
+#IF
+  CheckJob Wizard
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 7
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<7级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 小火球术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 小火球术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【小火球术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc197]    ;雷电术
+#IF
+  CheckJob Wizard
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 雷电术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 雷电术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【雷电术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc198]    ;群体雷电术
+#IF
+  CheckJob Wizard
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 群体雷电术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 群体雷电术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【群体雷电术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc199]    ;抗拒火环
+#IF
+  CheckJob Wizard
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 抗拒火环 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 抗拒火环 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【抗拒火环】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc200]    ;地狱雷光
+#IF
+  CheckJob Wizard
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 地狱雷光 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 地狱雷光 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【地狱雷光】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc201]    ;火墙
+#IF
+  CheckJob Wizard
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 火墙 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 火墙 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【火墙】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc202]    ;冰咆哮
+#IF
+  CheckJob Wizard
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 冰咆哮 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 冰咆哮 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【冰咆哮】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc203]    ;魔法盾
+#IF
+  CheckJob Wizard
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 魔法盾 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 魔法盾 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【魔法盾】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc204]    ;圣言术
+#IF
+  CheckJob Wizard
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 圣言术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 圣言术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【圣言术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc205]    ;困魔咒
+#IF
+  CheckJob Wizard
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 困魔咒 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 困魔咒 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【困魔咒】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc206]    ;诱惑之光
+#IF
+  CheckJob Wizard
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 诱惑之光 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 诱惑之光 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【诱惑之光】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc208]    ;灵魂火符
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 7
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<7级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 灵魂火符 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 灵魂火符 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【灵魂火符】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc209]    ;施毒术
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 11
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<11级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 施毒术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 施毒术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【施毒术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc210]    ;群体施毒术
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 群体施毒术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 群体施毒术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【群体施毒术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc211]    ;治愈术
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 治愈术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 治愈术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【治愈术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc212]    ;群体治疗术
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 群体治疗术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 群体治疗术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【群体治疗术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc213]    ;精神力战法
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 精神力战法 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 精神力战法 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【精神力战法】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc214]    ;神圣战甲术
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 神圣战甲术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 神圣战甲术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【神圣战甲术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc215]    ;幽灵盾
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 幽灵盾 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 幽灵盾 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【幽灵盾】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc216]    ;隐身术
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 隐身术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 隐身术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【隐身术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc217]    ;群体隐身术
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 群体隐身术 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 群体隐身术 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【群体隐身术】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc218]    ;召唤骷髅
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 召唤骷髅 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 召唤骷髅 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【召唤骷髅】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc219]    ;召唤神兽
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 召唤神兽 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 召唤神兽 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【召唤神兽】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc220]    ;召唤圣兽
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 召唤圣兽 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+  USEITEMOK 1
+  ADDSKILL 召唤圣兽 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【召唤圣兽】/SCOLOR=250>
+BREAK
+
+[@StdModeFunc221]    ;召唤月灵
+#IF
+  CheckJob Taoist
+#ELSEACT
+  MessAgeBox <职业不符！/SCOLOR=58>
+BREAK
+#IF
+  CHECKLEVELEX < 16
+#ACT
+  MessAgeBox <等级不足！/SCOLOR=58>\\<16级以上才能使用！/SCOLOR=254>
+BREAK
+#IF
+  CHECKSKILL 召唤月灵 > 0
+#ACT
+  MessAgeBox <你已经学会此技能了！/SCOLOR=254>
+#ELSEACT
+   USEITEMOK 1
+  ADDSKILL 召唤月灵 1
+  MessAgeBox <成功习得技能/SCOLOR=254><【召唤月灵】/SCOLOR=250>
+BREAK
+
+
+;---------------------------------------------------------------------------------------------------------------聚灵珠触发-----------------------------------------------------------------------------
+[@StdModeFunc27]
+#IF
+#ACT
+  USEITEMOK 1
+  CHANGEEXP + 500000 0 1
+BREAK
+
+[@StdModeFunc28]
+#IF
+#ACT
+  USEITEMOK 1
+  CHANGEEXP + 5000000 0 1
+BREAK
+
+[@StdModeFunc29]
+#IF
+#ACT
+  USEITEMOK 1
+  CHANGEEXP + 50000000 0 1
+BREAK
+
+;---------------------------------------------------------------------------------------------------------------掉落控制-----------------------------------------------------------------------------
+[@战士套检测]
+#IF
+  CHECKLEVELEX > 50
+#ACT
+  SendNewLineMsg 1 250 0 0 0 0 0 <等级大于50级，掉落/SCOLOR=250>
+#ELSEACT
+  StopDropItem
+  SendNewLineMsg 1 58 0 0 0 0 0 <等级不于50级，不掉落/SCOLOR=58>
+BREAK
+
+
+[@StartMyShop]
+#IF
+  CheckGold 10000
+#ACT
+  TAKE 金币 10000
+  SendNewLineMsg 1 58 0 0 0 0 0 <开始收费摆摊/SCOLOR=58>
+#ELSEACT
+  ForbidMyShop
+  SendNewLineMsg 1 58 0 0 0 0 0 <金币不够，不能摆摊/SCOLOR=58>
+BREAK
+;---------------------------------------------------------------------------------------------------------------挖矿触发-----------------------------------------------------------------------------
+[@挖矿触发]
+#IF
+#ACT
+    SendNewLineMsg 1 58 0 0 0 0 0 <正在挖矿。。。/SCOLOR=250>
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,65 @@
+{
+[@Õý³£µÇÂ¼]
+#IF
+ISDUMMY
+#ACT
+BREAK
+
+
+#OR
+  SMALL <$RUNDATEMIN> 30
+  EQUAL T1 
+#ACT
+  MAPMOVE XSC 51 55 4
+BREAK
+
+#IF
+  CHECKLEVELEX < 10
+#ACT
+  MAPMOVE XSC 51 55 4
+BREAK
+
+#IF
+  CHECKLEVELEX > 9
+  CHECKLEVELEX < 35
+#ACT
+  MAPMOVE 3 290 614 3
+#ELSEACT
+  MAPMOVE 3 561 525 5
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

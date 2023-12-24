@@ -1,0 +1,79 @@
+[@MAIN]
+#IF
+#ACT
+  UIDLG Close jiaobenceshi
+  UIDLG Open jiaobenceshi 380 50 0 0 1
+;添加列表框子节点
+  UIDLG AddListViewItem jiaobenceshi  gion_001#ListItem_001
+  UIDLG AddListViewItem jiaobenceshi  gion_001#ListItem_002
+  UIDLG AddListViewItem jiaobenceshi  gion_001#ListItem_003
+  UIDLG AddListViewItem jiaobenceshi  gion_001#ListItem_004
+  UIDLG AddListViewItem jiaobenceshi  gion_001#ListItem_005
+  UIDLG SetbuttonText jiaobenceshi gion_001#ListItem_001#CheckBox_001:等级礼包
+  UIDLG SetbuttonText jiaobenceshi gion_001#ListItem_002#CheckBox_001:转生礼包
+  UIDLG SetbuttonText jiaobenceshi gion_001#ListItem_003#CheckBox_001:在线礼包
+  UIDLG SetbuttonText jiaobenceshi gion_001#ListItem_004#CheckBox_001:觉醒礼包
+  UIDLG SetbuttonText jiaobenceshi gion_001#ListItem_005#CheckBox_001:签到礼包
+  UIDLG BindCheckBox jiaobenceshi gion_001#ListItem_001#CheckBox_001:N$等级礼包
+  UIDLG BindCheckBox jiaobenceshi gion_001#ListItem_002#CheckBox_001:N$转生礼包
+  UIDLG BindCheckBox jiaobenceshi gion_001#ListItem_003#CheckBox_001:N$在线礼包
+  UIDLG BindCheckBox jiaobenceshi gion_001#ListItem_004#CheckBox_001:N$觉醒礼包
+  UIDLG BindCheckBox jiaobenceshi gion_001#ListItem_005#CheckBox_001:N$签到礼包
+  UIDLG CheckBox jiaobenceshi gion_001#ListItem_001#CheckBox_001:1
+  UIDLG CheckBox jiaobenceshi gion_001#ListItem_002#CheckBox_001:0
+  UIDLG CheckBox jiaobenceshi gion_001#ListItem_003#CheckBox_001:0
+  UIDLG CheckBox jiaobenceshi gion_001#ListItem_004#CheckBox_001:0
+  UIDLG CheckBox jiaobenceshi gion_001#ListItem_005#CheckBox_001:0
+  UIDLG SetCheckBoxRadio jiaobenceshi gion_001#ListItem_001#CheckBox_001:gion_001#ListItem_002#CheckBox_001:gion_001#ListItem_003#CheckBox_001
+  UIDLG AddListViewItem jiaobenceshi  gion_002#ListItem_001
+  UIDLG AddListViewItem jiaobenceshi  gion_002#ListItem_002
+  UIDLG AddListViewItem jiaobenceshi  gion_002#ListItem_003
+  UIDLG AddListViewItem jiaobenceshi  gion_002#ListItem_004
+  UIDLG AddListViewItem jiaobenceshi  gion_002#ListItem_005
+;注意,兼容老的命令. 只是要加前缀  gion_002#ListItem_001等等,  gion_002#ListItem_001这个是上面添加的子节点名字
+  UIDLG SetRichText jiaobenceshi  gion_002#ListItem_001#WBK_001:<　50级礼包/SCOLOR=154>
+  UIDLG SetRichText jiaobenceshi  gion_002#ListItem_001#WBK_002:<达到50级即可免费领取/SCOLOR=154>
+  UIDLG SetItemSlot jiaobenceshi  gion_002#ListItem_001#item_001:木棍
+  UIDLG SetItemSlot jiaobenceshi  gion_002#ListItem_001#item_002:布衣
+
+  UIDLG SetRichText jiaobenceshi  gion_002#ListItem_002#WBK_001:<　60级礼包/SCOLOR=154>
+  UIDLG SetRichText jiaobenceshi  gion_002#ListItem_002#WBK_002:<达到60级即可免费领取/SCOLOR=154>
+  UIDLG SetRichText jiaobenceshi  gion_002#ListItem_003#WBK_001:<　70级礼包/SCOLOR=154>
+  UIDLG SetRichText jiaobenceshi  gion_002#ListItem_003#WBK_002:<达到70级即可免费领取/SCOLOR=154>
+  UIDLG SetRichText jiaobenceshi  gion_002#ListItem_004#WBK_001:<　80级礼包/SCOLOR=154>
+  UIDLG SetRichText jiaobenceshi  gion_002#ListItem_004#WBK_002:<达到80级即可免费领取/SCOLOR=154>
+  UIDLG SetRichText jiaobenceshi  gion_002#ListItem_005#WBK_001:<　90级礼包/SCOLOR=154>
+  UIDLG SetRichText jiaobenceshi  gion_002#ListItem_005#WBK_002:<达到90级即可免费领取/SCOLOR=154>
+
+
+  UIDLG SetButtonGOTO jiaobenceshi  gion_002#ListItem_001#btn_001:@领取50级礼包
+  UIDLG SetButtonGOTO jiaobenceshi  gion_002#ListItem_002#btn_001:@领取60级礼包
+  UIDLG SetButtonGOTO jiaobenceshi  gion_002#ListItem_003#btn_001:@领取70级礼包
+  UIDLG SetButtonGOTO jiaobenceshi  gion_002#ListItem_004#btn_001:@领取80级礼包
+  UIDLG SetButtonGOTO jiaobenceshi  gion_002#ListItem_005#btn_001:@领取90级礼包
+#SAY
+UICMD
+<按钮/@领取50级礼包>\
+<按钮/@领取60级礼包>\
+<按钮/@领取70级礼包>\
+<按钮/@领取80级礼包>\
+<按钮/@领取90级礼包>\
+BREAK
+
+[@领取50级礼包]
+#IF
+#ACT
+  UIDLG SetText jiaobenceshi  gion_002#ListItem_001#WBK_001:改变文本1
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+

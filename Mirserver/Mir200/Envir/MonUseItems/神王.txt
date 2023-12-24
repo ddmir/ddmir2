@@ -1,0 +1,43 @@
+;此文件放在 D:\Mirserver\Mir200\Envir\MonUseItems\
+;=============================人形怪物配制文件=======================
+[BaseInfo]
+;职业
+Job = 0
+;性别
+Gender = 0
+;头发
+Hair = 5
+;使用魔法
+Magic = 烈火剑法,刺杀剑术,野蛮冲撞,基本剑术
+;==============================身上装备============================
+[UseItems]
+;衣服
+DRESSNAME = 神甲
+;武器
+WEAPONNAME = 魔剑
+;照明物
+RIGHTHANDNAME = 神之章
+;项链
+NECKLACENAME = 神链
+;头盔
+HELMETNAME = 神盔
+;左手镯
+ARMRINGLNAME = 神镯
+;右手镯
+ARMRINGRNAME = 神镯
+;左戒指
+RINGLNAME = 神之戒
+;右戒指
+RINGRNAME = 魔之戒
+;物品
+BUJUKNAME = 
+;腰带
+BELTNAME = 神带
+;鞋子
+BOOTSNAME = 神靴
+;宝石
+CHARMNAME =  神石
+;出身时背包物品
+INITITEMS = 超级金创药,超级魔法药
+;死亡掉装备几率 数字越小掉装备几率越高
+DieDropUseItemRate = 2000

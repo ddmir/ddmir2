@@ -1,0 +1,494 @@
+[@MAIN]
+#OR
+  CHECKFENGHAO 狂血1
+  CHECKFENGHAO 狂血2
+  CHECKFENGHAO 狂血3
+  CHECKFENGHAO 狂血4
+  CHECKFENGHAO 狂血5
+  CHECKFENGHAO 玲珑1
+  CHECKFENGHAO 玲珑2
+  CHECKFENGHAO 玲珑3
+  CHECKFENGHAO 玲珑4
+  CHECKFENGHAO 玲珑5
+#ELSEACT
+  GOTO @狂血配置1
+#IF
+  CHECKFENGHAO 狂血1
+#ACT
+  GOTO @狂血配置2
+#IF
+  CHECKFENGHAO 狂血2
+#ACT
+  GOTO @狂血配置3
+#IF
+  CHECKFENGHAO 狂血3
+#ACT
+  GOTO @狂血配置4
+#IF
+  CHECKFENGHAO 狂血4
+#ACT
+  GOTO @狂血配置5
+#IF
+  CHECKFENGHAO 狂血5
+#ACT
+  GOTO @狂血配置6
+
+#IF
+  CHECKFENGHAO 玲珑1
+#ACT
+  GOTO @玲珑配置2
+#IF
+  CHECKFENGHAO 玲珑2
+#ACT
+  GOTO @玲珑配置3
+#IF
+  CHECKFENGHAO 玲珑3
+#ACT
+  GOTO @玲珑配置4
+#IF
+  CHECKFENGHAO 玲珑4
+#ACT
+  GOTO @玲珑配置5
+#IF
+  CHECKFENGHAO 玲珑5
+#ACT
+  GOTO @玲珑配置6
+
+
+
+
+
+
+[@觉醒主界面]
+#IF
+#ACT
+  UIDLG Close ALL
+  UIDLG Open jiaoben014 230 100 0 0 1
+  UIDLG BindCheckBox jiaoben014 CheckBox_001:N$狂血1
+  UIDLG BindCheckBox jiaoben014 CheckBox_002:N$狂血2
+  UIDLG BindCheckBox jiaoben014 CheckBox_003:N$狂血3
+  UIDLG BindCheckBox jiaoben014 CheckBox_004:N$狂血4
+  UIDLG BindCheckBox jiaoben014 CheckBox_005:N$狂血5
+  UIDLG BindCheckBox jiaoben014 CheckBox_006:N$玲珑1
+  UIDLG BindCheckBox jiaoben014 CheckBox_007:N$玲珑2
+  UIDLG BindCheckBox jiaoben014 CheckBox_008:N$玲珑3
+  UIDLG BindCheckBox jiaoben014 CheckBox_009:N$玲珑4
+  UIDLG BindCheckBox jiaoben014 CheckBox_010:N$玲珑5
+  UIDLG CheckBox jiaoben014 CheckBox_<$STR(S$显示图标1)>:1
+  UIDLG CheckBox jiaoben014 CheckBox_<$STR(S$显示图标2)>:0
+  UIDLG SetVisible jiaoben014 CheckBox_<$STR(S$隐藏图标1)>:0
+  UIDLG SetVisible jiaoben014 CheckBox_<$STR(S$隐藏图标2)>:0
+  UIDLG SetVisible jiaoben014 CheckBox_<$STR(S$隐藏图标3)>:0
+  UIDLG SetVisible jiaoben014 CheckBox_<$STR(S$隐藏图标4)>:0
+  UIDLG SetVisible jiaoben014 CheckBox_<$STR(S$隐藏图标5)>:0
+  UIDLG SetVisible jiaoben014 CheckBox_<$STR(S$隐藏图标6)>:0
+  UIDLG SetVisible jiaoben014 CheckBox_<$STR(S$隐藏图标7)>:0
+  UIDLG SetVisible jiaoben014 CheckBox_<$STR(S$隐藏图标8)>:0
+  UIDLG SetEnable jiaoben014 CheckBox_<$STR(S$禁用图标)>:1
+  UIDLG SetCheckBoxRadio jiaoben014 CheckBox_001:CheckBox_002:CheckBox_003:CheckBox_004:CheckBox_005:CheckBox_006:CheckBox_007:CheckBox_008:CheckBox_009:CheckBox_010
+  UIDLG SetRichText jiaoben014 WBK_001:<$STR(S$觉醒介绍)>
+  UIDLG PlayEffect jiaoben014 effect_001:<$STR(S$觉醒特效1)>
+  UIDLG PlayEffect jiaoben014 effect_002:<$STR(S$觉醒特效2)>
+  UIDLG SetCheckBoxGOTO jiaoben014 CheckBox_<$STR(S$职业图标)>:@<$STR(S$职业图标跳转)>
+  UIDLG SetButtonGOTO jiaoben014 btn_001:@<$STR(S$按钮跳转)>
+#SAY
+UICMD
+<按钮/@<$STR(S$职业图标)>>\
+<按钮/@<$STR(S$职业图标跳转)>>\
+<按钮/@<$STR(S$按钮跳转)>>\
+BREAK
+
+
+[@狂血配置1]
+#IF
+#ACT
+  MOV N$觉醒目标 1
+  MOV S$显示图标1 001
+  MOV S$显示图标2 006
+  MOV S$隐藏图标1 002
+  MOV S$隐藏图标2 003
+  MOV S$隐藏图标3 004
+  MOV S$隐藏图标4 005
+  MOV S$隐藏图标5 007
+  MOV S$隐藏图标6 008
+  MOV S$隐藏图标7 009
+  MOV S$隐藏图标8 010
+  MOV S$觉醒材料 觉醒卷轴·狂血[初阶]
+  MOV N$觉醒金币 10000000
+  MOV S$觉醒介绍 <　　　　　　　　　　　　　【狂血系】/SCOLOR=243>\\<　　　　　　　　　　　进攻能力大幅提升/SCOLOR=154>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(S$觉醒材料)>/SCOLOR=250>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(N$觉醒金币)>金币/SCOLOR=250>
+  MOV S$觉醒特效1 UIsucai.wil:619:8:100:0
+  MOV S$觉醒特效2 无
+  MOV S$职业图标跳转 玲珑配置1
+  MOV S$按钮跳转 转狂血
+  MOV S$职业图标 006
+  MOV S$觉醒公告等级 [初阶]
+  GOTO @觉醒主界面
+BREAK
+
+[@狂血配置2]
+#IF
+#ACT
+  MOV N$觉醒目标 2
+  MOV S$显示图标1 002
+  MOV S$显示图标2 006
+  MOV S$隐藏图标1 001
+  MOV S$隐藏图标2 003
+  MOV S$隐藏图标3 004
+  MOV S$隐藏图标4 005
+  MOV S$隐藏图标5 007
+  MOV S$隐藏图标6 008
+  MOV S$隐藏图标7 009
+  MOV S$隐藏图标8 010
+  MOV S$觉醒材料 觉醒卷轴·狂血[中阶]
+  MOV N$觉醒金币 20000000
+  MOV S$觉醒介绍 <　　　　　　　　　　　　　【狂血系】/SCOLOR=243>\\<　　　　　　　　　　　进攻能力大幅提升/SCOLOR=154>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(S$觉醒材料)>/SCOLOR=250>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(N$觉醒金币)>金币/SCOLOR=250>
+  MOV S$觉醒特效1 UIsucai.wil:619:8:100:0
+  MOV S$觉醒特效2 无
+  MOV S$职业图标跳转 职业不符提示
+  MOV S$按钮跳转 转狂血
+  MOV S$职业图标 006
+  MOV S$觉醒公告等级 [中阶]
+  GOTO @觉醒主界面
+BREAK
+
+[@狂血配置3]
+#IF
+#ACT
+  MOV N$觉醒目标 3
+  MOV S$显示图标1 003
+  MOV S$显示图标2 006
+  MOV S$隐藏图标1 001
+  MOV S$隐藏图标2 002
+  MOV S$隐藏图标3 004
+  MOV S$隐藏图标4 005
+  MOV S$隐藏图标5 007
+  MOV S$隐藏图标6 008
+  MOV S$隐藏图标7 009
+  MOV S$隐藏图标8 010
+  MOV S$觉醒材料 觉醒卷轴·狂血[高阶]
+  MOV N$觉醒金币 30000000
+  MOV S$觉醒介绍 <　　　　　　　　　　　　　【狂血系】/SCOLOR=243>\\<　　　　　　　　　　　进攻能力大幅提升/SCOLOR=154>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(S$觉醒材料)>/SCOLOR=250>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(N$觉醒金币)>金币/SCOLOR=250>
+  MOV S$觉醒特效1 UIsucai.wil:619:8:100:0
+  MOV S$觉醒特效2 无
+  MOV S$职业图标跳转 职业不符提示
+  MOV S$按钮跳转 转狂血
+  MOV S$职业图标 006
+  MOV S$觉醒公告等级 [高阶]
+  GOTO @觉醒主界面
+BREAK
+
+[@狂血配置4]
+#IF
+#ACT
+  MOV N$觉醒目标 4
+  MOV S$显示图标1 004
+  MOV S$显示图标2 006
+  MOV S$隐藏图标1 001
+  MOV S$隐藏图标2 002
+  MOV S$隐藏图标3 003
+  MOV S$隐藏图标4 005
+  MOV S$隐藏图标5 007
+  MOV S$隐藏图标6 008
+  MOV S$隐藏图标7 009
+  MOV S$隐藏图标8 010
+  MOV S$觉醒材料 觉醒卷轴·狂血[宗师]
+  MOV N$觉醒金币 40000000
+  MOV S$觉醒介绍 <　　　　　　　　　　　　　【狂血系】/SCOLOR=243>\\<　　　　　　　　　　　进攻能力大幅提升/SCOLOR=154>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(S$觉醒材料)>/SCOLOR=250>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(N$觉醒金币)>金币/SCOLOR=250>
+  MOV S$觉醒特效1 UIsucai.wil:619:8:100:0
+  MOV S$觉醒特效2 无
+  MOV S$职业图标跳转 职业不符提示
+  MOV S$按钮跳转 转狂血
+  MOV S$职业图标 006
+  MOV S$觉醒公告等级 [宗师]
+  GOTO @觉醒主界面
+BREAK
+
+[@狂血配置5]
+#IF
+#ACT
+  MOV N$觉醒目标 5
+  MOV S$显示图标1 005
+  MOV S$显示图标2 006
+  MOV S$隐藏图标1 001
+  MOV S$隐藏图标2 002
+  MOV S$隐藏图标3 003
+  MOV S$隐藏图标4 004
+  MOV S$隐藏图标5 007
+  MOV S$隐藏图标6 008
+  MOV S$隐藏图标7 009
+  MOV S$隐藏图标8 010
+  MOV S$觉醒材料 觉醒卷轴·狂血[神]
+  MOV N$觉醒金币 50000000
+  MOV S$觉醒介绍 <　　　　　　　　　　　　　【狂血系】/SCOLOR=243>\\<　　　　　　　　　　　进攻能力大幅提升/SCOLOR=154>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(S$觉醒材料)>/SCOLOR=250>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(N$觉醒金币)>金币/SCOLOR=250>
+  MOV S$觉醒特效1 UIsucai.wil:619:8:100:0
+  MOV S$觉醒特效2 无
+  MOV S$职业图标跳转 职业不符提示
+  MOV S$按钮跳转 转狂血
+  MOV S$职业图标 006
+  MOV S$觉醒公告等级 [神]
+  GOTO @觉醒主界面
+BREAK
+
+[@狂血配置6]
+#IF
+#ACT
+  MOV S$显示图标1 005
+  MOV S$显示图标2 006
+  MOV S$隐藏图标1 001
+  MOV S$隐藏图标2 002
+  MOV S$隐藏图标3 003
+  MOV S$隐藏图标4 004
+  MOV S$隐藏图标5 007
+  MOV S$隐藏图标6 008
+  MOV S$隐藏图标7 009
+  MOV S$隐藏图标8 010
+  MOV S$觉醒材料 已满转
+  MOV N$觉醒金币 50000000
+  MOV S$觉醒介绍 <　　　　　　　　　　　　【狂血满觉醒】/SCOLOR=243>\\<　　　　　　　　　　　　战力狂飙至顶点/SCOLOR=250>
+  MOV S$觉醒特效1 UIsucai.wil:619:8:100:0
+  MOV S$觉醒特效2 无
+  MOV S$职业图标跳转 职业不符提示
+  MOV S$按钮跳转 满转提示
+  MOV S$职业图标 006
+  GOTO @觉醒主界面
+BREAK
+
+
+
+[@玲珑配置1]
+#IF
+#ACT
+  MOV N$觉醒目标 1
+  MOV S$显示图标1 006
+  MOV S$显示图标2 001
+  MOV S$隐藏图标1 002
+  MOV S$隐藏图标2 003
+  MOV S$隐藏图标3 004
+  MOV S$隐藏图标4 005
+  MOV S$隐藏图标5 007
+  MOV S$隐藏图标6 008
+  MOV S$隐藏图标7 009
+  MOV S$隐藏图标8 010
+  MOV S$觉醒材料 觉醒卷轴·玲珑[初阶]
+  MOV N$觉醒金币 10000000
+  MOV S$觉醒介绍 <　　　　　　　　　　　　　【玲珑系】/SCOLOR=243>\\<　　　　　　　　　　　防御能力大幅提升/SCOLOR=154>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(S$觉醒材料)>/SCOLOR=250>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(N$觉醒金币)>金币/SCOLOR=250>
+  MOV S$觉醒特效1 无
+  MOV S$觉醒特效2 UIsucai.wil:619:8:100:0
+  MOV S$职业图标跳转 狂血配置1
+  MOV S$按钮跳转 转玲珑
+  MOV S$职业图标 001
+  MOV S$觉醒公告等级 [初阶]
+  GOTO @觉醒主界面
+BREAK
+
+[@玲珑配置2]
+#IF
+#ACT
+  MOV N$觉醒目标 2
+  MOV S$显示图标1 007
+  MOV S$显示图标2 001
+  MOV S$隐藏图标1 002
+  MOV S$隐藏图标2 003
+  MOV S$隐藏图标3 004
+  MOV S$隐藏图标4 005
+  MOV S$隐藏图标5 006
+  MOV S$隐藏图标6 008
+  MOV S$隐藏图标7 009
+  MOV S$隐藏图标8 010
+  MOV S$觉醒材料 觉醒卷轴·玲珑[中阶]
+  MOV N$觉醒金币 20000000
+  MOV S$觉醒介绍 <　　　　　　　　　　　　　【玲珑系】/SCOLOR=243>\\<　　　　　　　　　　　防御能力大幅提升/SCOLOR=154>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(S$觉醒材料)>/SCOLOR=250>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(N$觉醒金币)>金币/SCOLOR=250>
+  MOV S$觉醒特效1 无
+  MOV S$觉醒特效2 UIsucai.wil:619:8:100:0
+  MOV S$职业图标跳转 职业不符提示
+  MOV S$按钮跳转 转玲珑
+  MOV S$职业图标 001
+  MOV S$觉醒公告等级 [中阶]
+  GOTO @觉醒主界面
+BREAK
+
+[@玲珑配置3]
+#IF
+#ACT
+  MOV N$觉醒目标 3
+  MOV S$显示图标1 008
+  MOV S$显示图标2 001
+  MOV S$隐藏图标1 002
+  MOV S$隐藏图标2 003
+  MOV S$隐藏图标3 004
+  MOV S$隐藏图标4 005
+  MOV S$隐藏图标5 006
+  MOV S$隐藏图标6 007
+  MOV S$隐藏图标7 009
+  MOV S$隐藏图标8 010
+  MOV S$觉醒材料 觉醒卷轴·玲珑[高阶]
+  MOV N$觉醒金币 30000000
+  MOV S$觉醒介绍 <　　　　　　　　　　　　　【玲珑系】/SCOLOR=243>\\<　　　　　　　　　　　防御能力大幅提升/SCOLOR=154>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(S$觉醒材料)>/SCOLOR=250>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(N$觉醒金币)>金币/SCOLOR=250>
+  MOV S$觉醒特效1 无
+  MOV S$觉醒特效2 UIsucai.wil:619:8:100:0
+  MOV S$职业图标跳转 职业不符提示
+  MOV S$按钮跳转 转玲珑
+  MOV S$职业图标 001
+  MOV S$觉醒公告等级 [高阶]
+  GOTO @觉醒主界面
+BREAK
+
+[@玲珑配置4]
+#IF
+#ACT
+  MOV N$觉醒目标 4
+  MOV S$显示图标1 009
+  MOV S$显示图标2 001
+  MOV S$隐藏图标1 002
+  MOV S$隐藏图标2 003
+  MOV S$隐藏图标3 004
+  MOV S$隐藏图标4 005
+  MOV S$隐藏图标5 006
+  MOV S$隐藏图标6 007
+  MOV S$隐藏图标7 008
+  MOV S$隐藏图标8 010
+  MOV S$觉醒材料 觉醒卷轴·玲珑[宗师]
+  MOV N$觉醒金币 40000000
+  MOV S$觉醒介绍 <　　　　　　　　　　　　　【玲珑系】/SCOLOR=243>\\<　　　　　　　　　　　　　　防御能力大幅提升/SCOLOR=154>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(S$觉醒材料)>/SCOLOR=250>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(N$觉醒金币)>金币/SCOLOR=250>
+  MOV S$觉醒特效1 无
+  MOV S$觉醒特效2 UIsucai.wil:619:8:100:0
+  MOV S$职业图标跳转 职业不符提示
+  MOV S$按钮跳转 转玲珑
+  MOV S$职业图标 001
+  MOV S$觉醒公告等级 [宗师]
+  GOTO @觉醒主界面
+BREAK
+
+[@玲珑配置5]
+#IF
+#ACT
+  MOV N$觉醒目标 5
+  MOV S$显示图标1 010
+  MOV S$显示图标2 001
+  MOV S$隐藏图标1 002
+  MOV S$隐藏图标2 003
+  MOV S$隐藏图标3 004
+  MOV S$隐藏图标4 005
+  MOV S$隐藏图标5 006
+  MOV S$隐藏图标6 007
+  MOV S$隐藏图标7 008
+  MOV S$隐藏图标8 009
+  MOV S$觉醒材料 觉醒卷轴·玲珑[神]
+  MOV N$觉醒金币 50000000
+  MOV S$觉醒介绍 <　　　　　　　　　　　　　【玲珑系】/SCOLOR=243>\\<　　　　　　　　　　　防御能力大幅提升/SCOLOR=154>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(S$觉醒材料)>/SCOLOR=250>\\<　　　　　　　　觉醒需求：/SCOLOR=243><　<$STR(N$觉醒金币)>金币/SCOLOR=250>
+  MOV S$觉醒特效1 无
+  MOV S$觉醒特效2 UIsucai.wil:619:8:100:0
+  MOV S$职业图标跳转 职业不符提示
+  MOV S$按钮跳转 转玲珑
+  MOV S$职业图标 001
+  MOV S$觉醒公告等级 [神]
+  GOTO @觉醒主界面
+BREAK
+
+[@玲珑配置6]
+#IF
+#ACT
+  MOV S$显示图标1 010
+  MOV S$显示图标2 001
+  MOV S$隐藏图标1 002
+  MOV S$隐藏图标2 003
+  MOV S$隐藏图标3 004
+  MOV S$隐藏图标4 005
+  MOV S$隐藏图标5 006
+  MOV S$隐藏图标6 007
+  MOV S$隐藏图标7 008
+  MOV S$隐藏图标8 009
+  MOV S$觉醒材料 无
+  MOV N$觉醒金币 50000000
+  MOV S$觉醒介绍 <　　　　　　　　　　　　【玲珑满觉醒】/SCOLOR=243>\\<　　　　　　　　　　　　战力狂飙至顶点/SCOLOR=250>
+  MOV S$觉醒特效1 无
+  MOV S$觉醒特效2 UIsucai.wil:619:8:100:0
+  MOV S$职业图标跳转 职业不符提示
+  MOV S$按钮跳转 满转提示
+  MOV S$职业图标 001
+  GOTO @觉醒主界面
+BREAK
+
+
+[@转狂血]
+#IF
+  CHECKITEM <$STR(S$觉醒材料)> 1
+#ELSEACT
+  MessAgeBox <你的身上没有觉醒材料,无法觉醒！/SCOLOR=58>
+BREAK
+
+#IF
+  CHECKGAMEGOLD > <$STR(N$觉醒金币)>
+#ELSEACT
+  MessAgeBox <你的身上没有足够的金币,无法觉醒！/SCOLOR=58>
+BREAK
+
+#IF
+#ACT
+ TAKE <$STR(S$觉醒材料)> 1
+ GAMEGOLD - <$STR(N$觉醒金币)>
+ RECYCFENGHAO SELF 狂血1
+ RECYCFENGHAO SELF 狂血2
+ RECYCFENGHAO SELF 狂血3
+ RECYCFENGHAO SELF 狂血4
+ RECYCFENGHAO SELF 狂血5
+ RECYCFENGHAO SELF 玲珑1
+ RECYCFENGHAO SELF 玲珑2
+ RECYCFENGHAO SELF 玲珑3
+ RECYCFENGHAO SELF 玲珑4
+ RECYCFENGHAO SELF 玲珑5
+ GIVEFENGHAO SELF 狂血<$STR(N$觉醒目标)>
+ SendNewLineMsg 0 254 50 0 0 0 0 恭喜玩家<【<$USERNAME>】/SCOLOR=253>成功觉醒<【狂血<$STR(S$觉醒公告等级)>】/SCOLOR=250>，战力暴涨！！！
+ GOTO @MAIN
+BREAK
+
+
+[@转玲珑]
+#IF
+  CHECKITEM <$STR(S$觉醒材料)> 1
+#ELSEACT
+  MessAgeBox <你的身上没有觉醒材料,无法觉醒！/SCOLOR=58>
+BREAK
+
+#IF
+  CHECKGAMEGOLD > <$STR(N$觉醒金币)>
+#ELSEACT
+  MessAgeBox <你的身上没有足够的金币,无法觉醒！/SCOLOR=58>
+BREAK
+
+#IF
+#ACT
+ TAKE <$STR(S$觉醒材料)> 1
+ GAMEGOLD - <$STR(N$觉醒金币)>
+ RECYCFENGHAO SELF 狂血1
+ RECYCFENGHAO SELF 狂血2
+ RECYCFENGHAO SELF 狂血3
+ RECYCFENGHAO SELF 狂血4
+ RECYCFENGHAO SELF 狂血5
+ RECYCFENGHAO SELF 玲珑1
+ RECYCFENGHAO SELF 玲珑2
+ RECYCFENGHAO SELF 玲珑3
+ RECYCFENGHAO SELF 玲珑4
+ RECYCFENGHAO SELF 玲珑5
+ GIVEFENGHAO SELF 玲珑<$STR(N$觉醒目标)>
+ SendNewLineMsg 0 254 50 0 0 0 0 恭喜玩家<【<$USERNAME>】/SCOLOR=253>成功觉醒<【玲珑<$STR(S$觉醒公告等级)>】/SCOLOR=250>，战力暴涨！！！
+ GOTO @MAIN
+BREAK
+
+
+
+
+[@职业不符提示]
+#IF
+#ACT
+  GOTO @MAIN
+  MessAgeBox <你已经选择了其他觉醒职业！/SCOLOR=58>
+BREAK
+
+[@满转提示]
+#IF
+#ACT
+  MessAgeBox <你已觉醒至最高境界！/SCOLOR=58>
+BREAK
+
+

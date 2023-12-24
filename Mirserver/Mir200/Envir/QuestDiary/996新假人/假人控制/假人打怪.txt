@@ -1,0 +1,378 @@
+[@打怪开关]
+{
+#IF
+ISDUMMY
+RANDOM 12
+NOT INSAFEZONE
+#ACT
+DUMMYSTART
+ChangeAttatckMode 6
+
+
+
+
+#OR
+CheckItemDura 0 < 1000 0
+CheckItemDura 1 < 1000 0
+CheckItemDura 2 < 300 0
+#ACT
+ACTREPAIRALL
+BREAK
+
+
+
+
+;====================================================================
+#IF
+ISDUMMY
+EQUAL G50 0
+NOT INSAFEZONE
+#ACT
+HUMANHP + 300
+HUMANMP + 300
+
+#IF
+RANDOM 20
+ISDUMMY
+not INSAFEZONE
+not CheckHumInRange 3 355 341 10
+CheckRangeMonCount <$MAP> <$X> <$Y> 20 < 1
+#ACT
+map <$MAP>
+break
+;====================================================================
+
+#IF
+RANDOM 19
+large G65 0
+CHECKLEVELEX > 45
+CheckRangeHumCount 3 330 330 15 > 18
+CheckHumInRange 3 330 330 11
+#ACT
+movr I50 0 6
+MOVR P7 321 339
+MOVR P8 330 339
+GotoNow <$STR(P7)> <$STR(P8)>
+MOVR <$STR(N$回城时间)> 300 800
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+PGStartAutoPickItem 1
+PGSetAutoPickItemRange 5
+PGSetAutoPickItemInterval 500
+DUMMYSTOP
+BREAK
+
+#IF
+RANDOM 15
+large G65 0
+CHECKLEVELEX > 45
+large <$str(S$充值)> 1
+small <$str(S$充值)> 7
+CheckRangeHumCount 3 330 330 15 > 15
+CheckHumInRange 3 330 330 11
+#ACT
+movr I50 2 8
+MOVR P7 321 339
+MOVR P8 330 339
+GotoNow <$STR(P7)> <$STR(P8)>
+MOVR <$STR(N$回城时间)> 300 800
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+PGStartAutoPickItem 1
+PGSetAutoPickItemRange 5
+PGSetAutoPickItemInterval 500
+BREAK
+
+;====================================================================
+#IF
+RANDOM 19
+EQUAL G65 0
+CHECKLEVELEX > 45
+CheckRangeHumCount 3 330 330 15 > 9
+CheckHumInRange 3 330 330 11
+#ACT
+movr I50 0 6
+MOVR P7 321 339
+MOVR P8 330 339
+GotoNow <$STR(P7)> <$STR(P8)>
+MOVR <$STR(N$回城时间)> 300 800
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+PGStartAutoPickItem 1
+PGSetAutoPickItemRange 5
+PGSetAutoPickItemInterval 500
+BREAK
+
+#IF
+RANDOM 15
+EQUAL G65 0
+CHECKLEVELEX > 45
+large <$str(S$充值)> 1
+small <$str(S$充值)> 7
+CheckRangeHumCount 3 330 330 15 > 7
+CheckHumInRange 3 330 330 11
+#ACT
+movr I50 2 8
+MOVR P7 321 339
+MOVR P8 330 339
+GotoNow <$STR(P7)> <$STR(P8)>
+MOVR <$STR(N$回城时间)> 300 800
+movr <$STR(N12)> 5000 9000
+DELAYCALL <$STR(N12)> @开始进图
+
+BREAK
+
+
+
+
+
+
+
+;====================================================================
+#IF
+ISDUMMY
+ISONMAP 3
+RANDOM 15
+#ACT
+ChangeAttatckMode 6
+DUMMYSTOP
+BREAK
+
+#IF
+RANDOM 3
+ISDUMMY
+equal I11 参与
+EQUAL G50 1
+CheckHumInRange 3 330 330 11
+#ACT
+movr P1 353 357
+movr P2 339 342
+GotoNow <$STR(P1)> <$STR(P2)>
+AutoUseMagic 31 30
+DUMMYSTOP
+break
+
+
+[@再次移动]
+#IF
+CheckHumInRange 3 330 330 12
+#ACT
+MOVR P7 321 339
+MOVR P8 321 339
+GotoNow <$STR(P7)> <$STR(P8)>
+DUMMYSTOP
+BREAK
+
+
+
+[@开始进图]
+#IF
+equal I50 1
+checklevelex < 91
+CHECKMAPDUMMYCOUNT 牛魔7 < 10
+#ACT
+mapmove 牛魔7
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『新人神殿』|250:0:1}开始传奇之旅!
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『新人神殿』|250:0:1}开始传奇之旅!
+DummyStart
+SENDDELAYMSG 回城%s后到达 <$STR(N$回城时间)> 255 1 @回城泡点
+BREAK
+
+
+#IF
+equal I50 2
+CHECKMAPDUMMYCOUNT sanren < 10
+#ACT
+mapmove sanren
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『散人打宝』|250:0:1}开始传奇之旅!
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『散人打宝』|250:0:1}开始传奇之旅!
+DummyStart
+SENDDELAYMSG 回城%s后到达 <$STR(N$回城时间)> 255 1 @回城泡点
+BREAK
+
+#IF
+equal I50 3
+CHECKRENEWLEVEL > 0
+CHECKMAPDUMMYCOUNT DBY10A < 10
+#ACT
+mapmove DBY10A
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『异界之地』|250:0:1}开始传奇之旅!
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『异界之地』|250:0:1}开始传奇之旅!
+SendCenterMsg 161 249 (*)勇士[%s]进入高级打宝,挑战BOSS率领的神秘组织能获得大量装备! 1
+DummyStart
+SENDDELAYMSG 回城%s后到达 <$STR(N$回城时间)> 255 1 @回城泡点
+BREAK
+
+#IF
+equal I50 4
+CHECKRENEWLEVEL > 1
+CHECKMAPDUMMYCOUNT pio1 < 15
+#ACT
+mapmove pio1
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『远古遗迹』|250:0:1}开始传奇之旅!
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『远古遗迹』|250:0:1}开始传奇之旅!
+DummyStart
+SENDDELAYMSG 回城%s后到达 <$STR(N$回城时间)> 255 1 @回城泡点
+BREAK
+
+#IF
+equal I50 5
+CHECKMAPDUMMYCOUNT 寒冰殿堂2A < 15
+CHECKRENEWLEVEL > 2
+#ACT
+mapmove 寒冰殿堂2A
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『寒冰殿堂』|250:0:1}开始传奇之旅!
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『寒冰殿堂』|250:0:1}开始传奇之旅!
+DummyStart
+SENDDELAYMSG 回城%s后到达 <$STR(N$回城时间)> 255 1 @回城泡点
+BREAK
+
+
+#IF
+equal I50 6
+CHECKMAPDUMMYCOUNT 牛魔3 < 15
+CHECKRENEWLEVEL > 3
+#ACT
+mapmove 牛魔3
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『传承圣地』|250:0:1}开始传奇之旅!
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『传承圣地』|250:0:1}开始传奇之旅!
+DummyStart
+SENDDELAYMSG 回城%s后到达 <$STR(N$回城时间)> 255 1 @回城泡点
+BREAK
+
+
+
+#if
+RANDOM 5
+CHECKVAR HUMAN 元宝消费 > 19
+CHECKMAPDUMMYCOUNT shouchong < 5
+#act
+mapmove shouchong
+SendCenterMsg 4 254 每日首充玩家[<$USERNAME>]进入了『每日首充地图』.我们祝福他满载而归！ 1 10
+GuildNoticeMsg 249 251 每日首充玩家[<$USERNAME>]进入了『每日首充地图』.我们祝福他满载而归！
+DummyStart
+SENDDELAYMSG 回城%s后到达 <$STR(N$回城时间)> 255 1 @回城泡点
+BREAK
+
+
+#IF
+RANDOM 3
+CHECKRENEWLEVEL > 4
+#ACT
+mapmove 石墓9 145 92
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『第二大陆』|250:0:1}开始传奇之旅!
+SENDMSG 0 253 251 勇士{「<$USERNAME>」|254:0:1}闯入了{『第二大陆』|250:0:1}开始传奇之旅!
+DummyStart
+SENDDELAYMSG 回城%s后到达 <$STR(N$回城时间)> 255 1 @回城泡点
+BREAK
+#elseact
+#IF
+RANDOM 5
+#ACT
+MOVR P7 322 339
+MOVR P8 321 339
+GotoNow <$STR(P7)> <$STR(P8)>
+DUMMYSTOP
+break
+
+
+[@回城泡点]
+#IF  
+ISDUMMY
+CHECKLEVELEX > 0
+#ACT
+MOVR P7 321 339
+MOVR P8 321 339
+mapmove 3 <$str(P7)> <$STR(P8)>
+AutoUseMagic 31 30
+DUMMYSTOP
+break
+
+
+
+
+[@回城吃经验]
+#IF  
+ISDUMMY
+CHECKLEVELEX > 0
+#ACT
+MOVR P7 321 339
+MOVR P8 321 339
+mapmove 3 <$str(P7)> <$STR(P8)>
+AutoUseMagic 31 30
+movr <$STR(N12)> 2000 6000
+DELAYCALL <$STR(N12)> @吃经验开始
+DUMMYSTOP
+break
+
+[@吃经验开始A]
+#IF
+CHECKLEVELEX < 90
+CHECKITEM 经验宝箱 10
+#ACT
+take 经验宝箱 10
+CHANGEEXP + 80000000
+SENDMSG 1 玩家【%s】，开启了十个经验宝箱！
+movr <$STR(N12)> 1000 5000
+DELAYCALL <$STR(N12)> @吃经验开始A
+BREAK
+
+#IF
+CHECKLEVELEX < 90
+CHECKITEM 经验宝箱 1
+#ACT
+take 经验宝箱 1
+CHANGEEXP + 8000000
+SENDMSG 1 玩家【%s】，开启了一个经验宝箱！
+movr <$STR(N12)> 1000 5000
+DELAYCALL <$STR(N12)> @吃经验开始A
+DUMMYSTOP
+break
+#elseact
+#IF
+CHECKLEVELEX > 45
+large <$str(S$充值)> 2
+small <$str(S$充值)> 6
+CheckHumInRange 3 330 330 15
+#ACT
+movr I50 4
+MOVR P7 321 339
+MOVR P8 321 339
+GotoNow <$STR(P7)> <$STR(P8)>
+MOVR <$STR(N$回城时间)> 300 800
+movr <$STR(N12)> 2000 5000
+DELAYCALL <$STR(N12)> @开始进图
+DUMMYSTOP
+break
+
+
+#IF
+CHECKLEVELEX > 45
+CheckRangeHumCount 3 330 330 15 > 19
+CheckHumInRange 3 330 330 15
+#ACT
+movr I50 2
+MOVR <$STR(N$回城时间)> 300 800
+movr <$STR(N12)> 3000 6000
+DELAYCALL <$STR(N12)> @开始进图
+DUMMYSTOP
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

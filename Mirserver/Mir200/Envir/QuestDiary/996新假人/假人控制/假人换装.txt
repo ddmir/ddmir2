@@ -1,0 +1,466 @@
+[@假人自动佩戴装备]
+{
+
+#IF
+#ACT
+MOV <$STR(N$捡取物品)> <$CURRTEMSTDMODE>
+MOV <$STR(S$捡取物品)> <$CURRTEMNAME>
+
+#IF
+EQUAL <$STR(N$捡取物品)> 41
+#ACT
+GOTO @假人材料数据
+
+BREAK
+#if
+EQUAL <$STR(N$捡取物品)> 48
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$SHIELD>
+TakeOnItem <$STR(S$捡取物品)> 16
+MOV M1 <$MAXDC>
+MOV S1 <$SHIELD>
+goto @盾牌数据对比
+BREAK
+
+#if
+EQUAL <$STR(N$捡取物品)> 63
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$CHARM>
+TakeOnItem <$STR(S$捡取物品)> 12
+MOV M1 <$MAXDC>
+MOV S1 <$CHARM>
+goto @宝石数据对比
+BREAK
+#if
+EQUAL <$STR(N$捡取物品)> 28
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$HORSE>
+TakeOnItem <$STR(S$捡取物品)> 15
+MOV M1 <$MAXDC>
+MOV S1 <$HORSE>
+goto @马牌数据对比
+BREAK
+#if
+EQUAL <$STR(N$捡取物品)> 65
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$DRUM>
+TakeOnItem <$STR(S$捡取物品)> 14
+MOV M1 <$MAXDC>
+MOV S1 <$DRUM>
+goto @军鼓数据对比
+BREAK
+#if
+EQUAL <$STR(N$捡取物品)> 16
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$HAT>
+TakeOnItem <$STR(S$捡取物品)> 13
+MOV M1 <$MAXDC>
+MOV S1 <$HAT>
+goto @斗笠数据对比
+BREAK
+#if
+EQUAL <$STR(N$捡取物品)> 64
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$BELT>
+TakeOnItem <$STR(S$捡取物品)> 10
+MOV M1 <$MAXDC>
+MOV S1 <$BELT>
+goto @腰带数据对比
+
+BREAK
+
+#if
+EQUAL <$STR(N$捡取物品)> 62
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$BOOTS>
+TakeOnItem <$STR(S$捡取物品)> 11
+MOV M1 <$MAXDC>
+MOV S1 <$BOOTS>
+goto @靴子数据对比
+BREAK
+#if
+EQUAL <$STR(N$捡取物品)> 30
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$RIGHTHAND>
+TakeOnItem <$STR(S$捡取物品)> 2
+MOV M1 <$MAXDC>
+MOV S1 <$RIGHTHAND>
+goto @勋章数据对比
+
+BREAK
+#if
+EQUAL <$STR(N$捡取物品)> 5
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$WEAPONN>
+TakeOnItem <$STR(S$捡取物品)> 1
+MOV M1 <$MAXDC>
+MOV S1 <$WEAPONN>
+goto @武器数据对比
+;SENDMSG 0 武器
+BREAK
+#OR
+EQUAL <$STR(N$捡取物品)> 24
+EQUAL <$STR(N$捡取物品)> 26
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$ARMRING_L>
+TakeOnItem <$STR(S$捡取物品)> 5
+MOV M1 <$MAXDC>
+MOV S1 <$ARMRING_L>
+goto @手镯数据对比
+;SENDMSG 0 手镯
+BREAK
+#OR
+EQUAL <$STR(N$捡取物品)> 22
+EQUAL <$STR(N$捡取物品)> 23
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$RING_L>
+TakeOnItem <$STR(S$捡取物品)> 7
+MOV M1 <$MAXDC>
+MOV S1 <$RING_L>
+goto @戒指数据对比
+;SENDMSG 0 戒指
+BREAK
+#if
+EQUAL <$STR(N$捡取物品)> 15
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$HELMET>
+TakeOnItem <$STR(S$捡取物品)> 4
+MOV M1 <$MAXDC>
+MOV S1 <$HELMET>
+goto @头盔数据对比
+;SENDMSG 0 头盔
+BREAK
+#OR
+EQUAL <$STR(N$捡取物品)> 19
+EQUAL <$STR(N$捡取物品)> 20
+EQUAL <$STR(N$捡取物品)> 21
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$NECKLACE>
+TakeOnItem <$STR(S$捡取物品)> 3
+MOV M1 <$MAXDC>
+MOV S1 <$NECKLACE>
+goto @项链数据对比
+;SENDMSG 0 项链
+BREAK
+#OR
+EQUAL <$STR(N$捡取物品)> 10
+gender man
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$DRESS>
+TakeOnItem <$STR(S$捡取物品)> 0
+MOV M1 <$MAXDC>
+MOV S1 <$DRESS>
+goto @衣服数据对比
+BREAK
+#OR
+EQUAL <$STR(N$捡取物品)> 11
+gender WOman
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$DRESS>
+TakeOnItem <$STR(S$捡取物品)> 0
+MOV M1 <$MAXDC>
+MOV S1 <$DRESS>
+goto @衣服数据对比
+;SENDMSG 0 衣服
+BREAK
+
+#if
+EQUAL <$STR(N$捡取物品)> 51
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$BUJUK>
+TakeOnItem <$STR(S$捡取物品)> 9
+MOV M1 <$MAXDC>
+MOV S1 <$BUJUK>
+goto @符数据对比
+BREAK
+
+#if
+EQUAL <$STR(N$捡取物品)> 66
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$SDRESS>
+TakeOnItem <$STR(S$捡取物品)> 17
+MOV M1 <$MAXDC>
+MOV S1 <$SDRESS>
+goto @时装衣服数据对比
+BREAK
+#if
+EQUAL <$STR(N$捡取物品)> 68
+#act
+MOV M0 <$MAXDC>
+MOV S0 <$SWEAPON>
+TakeOnItem <$STR(S$捡取物品)> 18
+MOV M1 <$MAXDC>
+MOV S1 <$SWEAPON>
+goto @时装武器数据对比
+BREAK
+
+
+
+
+#IF
+equal <$CURRTEMSTDMODE> 100
+#ACT
+mov N$装备位置 30
+
+#IF
+equal <$CURRTEMSTDMODE> 101
+#ACT
+mov N$装备位置 31
+#IF
+equal <$CURRTEMSTDMODE> 102
+#ACT
+mov N$装备位置 32
+#IF
+equal <$CURRTEMSTDMODE> 103
+#ACT
+mov N$装备位置 33
+#IF
+equal <$CURRTEMSTDMODE> 104
+#ACT
+mov N$装备位置 34
+#IF
+equal <$CURRTEMSTDMODE> 105
+#ACT
+mov N$装备位置 35
+#IF
+equal <$CURRTEMSTDMODE> 106
+#ACT
+mov N$装备位置 36
+#IF
+equal <$CURRTEMSTDMODE> 107
+#ACT
+mov N$装备位置 37
+#IF
+equal <$CURRTEMSTDMODE> 108
+#ACT
+mov N$装备位置 38
+#IF
+equal <$CURRTEMSTDMODE> 109
+#ACT
+mov N$装备位置 39
+#IF
+equal <$CURRTEMSTDMODE> 110
+#ACT
+mov N$装备位置 40
+#IF
+equal <$CURRTEMSTDMODE> 111
+#ACT
+mov N$装备位置 41
+
+#IF
+LARGE N$装备位置 18
+#act
+TakeOnItem <$STR(S$捡取物品)> <$str(N$装备位置)>
+break
+
+
+
+
+
+[@头盔数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+
+#elseact
+TakeOnItem <$STR(S0)> 4
+
+
+[@符数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+
+#elseact
+TakeOnItem <$STR(S0)> 9
+
+
+[@项链数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+
+#elseact
+TakeOnItem <$STR(S0)> 3
+
+
+[@衣服数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+
+#elseact
+TakeOnItem <$STR(S0)> 0
+
+
+[@武器数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+
+#elseact
+TakeOnItem <$STR(S0)> 1
+
+
+[@盾牌数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+
+#elseact
+TakeOnItem <$STR(S0)> 16
+
+
+[@手镯数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+
+#elseact
+TakeOnItem <$STR(S0)> 5
+GOTO @手镯检测继续
+
+[@手镯检测继续]
+#IF
+#ACT
+MOV M0 <$MAXDC>
+MOV S0 <$ARMRING_R>
+TakeOnItem <$STR(S$捡取物品)> 6
+MOV M1 <$MAXDC>
+MOV S1 <$ARMRING_R>
+goto @手镯数据对比1
+BREAK
+
+[@手镯数据对比1]
+#if
+large M1 <$STR(M0)> 
+#act
+
+#elseact
+TakeOnItem <$STR(S0)> 6
+
+
+[@戒指数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+
+#elseact
+TakeOnItem <$STR(S0)> 7
+GOTO @戒指检测继续
+
+[@戒指检测继续]
+#IF
+#ACT
+MOV M0 <$MAXDC>
+MOV S0 <$RING_R>
+TakeOnItem <$STR(S$捡取物品)> 8
+MOV M1 <$MAXDC>
+MOV S1 <$RING_R>
+goto @戒指数据对比1
+BREAK
+
+[@戒指数据对比1]
+#if
+large M1 <$STR(M0)> 
+#act
+#elseact
+TakeOnItem <$STR(S0)> 8
+
+
+[@腰带数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+#elseact
+TakeOnItem <$STR(S0)> 10
+
+
+[@靴子数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+#elseact
+TakeOnItem <$STR(S0)> 11
+
+
+[@军鼓数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+#elseact
+TakeOnItem <$STR(S0)> 14
+
+
+[@宝石数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+#elseact
+TakeOnItem <$STR(S0)> 12
+
+
+[@马牌数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+#elseact
+TakeOnItem <$STR(S0)> 15
+
+
+[@勋章数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+#elseact
+TakeOnItem <$STR(S0)> 2
+
+
+[@斗笠数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+#elseact
+TakeOnItem <$STR(S0)> 13
+
+
+[@时装衣服数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+#elseact
+TakeOnItem <$STR(S0)> 17
+
+
+[@时装武器数据对比]
+#if
+large M1 <$STR(M0)> 
+#act
+#elseact
+TakeOnItem <$STR(S0)> 18
+
+
+
+
+
+
+
+
+}

@@ -1,0 +1,44 @@
+;功能： 人物转生控制
+;格式： RENEWLEVEL 转次数 转后等级 分配点数
+;转次数 代表一次转多少级(数值范围为 1 - 255)
+;转后等级 代表转生后人物的等级，0为不改变人物当前等级。
+;分配点数 代表转生后可以得到的点数，此点数可能按比例换成人物属性点(数值范围 1 - 20000)。
+
+;==========================================
+;将人物转生一次，后等级设为 28级，分配100点属性
+
+[@main]
+
+#IF
+#ACT
+closeBigDialogBox
+#SAY
+　\
+<我要转生/@RenewLevel> <查看等级/@ViewRenLevel>   <转生奖励/@main_3>   <属性还原/@main_4>\
+   \\\\
+  想要更强大 ... 20转后伙伴们去看看后面的英雄进阶
+
+[@RenewLevel]
+#IF
+#ACT
+RENEWLEVEL 1 28 100
+#SAY
+转生成功。
+
+
+[@ViewRenLevel]
+#IF
+CHECKRENEWLEVEL = 0
+#ACT
+break
+#SAY
+你还没转生！！！\ \
+〖<返回/@ReNewLevel>〗 〖<关闭/@exit>〗
+
+#IF
+CHECKRENEWLEVEL = 1
+#ACT
+break
+#SAY
+你的转生等级为第一重转生！！！\ \
+〖<返回/@ReNewLevel>〗 〖<关闭/@exit>〗

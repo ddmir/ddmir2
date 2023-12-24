@@ -1,0 +1,313 @@
+[@拾取手镯触发]
+{
+
+#IF
+CHECKJOB warrior
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\战士佩戴列表.txt <$STR(S$手镯名称)>
+#ACT
+DELAYGOTO 100 @战士替换手镯
+BREAK
+
+#IF
+CHECKJOB wizard
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\法师佩戴列表.txt <$STR(S$手镯名称)>
+#ACT
+DELAYGOTO 100 @法师替换手镯
+BREAK
+
+#IF
+CHECKJOB taoist
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\道士佩戴列表.txt <$STR(S$手镯名称)>
+#ACT
+DELAYGOTO 100 @道士替换手镯
+BREAK
+;-------------------------------------------------
+[@战士替换手镯]
+#IF
+CHECKUSEITEM 6
+#ACT
+#ELSEACT
+TakeOnItem <$STR(S$手镯名称)> 6
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#IF
+CHECKUSEITEM 5
+#ACT
+#ELSEACT
+TakeOnItem <$STR(S$手镯名称)> 5
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#IF
+EQUAL <$STR(S$手镯名称)> <$ARMRING_R>
+EQUAL <$STR(S$手镯名称)> <$ARMRING_L>
+#ACT
+MOV N66 <$DC>
+MOV M66 <$MAXDC>
+MOV S$原始手镯 <$ARMRING_R>
+TakeOnItem <$STR(S$手镯名称)> 6
+GOTO @战士替换手镯6
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$手镯名称)> <$ARMRING_R>
+#ACT
+MOV N66 <$DC>
+MOV M66 <$MAXDC>
+MOV S$原始手镯 <$ARMRING_R>
+TakeOnItem <$STR(S$手镯名称)> 6
+GOTO @战士替换手镯6
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$手镯名称)> <$ARMRING_L>
+#ACT
+MOV N65 <$DC>
+MOV M65 <$MAXDC>
+MOV S$原始手镯 <$ARMRING_L>
+TakeOnItem <$STR(S$手镯名称)> 5
+GOTO @战士替换手镯5
+BREAK
+
+[@战士替换手镯6]
+#IF
+LARGE <$MAXDC> M66
+#ACT
+TakeOnItem <$STR(S$原始手镯)> 5
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#IF
+LARGE <$DC> N66
+#ACT
+TakeOnItem <$STR(S$原始手镯)> 5
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始手镯)> 6
+
+#IF
+NOT EQUAL <$STR(S$手镯名称)> <$ARMRING_L>
+#ACT
+MOV N65 <$DC>
+MOV M65 <$MAXDC>
+MOV S$原始手镯 <$ARMRING_L>
+TakeOnItem <$STR(S$手镯名称)> 5
+GOTO @战士替换手镯5
+BREAK
+
+[@战士替换手镯5]
+#IF
+LARGE <$MAXDC> M65
+#ACT
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#IF
+LARGE <$DC> N65
+#ACT
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始手镯)> 5
+BREAK
+
+;-------------------------------------------------
+
+[@法师替换手镯]
+#IF
+CHECKUSEITEM 6
+#ACT
+#ELSEACT
+TakeOnItem <$STR(S$手镯名称)> 6
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#IF
+CHECKUSEITEM 5
+#ACT
+#ELSEACT
+TakeOnItem <$STR(S$手镯名称)> 5
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#IF
+EQUAL <$STR(S$手镯名称)> <$ARMRING_R>
+EQUAL <$STR(S$手镯名称)> <$ARMRING_L>
+#ACT
+MOV N66 <$MC>
+MOV M66 <$MAXMC>
+MOV S$原始手镯 <$ARMRING_R>
+TakeOnItem <$STR(S$手镯名称)> 6
+GOTO @法师替换手镯6
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$手镯名称)> <$ARMRING_R>
+#ACT
+MOV N66 <$MC>
+MOV M66 <$MAXMC>
+MOV S$原始手镯 <$ARMRING_R>
+TakeOnItem <$STR(S$手镯名称)> 6
+GOTO @法师替换手镯6
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$手镯名称)> <$ARMRING_L>
+#ACT
+MOV N65 <$MC>
+MOV M65 <$MAXMC>
+MOV S$原始手镯 <$ARMRING_L>
+TakeOnItem <$STR(S$手镯名称)> 5
+GOTO @法师替换手镯5
+BREAK
+
+[@法师替换手镯6]
+#IF
+LARGE <$MAXMC> M66
+#ACT
+TakeOnItem <$STR(S$原始手镯)> 5
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#IF
+LARGE <$MC> N66
+#ACT
+TakeOnItem <$STR(S$原始手镯)> 5
+DELAYGOTO 1 @保存手镯数据6
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始手镯)> 6
+
+#IF
+NOT EQUAL <$STR(S$手镯名称)> <$ARMRING_L>
+#ACT
+MOV N65 <$MC>
+MOV M65 <$MAXMC>
+MOV S$原始手镯 <$ARMRING_L>
+TakeOnItem <$STR(S$手镯名称)> 5
+GOTO @法师替换手镯5
+BREAK
+
+[@法师替换手镯5]
+#IF
+LARGE <$MAXMC> M65
+#ACT
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#IF
+LARGE <$MC> N65
+#ACT
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始手镯)> 5
+BREAK
+
+;-------------------------------------------------
+
+[@道士替换手镯]
+#IF
+CHECKUSEITEM 6
+#ACT
+#ELSEACT
+TakeOnItem <$STR(S$手镯名称)> 6
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#IF
+CHECKUSEITEM 5
+#ACT
+#ELSEACT
+TakeOnItem <$STR(S$手镯名称)> 5
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#IF
+EQUAL <$STR(S$手镯名称)> <$ARMRING_R>
+EQUAL <$STR(S$手镯名称)> <$ARMRING_L>
+#ACT
+MOV N66 <$SC>
+MOV M66 <$MAXSC>
+MOV S$原始手镯 <$ARMRING_R>
+TakeOnItem <$STR(S$手镯名称)> 6
+GOTO @道士替换手镯6
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$手镯名称)> <$ARMRING_R>
+#ACT
+MOV N66 <$SC>
+MOV M66 <$MAXSC>
+MOV S$原始手镯 <$ARMRING_R>
+TakeOnItem <$STR(S$手镯名称)> 6
+GOTO @道士替换手镯6
+BREAK
+
+#IF
+NOT EQUAL <$STR(S$手镯名称)> <$ARMRING_L>
+#ACT
+MOV N65 <$SC>
+MOV M65 <$MAXSC>
+MOV S$原始手镯 <$ARMRING_L>
+TakeOnItem <$STR(S$手镯名称)> 5
+GOTO @道士替换手镯5
+BREAK
+
+[@道士替换手镯6]
+#IF
+LARGE <$MAXSC> M66
+#ACT
+TakeOnItem <$STR(S$原始手镯)> 5
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#IF
+LARGE <$SC> N66
+#ACT
+TakeOnItem <$STR(S$原始手镯)> 5
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始手镯)> 6
+
+#IF
+NOT EQUAL <$STR(S$手镯名称)> <$ARMRING_L>
+#ACT
+MOV N65 <$SC>
+MOV M65 <$MAXSC>
+MOV S$原始手镯 <$ARMRING_L>
+TakeOnItem <$STR(S$手镯名称)> 5
+GOTO @道士替换手镯5
+BREAK
+
+[@道士替换手镯5]
+#IF
+LARGE <$MAXSC> M65
+#ACT
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#IF
+LARGE <$SC> N65
+#ACT
+DELAYGOTO 1 @保存手镯数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始手镯)> 5
+BREAK
+
+;-------------------------------------------------
+[@保存手镯数据]
+#IF
+#ACT
+
+}

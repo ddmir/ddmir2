@@ -1,0 +1,375 @@
+(@buy )
+%100
++3
+[@main]
+欢迎光临, 这么荒凉的地方还有什么事情可做呢?是不是很无聊?\
+要不要试一下你的运气?如果没有获奖,你可别怪我啊.一个人能\
+携带的金币数量是有限制的,如果超过上限,金币将掉在地上,\
+你可要注意啊!! \ 
+彩票 <买/@buy>\
+奖金 <查询/@Bingo>\
+<对话/@talkwith>\
+<退出/@exit>
+
+[@talkwith]
+我挖后面的洞... \
+花了很长时间才完成 \
+但是我不能白送你去哦！ \ \
+   <移动到毒蛇山谷/@move1> \
+   <移动到不归路/@move2> \
+   <返 回/@Main>
+[@move1]
+移动到毒蛇山谷需要金币  \
+不能让你免费使用? \
+你必须支付2000金币 \ 
+你想花这笔钱吗? \ \
+   
+   <移动./@pay1> \ 
+   <退出./@talkwith>   
+[@pay1]
+#IF
+checkgold 2000
+#ACT
+take 金币 2000
+mapmove 3 516 773
+#ELSESAY
+你在开玩笑吧???这点钱也没有.. \
+还想移动?? 我不想再见到你.. \ 
+break
+<返 回/@Main>
+[@move2]
+移动到不归路需要金币  \
+不能让你免费使用? \
+你必须支付1000金币 \ 
+你想花这笔钱吗? \ \ \ \
+   
+   <移动./@pay2> \
+   <退出./@talkwith>   
+[@pay2]
+#IF
+checkgold 1000
+#ACT
+take 金币 1000
+mapmove D701 105 158
+#ELSESAY
+你在开玩笑吧???这点钱也没有.. \
+还想移动?? 我不想再见到你..  \ 
+break
+<返 回/@Main>
+
+[@pay3]
+#IF
+checkgold 5000
+#ACT
+take 金币 5000
+mapmove 11 136 368
+#ELSESAY
+你在开玩笑吧???这点钱也没有.. \
+还想移动?? 我不想再见到你..  \ 
+break
+<返 回/@Main>  
+
+[@h1]
+每完成一次任务可以得到任务卷一张，收集1张任务卷\
+后可以换取声望值一点，随机任务也可以获得声望值。\ \
+您的当前声望指数为：<$CREDITPOINT>\
+<接受任务/@jieshourenwu>\
+<领取声望/@lingqushengwang>\
+<返 回/@Main>
+[@lingqushengwang]
+#IF
+checkitem 任务卷 1
+#ACT
+take 任务卷 1
+CREDITPOINT + 1
+SENDMSG 6 您的当前声望指数为：<$CREDITPOINT>
+close
+#ELSESAY
+你没有1张任务卷不能提升声望值！\ \
+<返回/@main>
+[@jieshourenwu]
+#IF
+Check [020] 0
+#ACT
+set [019] 1
+movr d0 12
+goto @xinrenwu
+break
+#IF
+Check [021] 1
+#SAY
+最近妖怪增加了许多，请帮我去地牢一层东消灭那的黑色恶蛆。\ \
+<注意：消灭足够数量的怪物后系统会给出提示！>\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [022] 1
+#SAY
+最近妖怪增加了许多，请帮我去废矿区域消灭那的僵尸。\ \
+<注意：消灭足够数量的怪物后系统会给出提示！>\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [023] 1
+#SAY
+最近妖怪增加了许多，请帮我去石墓四层消灭那的红野猪。\ \
+<注意：消灭足够数量的怪物后系统会给出提示！>\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [027] 1
+checkitem 肉 5
+#ACT
+SET [020] 0
+SET [027] 0
+take 肉 5
+give 金币 10000
+give 任务卷 1
+SENDMSG 0 (*)恭喜『%s』完成声望任务获得声望1点！
+#SAY
+哇，这么快就弄到5块鹿肉了啊，真了不起，这是给你的奖励！\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [027] 1
+#SAY
+土城的屠夫在我这里订购了5块肉，麻烦你帮我去弄5块肉过来！\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [028] 1
+checkitem 金矿 5
+#ACT
+SET [020] 0
+SET [028] 0
+take 金矿 5
+give 金币 20000
+give 任务卷 1
+SENDMSG 0 (*)恭喜『%s』完成声望任务获得声望1点！
+#SAY
+谢谢你帮我找到金矿，这是给你的奖励！\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [028] 1
+#SAY
+还没有找到5块金矿吗？\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [029] 1
+checkitem 祝福油 1
+#ACT
+SET [020] 0
+SET [029] 0
+take 祝福油 1
+give 金币 50000
+CREDITPOINT + 1
+SENDMSG 0 (*)恭喜『%s』完成声望任务获得声望1点！
+#SAY
+谢谢你帮我找到祝福油，这是给你的奖励！<[声望提升+1]>\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [029] 1
+#SAY
+还没有找到祝福油吗？\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [040] 1
+checkitem 魔杖 1
+#ACT
+SET [020] 0
+SET [040] 0
+take 魔杖 1
+give 金币 50000
+CREDITPOINT + 1
+SENDMSG 0 (*)恭喜『%s』完成声望任务获得声望1点！
+#SAY
+谢谢你帮我找到魔杖，这是给你的奖励！<[声望提升+1]>\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [040] 1
+#SAY
+还没有找到魔杖吗？\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [041] 1
+checkitem 银蛇 1
+#ACT
+SET [020] 0
+SET [041] 0
+take 银蛇 1
+give 金币 50000
+CREDITPOINT + 1
+SENDMSG 0 (*)恭喜『%s』完成声望任务获得声望1点！
+#SAY
+谢谢你帮我找到银蛇，这是给你的奖励！<[声望提升+1]>\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [041] 1
+#SAY
+还没有找到银蛇吗？\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [042] 1
+checkitem 炼狱 1
+#ACT
+SET [020] 0
+SET [042] 0
+take 炼狱 1
+give 金币 50000
+CREDITPOINT + 1
+SENDMSG 0 (*)恭喜『%s』完成声望任务获得声望1点！
+#SAY
+谢谢你帮我找到炼狱，这是给你的奖励！<[声望提升+1]>\ \
+<返回/@main>
+#ACT
+break
+#IF
+Check [042] 1
+#SAY
+还没有找到炼狱吗？\ \
+<返回/@main>
+#ACT
+break
+[@xinrenwu]
+#IF
+Check [019] 0
+#act
+mapmove T225
+break
+#IF
+equal d0 0
+#ACT
+SET [019] 0
+SET [020] 1
+SET [029] 1
+#SAY
+<祝福油>能增加武器的幸运，麻烦你帮我弄一瓶过来好吗？\ \
+<返回/@main>
+#ACT
+break
+#IF
+equal d0 1
+#ACT
+SET [019] 0
+SET [020] 1
+SET [021] 1
+#SAY
+最近妖怪增加了许多，请帮我去地牢一层东消灭那的黑色恶蛆。\ \
+<注意：消灭足够数量的怪物后系统会给出提示！>\ \
+<返回/@main>
+#ACT
+break
+#IF
+equal d0 2
+#ACT
+SET [019] 0
+SET [022] 1
+SET [020] 1
+#SAY
+最近妖怪增加了许多，请帮我去废矿区域消灭那的僵尸。\ \
+<注意：消灭足够数量的怪物后系统会给出提示！>\ \
+<返回/@main>
+#ACT
+break
+#IF
+equal d0 3
+#ACT
+SET [019] 0
+SET [023] 1
+SET [020] 1
+#SAY
+最近妖怪增加了许多，请帮我去石墓四层消灭那的红野猪。\ \
+<注意：消灭足够数量的怪物后系统会给出提示！>\ \
+<返回/@main>
+#ACT
+break
+#IF
+equal d0 7
+#ACT
+SET [019] 0
+SET [027] 1
+SET [020] 1
+#SAY
+土城的屠夫在我这里订购了<5块肉>，麻烦你帮我去弄5块肉过来！\ \
+<返回/@main>
+#ACT
+break
+#IF
+equal d0 8
+#ACT
+SET [019] 0
+SET [028] 1
+SET [020] 1
+#SAY
+沙巴克城的铁匠老板在我这里订购了<5块金矿>，我现在脱不开身，\
+麻烦你去帮我弄5块金矿过来！\ \
+<返回/@main>
+#ACT
+break
+#IF
+equal d0 9
+#ACT
+SET [019] 0
+SET [040] 1
+SET [020] 1
+#SAY
+我现在需要一把<魔杖>，据说猪7的白野猪很容易爆。\ \
+<返回/@main>
+#ACT
+break
+#IF
+equal d0 10
+#ACT
+SET [019] 0
+SET [041] 1
+SET [020] 1
+#SAY
+我现在需要一把<银蛇>，据说猪7的白野猪很容易爆。\ \
+<返回/@main>
+#ACT
+break
+#IF
+equal d0 11
+#ACT
+SET [019] 0
+SET [042] 1
+SET [020] 1
+#SAY
+我现在需要一把<炼狱>，据说猪7的白野猪很容易爆。\ \
+<返回/@main>
+#ACT
+break
+[@buy]
+购买我的彩票，试一下你的运气哦。\ \ \
+ <返 回/@Main>
+[@Bingo]
+1等奖    1,000,000金币\
+2等奖      200,000金币\
+3等奖      100,000金币\
+4等奖       10,000金币\
+5等奖        1,000金币\
+6等奖          500金币\ \
+<返 回/@Main>
+[goods]
+彩票    100           10

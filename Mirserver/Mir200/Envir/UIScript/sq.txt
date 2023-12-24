@@ -1,0 +1,18 @@
+[@Main]
+#IF
+#ACT
+UIDLG Close all
+UIDLG Open jiaoben006 250 60 0 0 1 S0
+
+UIDLG LimitItemSlot jiaoben006 item_011:206:207|20
+UIDLG LimitItemSlot jiaoben006 item_012:208:209|21
+UIDLG LimitItemSlot jiaoben006 item_001:210:211|22
+UIDLG LimitItemSlot jiaoben006 item_002:212:213|23
+UIDLG LimitItemSlot jiaoben006 item_003:214:215|24
+UIDLG LimitItemSlot jiaoben006 item_004:216:217|25
+UIDLG LimitItemSlot jiaoben006 item_005:218:219|26
+UIDLG LimitItemSlot jiaoben006 item_006:220:221|27
+UIDLG LimitItemSlot jiaoben006 item_007:222:223|28
+UIDLG LimitItemSlot jiaoben006 item_008:224:225|29
+UIDLG LimitItemSlot jiaoben006 item_009:226:227|30
+UIDLG LimitItemSlot jiaoben006 item_010:228:229|31

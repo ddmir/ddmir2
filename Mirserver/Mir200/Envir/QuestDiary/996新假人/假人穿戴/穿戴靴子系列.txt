@@ -1,0 +1,118 @@
+[@拾取靴子触发]
+{
+
+#IF
+CHECKJOB warrior
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\战士佩戴列表.txt <$STR(S$靴子名称)>
+#ACT
+DELAYGOTO 100 @战士替换靴子
+BREAK
+
+#IF
+CHECKJOB wizard
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\法师佩戴列表.txt <$STR(S$靴子名称)>
+#ACT
+DELAYGOTO 100 @法师替换靴子
+BREAK
+
+#IF
+CHECKJOB taoist
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\道士佩戴列表.txt <$STR(S$靴子名称)>
+#ACT
+DELAYGOTO 100 @道士替换靴子
+BREAK
+;-------------------------------------------------
+[@战士替换靴子]
+#IF
+CHECKUSEITEM 11
+#ACT
+MOV N71 <$DC>
+MOV M71 <$MAXDC>
+MOV S$原始靴子 <$BOOTS>
+TakeOnItem <$STR(S$靴子名称)> 11
+#ELSEACT
+TakeOnItem <$STR(S$靴子名称)> 11
+DELAYGOTO 1 @保存靴子数据
+BREAK
+
+#IF
+LARGE <$MAXDC> M71
+#ACT
+DELAYGOTO 1 @保存靴子数据
+BREAK
+
+#IF
+LARGE <$DC> N71
+#ACT
+DELAYGOTO 1 @保存靴子数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始靴子)> 11
+
+;-------------------------------------------------
+
+[@法师替换靴子]
+#IF
+CHECKUSEITEM 11
+#ACT
+MOV N71 <$MC>
+MOV M71 <$MAXMC>
+MOV S$原始靴子 <$BOOTS>
+TakeOnItem <$STR(S$靴子名称)> 11
+#ELSEACT
+TakeOnItem <$STR(S$靴子名称)> 11
+DELAYGOTO 1 @保存靴子数据
+BREAK
+
+#IF
+LARGE <$MAXMC> M71
+#ACT
+DELAYGOTO 1 @保存靴子数据
+BREAK
+
+#IF
+LARGE <$MC> N71
+#ACT
+DELAYGOTO 1 @保存靴子数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始靴子)> 11
+
+;-------------------------------------------------
+
+[@道士替换靴子]
+#IF
+CHECKUSEITEM 11
+#ACT
+MOV N71 <$SC>
+MOV M71 <$MAXSC>
+MOV S$原始靴子 <$BOOTS>
+TakeOnItem <$STR(S$靴子名称)> 11
+#ELSEACT
+TakeOnItem <$STR(S$靴子名称)> 11
+DELAYGOTO 1 @保存靴子数据
+BREAK
+
+#IF
+LARGE <$MAXSC> M71
+#ACT
+DELAYGOTO 1 @保存靴子数据
+BREAK
+
+#IF
+LARGE <$SC> N71
+#ACT
+DELAYGOTO 1 @保存靴子数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始靴子)> 11
+
+[@保存靴子数据]
+#IF
+#ACT
+
+}
+

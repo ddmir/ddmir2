@@ -1,0 +1,205 @@
+[@假人英雄登录设置]
+{
+#if
+#act
+LOG 假人英雄登录设置
+GETTEXTLINECOUNT <$STR(S$假人英雄信息保存路径)> N$配置行数
+
+#if
+EQUAL N$配置行数 0
+#act
+LOG 假人英雄是新人: <$HERONAME>
+delaygoto 1 @假人英雄首次上线
+#ELSEACT
+LOG 假人英雄不是新人: <$HERONAME>
+delaygoto 1 @假人英雄老人上线
+
+[@假人登录设置]
+{
+#if
+#act
+LOG 假人登录设置
+GETTEXTLINECOUNT <$STR(S$假人个人信息保存路径)> N$配置行数
+
+#if
+EQUAL N$配置行数 0
+#act
+LOG 假人是新人: <$USERNAME>
+delaygoto 1 @假人首次上线
+#ELSEACT
+LOG 假人不是新人: <$USERNAME>
+delaygoto 1 @假人老人上线
+
+#if
+#act
+;-----------------------------------
+mov N$假人土城走动间隔基数 10
+mov N$假人信息刷新间隔基数 60
+movr N$随机数 1 30
+inc N$假人土城走动间隔基数 <$str(N$随机数)>
+inc N$假人信息刷新间隔基数 <$str(N$随机数)>
+setontimer 252  10
+LOG 假人土城走动间隔基数=<$str(N$假人土城走动间隔基数)>
+setontimer 253  <$str(N$假人土城走动间隔基数)>
+LOG 假人土城走动间隔基数253定时器
+setontimer 255 <$str(N$假人信息刷新间隔基数)>
+LOG 假人信息刷新间隔基数255定时器
+
+#if
+EQUAL <$GLOBAL(假人_随身泡点经验开关)> 开启
+#act
+setontimer 254 <$GLOBAL(假人_随身泡点获得时间)>
+
+[@假人老人上线]
+#if
+#act
+LOG 假人老人上线: <$USERNAME>
+
+#if
+#act
+LOADDUMMYCONFIG  <$STR(S$假人个人信息保存路径)>
+
+#if
+ISDUMMY
+#act
+MOVR N$充值 10
+HUMANHP = <$MAXHP>
+HUMANMP = <$MAXMP>
+SetSndaItemBox 1 
+CHANGEATTATCKMODE 6
+DELAYCALL 3000 @飞主城
+
+[@假人首次上线]
+#if
+#act
+LOG 假人首次上线: <$USERNAME>
+
+#if
+ISDUMMY
+#act
+MOVR N$充值 10
+HUMANHP = <$MAXHP>
+HUMANMP = <$MAXMP>
+SetSndaItemBox 1 
+CHANGEATTATCKMODE 6
+DELAYCALL 3000 @飞主城
+
+#if
+gender man
+CHECKJOB Warrior
+#act
+LOADDUMMYCONFIG  ..\QuestDiary\996新假人\假人上线配置文件\新人男战.txt   
+#if
+gender man
+CHECKJOB Wizard
+#act
+LOADDUMMYCONFIG  ..\QuestDiary\996新假人\假人上线配置文件\新人男法.txt      
+#if
+gender man
+CHECKJOB Taoist
+#act
+LOADDUMMYCONFIG  ..\QuestDiary\996新假人\假人上线配置文件\新人男道.txt         
+#if
+gender woman
+CHECKJOB Warrior
+#act
+LOADDUMMYCONFIG  ..\QuestDiary\996新假人\假人上线配置文件\新人女战.txt         
+#if
+gender woman
+CHECKJOB Wizard
+#act
+LOADDUMMYCONFIG  ..\QuestDiary\996新假人\假人上线配置文件\新人女法.txt         
+#if
+gender woman
+CHECKJOB Taoist
+#act
+LOADDUMMYCONFIG  ..\QuestDiary\996新假人\假人上线配置文件\新人女道.txt         
+
+
+#if
+ISDUMMY
+#act
+MOVR N$充值 10
+HUMANHP = <$MAXHP>
+HUMANMP = <$MAXMP>
+SetSndaItemBox 1 
+CHANGEATTATCKMODE 6
+DELAYCALL 3000 @飞主城
+
+[@假人英雄老人上线]
+#if
+#act
+LOG 假人英雄老人上线: <$HERONAME>
+
+#if
+#act
+H.LOADDUMMYCONFIG  <$STR(S$假人英雄信息保存路径)>
+
+[@假人英雄首次上线]
+#if
+#act
+LOG 假人英雄首次上线: <$HERONAME>
+
+#if
+H.ISDUMMY
+#act
+H.HUMANHP = <$H.MAXHP>
+H.HUMANMP = <$H.MAXMP>
+
+#if
+H.gender man
+H.CHECKJOB Warrior
+#act
+H.LOADDUMMYCONFIG  ..\QuestDiary\996新假人\假人上线配置文件\新人男战.txt   
+#if
+H.gender man
+H.CHECKJOB Wizard
+#act
+H.LOADDUMMYCONFIG  ..\QuestDiary\996新假人\假人上线配置文件\新人男法.txt      
+#if
+H.gender man
+H.CHECKJOB Taoist
+#act
+H.LOADDUMMYCONFIG  ..\QuestDiary\996新假人\假人上线配置文件\新人男道.txt         
+#if
+H.gender woman
+H.CHECKJOB Warrior
+#act
+H.LOADDUMMYCONFIG  ..\QuestDiary\996新假人\假人上线配置文件\新人女战.txt         
+#if
+H.gender woman
+H.CHECKJOB Wizard
+#act
+H.LOADDUMMYCONFIG  ..\QuestDiary\996新假人\假人上线配置文件\新人女法.txt         
+#if
+H.gender woman
+H.CHECKJOB Taoist
+#act
+H.LOADDUMMYCONFIG  ..\QuestDiary\996新假人\假人上线配置文件\新人女道.txt         
+
+
+#if
+H.ISDUMMY
+#act
+H.HUMANHP = <$MAXHP>
+H.HUMANMP = <$MAXMP>
+
+[@飞主城]
+#ACT
+movr N$X <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$Y <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+mapmove <$GLOBAL(假人_盟重地图号)> <$str(N$X)> <$str(N$Y)>
+DUMMYSTOP
+movr N$XX <$GLOBAL(假人_回城坐标X左)> <$GLOBAL(假人_回城坐标X右)>
+movr N$YY <$GLOBAL(假人_回城坐标Y左)> <$GLOBAL(假人_回城坐标Y右)>
+DUMMYGOTO <$str(N$XX)> <$str(N$YY)>
+DELAYCALL 5000 @下地图
+
+[@下地图]
+#IF
+ISDUMMY
+#ACT
+#CALL [\996新假人\假人各种触发.txt] @打怪开关
+
+
+}

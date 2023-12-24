@@ -1,0 +1,57 @@
+[@角色信息]
+{
+#IF
+  CHECKITEMW 复活戒指 1
+#ACT
+GOTO @有复活装备
+#ELSEACT
+GOTO @无复活装备
+
+
+#IF
+#ACT
+GETPLAYERATTR 3 N$攻击力下限 0
+GETPLAYERATTR 3 N$攻击力上限 1
+GETPLAYERATTR 1 N$防御力下限 0
+GETPLAYERATTR 1 N$防御力上限 1
+
+[@有复活装备]
+#IF
+  equal <$REVIVALTIME> 0
+#ACT
+  MOV S$复活状态 <可复活/SCOLOR=250>
+#ELSEACT
+  MOV S$复活状态 <<$REVIVALTIME>秒/SCOLOR=146>
+BREAK
+
+[@无复活装备]
+#IF
+#ACT
+  MOV S$复活状态 <无复活/SCOLOR=58>
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

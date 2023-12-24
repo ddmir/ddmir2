@@ -1,0 +1,199 @@
+[@道士]
+{
+#if
+#act
+LOG 道士@@假人装备保存: <$USERNAME>
+CALCVAR HUMAN 假人是否为新人 = 否
+SAVEVAR HUMAN 假人是否为新人 ..\QuestDiary\996新假人\假人个人信息保存\新人变量\新人变量.txt        
+
+#if
+CHECKTEXTLIST <$STR(S$假人个人信息保存路径)> [info]
+#act
+mov N$等级位置开始 26
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> Level=<$LEVEL> <$str(N$等级位置开始)>
+
+
+
+inc N$等级位置开始 13
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems0=<$DRESS> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems1=<$WEAPON> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems2=<$RIGHTHAND> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems3=<$NECKLACE> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems4=<$HELMET> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems5=<$ARMRING_L> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems6=<$ARMRING_R> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems7=<$RING_L> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems8=<$RING_R> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems9=<$BUJUK> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems10=<$BELT> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems11=<$BOOTS> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems12=<$CHARM> <$str(N$等级位置开始)>
+
+inc N$等级位置开始 2
+GetListString <$STR(S$假人个人信息保存路径)> <$str(N$等级位置开始)> S$文本内容
+DelTextList <$STR(S$假人个人信息保存路径)> <$str(S$文本内容)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems13=<$HAT> <$str(N$等级位置开始)>
+
+
+
+#elseact
+CLEARNAMELIST <$STR(S$假人个人信息保存路径)>
+AddTextListEx <$STR(S$假人个人信息保存路径)> NewLevel=0 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;强化魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> Level=3 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> [神圣战甲术] 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> NewLevel=0 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;强化魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> Level=3 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> [幽灵盾] 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> NewLevel=0 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;强化魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> Level=3 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> [隐身术] 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> NewLevel=0 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;强化魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> Level=3 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> [召唤神兽] 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> NewLevel=0 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;强化魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> Level=3 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> [灵魂火符] 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> NewLevel=0 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;强化魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> Level=3 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> [施毒术] 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> NewLevel=0 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;强化魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> Level=3 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> [精神力战法] 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> NewLevel=0 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;强化魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> Level=3 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;魔法等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> [治愈术] 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems13=<$HAT> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;斗笠 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems12=<$CHARM> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;宝石 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems11=<$BOOTS> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;鞋子 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems10=<$BELT> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;腰带 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems9=<$BUJUK> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;护符 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems8=<$RING_R> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;右戒指 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems7=<$RING_L> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;左戒指 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems6=<$ARMRING_R> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;右手镯 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems5=<$ARMRING_L> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;左手镯 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems4=<$HELMET> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;头盔 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems3=<$NECKLACE> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;项链 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems2=<$RIGHTHAND> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;照明物 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems1=<$WEAPON> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;武器 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseItems0=<$DRESS> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;衣服 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> [UseItems] 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;==============================身上装备============================ 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> BAGItems= 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;包裹物品 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> UseSkill=治愈术,精神力战法,施毒术,灵魂火符,召唤神兽,隐身术,幽灵盾,神圣战甲术 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;使用魔法 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> NeedMagicItem=1 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;3：首先使用身上佩戴符或毒，如果身上没有佩戴，就使用包裹中的符或毒。 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;2：需要身上佩戴符或毒，才可以使用魔法 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;1：身上或包裹中都不需要符或毒，就可以直接使用魔法 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;使用毒符物品(道士有效) 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> Level=<$LEVEL> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;等级 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> HAIR=2 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;头发 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> GENDER=<$GENDER> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;性别 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> Job=<$JOB> 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;职业 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> DropBagItem=1 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;掉包裹物品，1=掉，0=不掉 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> DropUseItemRate=15 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;掉装备机率 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> DropUseItem=1 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;是不是掉装备，1=掉，0=不掉 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ItemNewAddValueRate=10 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;装备元素机率 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ItemAddValueRate=10 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;装备极品机率 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> SayRate=100 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;说话机率(英雄无效) 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> AttatckMode=6 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;6-红名攻击(不主动攻击，受攻击后反击) 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;0-全体攻击(主动攻击,但不攻击假人) 1-和平攻击(不PK) 2-夫妻攻击 3-师徒攻击 4-编组攻击 5-行会攻击  0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;攻击模式(英雄无效) 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> AutoPickUpItem=1 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> ;自动捡物1=捡0=不捡 0
+AddTextListEx <$STR(S$假人个人信息保存路径)> [Info] 0
+}

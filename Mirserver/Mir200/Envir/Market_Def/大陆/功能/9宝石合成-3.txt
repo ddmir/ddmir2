@@ -1,0 +1,545 @@
+[@MAIN]
+#IF
+#ACT
+  GOTO @获取攻击宝石数据
+#IF
+#ACT
+  MOV N$攻击宝石 1
+  MOV N$生命宝石 0
+  MOV N$切割宝石 0
+  MOV N$破甲宝石 0
+  MOV N$反伤宝石 0
+  MOV N$增伤宝石 0
+  GOTO @攻击宝石界面
+
+
+
+[@攻击宝石界面]
+#IF
+#ACT
+  UIDLG Close jiaoben009
+  UIDLG Open jiaoben009 200 150 0 0 1
+  UIDLG AddListViewItem jiaoben009 gion_001#ListItem_001
+  UIDLG AddListViewItem jiaoben009 gion_001#ListItem_002
+  UIDLG AddListViewItem jiaoben009 gion_001#ListItem_003
+  UIDLG AddListViewItem jiaoben009 gion_001#ListItem_004
+  UIDLG AddListViewItem jiaoben009 gion_001#ListItem_005
+  UIDLG AddListViewItem jiaoben009 gion_001#ListItem_006
+  UIDLG SetbuttonText jiaoben009 gion_001#ListItem_001#CheckBox_001:攻击宝石
+  UIDLG SetbuttonText jiaoben009 gion_001#ListItem_002#CheckBox_001:生命宝石
+  UIDLG SetbuttonText jiaoben009 gion_001#ListItem_003#CheckBox_001:切割宝石
+  UIDLG SetbuttonText jiaoben009 gion_001#ListItem_004#CheckBox_001:破甲宝石
+  UIDLG SetbuttonText jiaoben009 gion_001#ListItem_005#CheckBox_001:反伤宝石
+  UIDLG SetbuttonText jiaoben009 gion_001#ListItem_006#CheckBox_001:增伤宝石
+  UIDLG BindCheckBox jiaoben009 gion_001#ListItem_001#CheckBox_001:N$攻击宝石
+  UIDLG BindCheckBox jiaoben009 gion_001#ListItem_002#CheckBox_001:N$生命宝石
+  UIDLG BindCheckBox jiaoben009 gion_001#ListItem_003#CheckBox_001:N$切割宝石
+  UIDLG BindCheckBox jiaoben009 gion_001#ListItem_004#CheckBox_001:N$破甲宝石
+  UIDLG BindCheckBox jiaoben009 gion_001#ListItem_005#CheckBox_001:N$反伤宝石
+  UIDLG BindCheckBox jiaoben009 gion_001#ListItem_006#CheckBox_001:N$增伤宝石
+  UIDLG CheckBox jiaoben009 gion_001#ListItem_001#CheckBox_001:<$STR(N$攻击宝石)>
+  UIDLG CheckBox jiaoben009 gion_001#ListItem_002#CheckBox_001:<$STR(N$生命宝石)>
+  UIDLG CheckBox jiaoben009 gion_001#ListItem_003#CheckBox_001:<$STR(N$切割宝石)>
+  UIDLG CheckBox jiaoben009 gion_001#ListItem_004#CheckBox_001:<$STR(N$破甲宝石)>
+  UIDLG CheckBox jiaoben009 gion_001#ListItem_005#CheckBox_001:<$STR(N$反伤宝石)>
+  UIDLG CheckBox jiaoben009 gion_001#ListItem_006#CheckBox_001:<$STR(N$增伤宝石)>
+  UIDLG SetCheckBoxRadio jiaoben009 gion_001#ListItem_001#CheckBox_001:gion_001#ListItem_002#CheckBox_001:gion_001#ListItem_003#CheckBox_001:gion_001#ListItem_004#CheckBox_001:gion_001#ListItem_005#CheckBox_001:gion_001#ListItem_006#CheckBox_001
+  UIDLG AddListViewItem jiaoben009  gion_002#ListItem_001
+  UIDLG AddListViewItem jiaoben009  gion_002#ListItem_002
+  UIDLG AddListViewItem jiaoben009  gion_002#ListItem_003
+  UIDLG AddListViewItem jiaoben009  gion_002#ListItem_004
+  UIDLG AddListViewItem jiaoben009  gion_002#ListItem_005
+  UIDLG AddListViewItem jiaoben009  gion_002#ListItem_006
+  UIDLG AddListViewItem jiaoben009  gion_002#ListItem_007
+  UIDLG AddListViewItem jiaoben009  gion_002#ListItem_008
+  UIDLG AddListViewItem jiaoben009  gion_002#ListItem_009
+  UIDLG SetText jiaoben009  gion_002#ListItem_001#WBK_001:<$STR(S$二级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_001#WBK_002:<$STR(S$二级攻击宝石材料1)>*5\\金币：<$STR(S$二级攻击宝石材料2)>
+  UIDLG SetItemSlot jiaoben009  gion_002#ListItem_001#item_001:<$STR(S$二级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_002#WBK_001:<$STR(S$三级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_002#WBK_002:<$STR(S$三级攻击宝石材料1)>*5\\金币：<$STR(S$三级攻击宝石材料2)>
+  UIDLG SetItemSlot jiaoben009  gion_002#ListItem_002#item_001:<$STR(S$三级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_003#WBK_001:<$STR(S$四级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_003#WBK_002:<$STR(S$四级攻击宝石材料1)>*5\\金币：<$STR(S$四级攻击宝石材料2)>
+  UIDLG SetItemSlot jiaoben009  gion_002#ListItem_003#item_001:<$STR(S$四级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_004#WBK_001:<$STR(S$五级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_004#WBK_002:<$STR(S$五级攻击宝石材料1)>*5\\金币：<$STR(S$五级攻击宝石材料2)>
+  UIDLG SetItemSlot jiaoben009  gion_002#ListItem_004#item_001:<$STR(S$五级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_005#WBK_001:<$STR(S$六级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_005#WBK_002:<$STR(S$六级攻击宝石材料1)>*5\\金币：<$STR(S$六级攻击宝石材料2)>
+  UIDLG SetItemSlot jiaoben009  gion_002#ListItem_005#item_001:<$STR(S$六级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_006#WBK_001:<$STR(S$七级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_006#WBK_002:<$STR(S$七级攻击宝石材料1)>*5\\金币：<$STR(S$七级攻击宝石材料2)>
+  UIDLG SetItemSlot jiaoben009  gion_002#ListItem_006#item_001:<$STR(S$七级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_007#WBK_001:<$STR(S$八级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_007#WBK_002:<$STR(S$八级攻击宝石材料1)>*5\\金币：<$STR(S$八级攻击宝石材料2)>
+  UIDLG SetItemSlot jiaoben009  gion_002#ListItem_007#item_001:<$STR(S$八级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_008#WBK_001:<$STR(S$九级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_008#WBK_002:<$STR(S$九级攻击宝石材料1)>*5\\金币：<$STR(S$九级攻击宝石材料2)>
+  UIDLG SetItemSlot jiaoben009  gion_002#ListItem_008#item_001:<$STR(S$九级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_009#WBK_001:<$STR(S$十级攻击宝石)>
+  UIDLG SetText jiaoben009  gion_002#ListItem_009#WBK_002:<$STR(S$十级攻击宝石材料1)>*5\\金币：<$STR(S$十级攻击宝石材料2)>
+  UIDLG SetItemSlot jiaoben009  gion_002#ListItem_009#item_001:<$STR(S$十级攻击宝石)>
+  UIDLG LockItemSlot jiaoben009  gion_002#ListItem_001#item_001:1
+  UIDLG LockItemSlot jiaoben009  gion_002#ListItem_002#item_001:1
+  UIDLG LockItemSlot jiaoben009  gion_002#ListItem_003#item_001:1
+  UIDLG LockItemSlot jiaoben009  gion_002#ListItem_004#item_001:1
+  UIDLG LockItemSlot jiaoben009  gion_002#ListItem_005#item_001:1
+  UIDLG LockItemSlot jiaoben009  gion_002#ListItem_006#item_001:1
+  UIDLG LockItemSlot jiaoben009  gion_002#ListItem_007#item_001:1
+  UIDLG LockItemSlot jiaoben009  gion_002#ListItem_008#item_001:1
+  UIDLG LockItemSlot jiaoben009  gion_002#ListItem_009#item_001:1
+  UIDLG SetCheckBoxGOTO jiaoben009  gion_001#ListItem_001#CheckBox_001:@main
+  UIDLG SetCheckBoxGOTO jiaoben009  gion_001#ListItem_002#CheckBox_001:@生命宝石界面
+  UIDLG SetCheckBoxGOTO jiaoben009  gion_001#ListItem_003#CheckBox_001:@切割宝石界面
+  UIDLG SetCheckBoxGOTO jiaoben009  gion_001#ListItem_004#CheckBox_001:@破甲宝石界面
+  UIDLG SetCheckBoxGOTO jiaoben009  gion_001#ListItem_005#CheckBox_001:@反伤宝石界面
+  UIDLG SetCheckBoxGOTO jiaoben009  gion_001#ListItem_006#CheckBox_001:@增伤宝石界面
+  UIDLG SetButtonGOTO jiaoben009  gion_002#ListItem_001#btn_001:@合2级宝石
+  UIDLG SetButtonGOTO jiaoben009  gion_002#ListItem_002#btn_001:@合3级宝石
+  UIDLG SetButtonGOTO jiaoben009  gion_002#ListItem_003#btn_001:@合4级宝石
+  UIDLG SetButtonGOTO jiaoben009  gion_002#ListItem_004#btn_001:@合5级宝石
+  UIDLG SetButtonGOTO jiaoben009  gion_002#ListItem_005#btn_001:@合6级宝石
+  UIDLG SetButtonGOTO jiaoben009  gion_002#ListItem_006#btn_001:@合7级宝石
+  UIDLG SetButtonGOTO jiaoben009  gion_002#ListItem_007#btn_001:@合8级宝石
+  UIDLG SetButtonGOTO jiaoben009  gion_002#ListItem_008#btn_001:@合9级宝石
+  UIDLG SetButtonGOTO jiaoben009  gion_002#ListItem_009#btn_001:@合10级宝石
+#SAY
+UICMD
+<按钮/@main>\
+<按钮/@生命宝石界面>\
+<按钮/@切割宝石界面>\
+<按钮/@破甲宝石界面>\
+<按钮/@反伤宝石界面>\
+<按钮/@增伤宝石界面>\
+<按钮/@合2级宝石>\
+<按钮/@合3级宝石>\
+<按钮/@合4级宝石>\
+<按钮/@合5级宝石>\
+<按钮/@合6级宝石>\
+<按钮/@合7级宝石>\
+<按钮/@合8级宝石>\
+<按钮/@合9级宝石>\
+<按钮/@合10级宝石>\
+BREAK
+
+
+
+
+
+
+
+
+[@生命宝石界面]
+#IF
+#ACT
+  GOTO @获取生命宝石数据
+#IF
+#ACT
+  MOV N$攻击宝石 0
+  MOV N$生命宝石 1
+  MOV N$切割宝石 0
+  MOV N$破甲宝石 0
+  MOV N$反伤宝石 0
+  MOV N$增伤宝石 0
+  GOTO @攻击宝石界面
+BREAK
+
+[@切割宝石界面]
+#IF
+#ACT
+  GOTO @获取切割宝石数据
+#IF
+#ACT
+  MOV N$攻击宝石 0
+  MOV N$生命宝石 0
+  MOV N$切割宝石 1
+  MOV N$破甲宝石 0
+  MOV N$反伤宝石 0
+  MOV N$增伤宝石 0
+  GOTO @攻击宝石界面
+BREAK
+
+[@破甲宝石界面]
+#IF
+#ACT
+  GOTO @获取破甲宝石数据
+#IF
+#ACT
+  MOV N$攻击宝石 0
+  MOV N$生命宝石 0
+  MOV N$切割宝石 0
+  MOV N$破甲宝石 1
+  MOV N$反伤宝石 0
+  MOV N$增伤宝石 0
+  GOTO @攻击宝石界面
+BREAK
+
+[@反伤宝石界面]
+#IF
+#ACT
+  GOTO @获取反伤宝石数据
+#IF
+#ACT
+  MOV N$攻击宝石 0
+  MOV N$生命宝石 0
+  MOV N$切割宝石 0
+  MOV N$破甲宝石 0
+  MOV N$反伤宝石 1
+  MOV N$增伤宝石 0
+  GOTO @攻击宝石界面
+BREAK
+
+[@增伤宝石界面]
+#IF
+#ACT
+  GOTO @获取增伤宝石数据
+#IF
+#ACT
+  MOV N$攻击宝石 0
+  MOV N$生命宝石 0
+  MOV N$切割宝石 0
+  MOV N$破甲宝石 0
+  MOV N$反伤宝石 0
+  MOV N$增伤宝石 1
+  GOTO @攻击宝石界面
+BREAK
+
+[@获取攻击宝石数据]
+#IF
+#ACT
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石名1 S$二级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石名2 S$三级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石名3 S$四级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石名4 S$五级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石名5 S$六级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石名6 S$七级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石名7 S$八级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石名8 S$九级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石名9 S$十级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石1材料1 S$二级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石2材料1 S$三级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石3材料1 S$四级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石4材料1 S$五级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石5材料1 S$六级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石6材料1 S$七级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石7材料1 S$八级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石8材料1 S$九级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石9材料1 S$十级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石1材料2 S$二级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石2材料2 S$三级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石3材料2 S$四级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石4材料2 S$五级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石5材料2 S$六级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石6材料2 S$七级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石7材料2 S$八级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石8材料2 S$九级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 1宝石9材料2 S$十级攻击宝石材料2
+
+[@获取生命宝石数据]
+#IF
+#ACT
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石名1 S$二级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石名2 S$三级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石名3 S$四级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石名4 S$五级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石名5 S$六级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石名6 S$七级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石名7 S$八级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石名8 S$九级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石名9 S$十级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石1材料1 S$二级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石2材料1 S$三级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石3材料1 S$四级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石4材料1 S$五级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石5材料1 S$六级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石6材料1 S$七级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石7材料1 S$八级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石8材料1 S$九级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石9材料1 S$十级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石1材料2 S$二级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石2材料2 S$三级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石3材料2 S$四级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石4材料2 S$五级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石5材料2 S$六级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石6材料2 S$七级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石7材料2 S$八级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石8材料2 S$九级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 2宝石9材料2 S$十级攻击宝石材料2
+
+[@获取切割宝石数据]
+#IF
+#ACT
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石名1 S$二级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石名2 S$三级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石名3 S$四级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石名4 S$五级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石名5 S$六级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石名6 S$七级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石名7 S$八级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石名8 S$九级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石名9 S$十级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石1材料1 S$二级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石2材料1 S$三级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石3材料1 S$四级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石4材料1 S$五级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石5材料1 S$六级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石6材料1 S$七级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石7材料1 S$八级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石8材料1 S$九级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石9材料1 S$十级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石1材料2 S$二级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石2材料2 S$三级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石3材料2 S$四级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石4材料2 S$五级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石5材料2 S$六级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石6材料2 S$七级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石7材料2 S$八级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石8材料2 S$九级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 3宝石9材料2 S$十级攻击宝石材料2
+
+[@获取破甲宝石数据]
+#IF
+#ACT
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石名1 S$二级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石名2 S$三级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石名3 S$四级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石名4 S$五级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石名5 S$六级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石名6 S$七级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石名7 S$八级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石名8 S$九级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石名9 S$十级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石1材料1 S$二级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石2材料1 S$三级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石3材料1 S$四级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石4材料1 S$五级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石5材料1 S$六级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石6材料1 S$七级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石7材料1 S$八级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石8材料1 S$九级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石9材料1 S$十级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石1材料2 S$二级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石2材料2 S$三级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石3材料2 S$四级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石4材料2 S$五级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石5材料2 S$六级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石6材料2 S$七级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石7材料2 S$八级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石8材料2 S$九级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 4宝石9材料2 S$十级攻击宝石材料2
+
+[@获取反伤宝石数据]
+#IF
+#ACT
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石名1 S$二级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石名2 S$三级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石名3 S$四级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石名4 S$五级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石名5 S$六级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石名6 S$七级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石名7 S$八级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石名8 S$九级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石名9 S$十级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石1材料1 S$二级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石2材料1 S$三级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石3材料1 S$四级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石4材料1 S$五级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石5材料1 S$六级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石6材料1 S$七级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石7材料1 S$八级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石8材料1 S$九级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石9材料1 S$十级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石1材料2 S$二级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石2材料2 S$三级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石3材料2 S$四级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石4材料2 S$五级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石5材料2 S$六级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石6材料2 S$七级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石7材料2 S$八级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石8材料2 S$九级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 5宝石9材料2 S$十级攻击宝石材料2
+
+[@获取增伤宝石数据]
+#IF
+#ACT
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石名1 S$二级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石名2 S$三级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石名3 S$四级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石名4 S$五级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石名5 S$六级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石名6 S$七级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石名7 S$八级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石名8 S$九级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石名9 S$十级攻击宝石
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石1材料1 S$二级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石2材料1 S$三级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石3材料1 S$四级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石4材料1 S$五级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石5材料1 S$六级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石6材料1 S$七级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石7材料1 S$八级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石8材料1 S$九级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石9材料1 S$十级攻击宝石材料1
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石1材料2 S$二级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石2材料2 S$三级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石3材料2 S$四级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石4材料2 S$五级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石5材料2 S$六级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石6材料2 S$七级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石7材料2 S$八级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石8材料2 S$九级攻击宝石材料2
+  GetListStringEX ..\QuestDiary\游戏数据\宝石合成数据\宝石合成配置.txt 6宝石9材料2 S$十级攻击宝石材料2
+
+
+
+[@合2级宝石]
+#IF
+  CHECKITEM <$STR(S$二级攻击宝石材料1)> 5
+#ELSEACT
+  MESSAGEBOX <你的材料不够合成！/SCOLOR=58>
+BREAK
+#IF
+  CheckGold <$STR(S$二级攻击宝石材料2)>
+#ACT
+  TAKE <$STR(S$二级攻击宝石材料1)> 5
+  TAKE 金币 <$STR(S$二级攻击宝石材料2)>
+  GIVE <$STR(S$二级攻击宝石)> 1 4 宝石合成获得
+#ELSEACT
+  MESSAGEBOX <你的金币不够合成！/SCOLOR=58>
+BREAK
+
+[@合3级宝石]
+#IF
+  CHECKITEM <$STR(S$三级攻击宝石材料1)> 5
+#ELSEACT
+  MESSAGEBOX <你的材料不够合成！/SCOLOR=58>
+BREAK
+#IF
+  CheckGold <$STR(S$三级攻击宝石材料2)>
+#ACT
+  TAKE <$STR(S$三级攻击宝石材料1)> 5
+  TAKE 金币 <$STR(S$三级攻击宝石材料2)>
+  GIVE <$STR(S$三级攻击宝石)> 1 4 宝石合成获得
+#ELSEACT
+  MESSAGEBOX <你的金币不够合成！/SCOLOR=58>
+BREAK
+
+[@合4级宝石]
+#IF
+  CHECKITEM <$STR(S$四级攻击宝石材料1)> 5
+#ELSEACT
+  MESSAGEBOX <你的材料不够合成！/SCOLOR=58>
+BREAK
+#IF
+  CheckGold <$STR(S$四级攻击宝石材料2)>
+#ACT
+  TAKE <$STR(S$四级攻击宝石材料1)> 5
+  TAKE 金币 <$STR(S$四级攻击宝石材料2)>
+  GIVE <$STR(S$四级攻击宝石)> 1 4 宝石合成获得
+#ELSEACT
+  MESSAGEBOX <你的金币不够合成！/SCOLOR=58>
+BREAK
+
+[@合5级宝石]
+#IF
+  CHECKITEM <$STR(S$五级攻击宝石材料1)> 5
+#ELSEACT
+  MESSAGEBOX <你的材料不够合成！/SCOLOR=58>
+BREAK
+#IF
+  CheckGold <$STR(S$五级攻击宝石材料2)>
+#ACT
+  TAKE <$STR(S$五级攻击宝石材料1)> 5
+  TAKE 金币 <$STR(S$五级攻击宝石材料2)>
+  GIVE <$STR(S$五级攻击宝石)> 1 4 宝石合成获得
+#ELSEACT
+  MESSAGEBOX <你的金币不够合成！/SCOLOR=58>
+BREAK
+
+[@合6级宝石]
+#IF
+  CHECKITEM <$STR(S$六级攻击宝石材料1)> 5
+#ELSEACT
+  MESSAGEBOX <你的材料不够合成！/SCOLOR=58>
+BREAK
+#IF
+  CheckGold <$STR(S$六级攻击宝石材料2)>
+#ACT
+  TAKE <$STR(S$六级攻击宝石材料1)> 5
+  TAKE 金币 <$STR(S$六级攻击宝石材料2)>
+  GIVE <$STR(S$六级攻击宝石)> 1 4 宝石合成获得
+#ELSEACT
+  MESSAGEBOX <你的金币不够合成！/SCOLOR=58>
+BREAK
+
+[@合7级宝石]
+#IF
+  CHECKITEM <$STR(S$七级攻击宝石材料1)> 5
+#ELSEACT
+  MESSAGEBOX <你的材料不够合成！/SCOLOR=58>
+BREAK
+#IF
+  CheckGold <$STR(S$七级攻击宝石材料2)>
+#ACT
+  TAKE <$STR(S$七级攻击宝石材料1)> 5
+  TAKE 金币 <$STR(S$七级攻击宝石材料2)>
+  GIVE <$STR(S$七级攻击宝石)> 1 4 宝石合成获得
+#ELSEACT
+  MESSAGEBOX <你的金币不够合成！/SCOLOR=58>
+BREAK
+
+[@合8级宝石]
+#IF
+  CHECKITEM <$STR(S$八级攻击宝石材料1)> 5
+#ELSEACT
+  MESSAGEBOX <你的材料不够合成！/SCOLOR=58>
+BREAK
+#IF
+  CheckGold <$STR(S$八级攻击宝石材料2)>
+#ACT
+  TAKE <$STR(S$八级攻击宝石材料1)> 5
+  TAKE 金币 <$STR(S$八级攻击宝石材料2)>
+  GIVE <$STR(S$八级攻击宝石)> 1 4 宝石合成获得
+#ELSEACT
+  MESSAGEBOX <你的金币不够合成！/SCOLOR=58>
+BREAK
+
+[@合9级宝石]
+#IF
+  CHECKITEM <$STR(S$九级攻击宝石材料1)> 5
+#ELSEACT
+  MESSAGEBOX <你的材料不够合成！/SCOLOR=58>
+BREAK
+#IF
+  CheckGold <$STR(S$九级攻击宝石材料2)>
+#ACT
+  TAKE <$STR(S$九级攻击宝石材料1)> 5
+  TAKE 金币 <$STR(S$九级攻击宝石材料2)>
+  GIVE <$STR(S$九级攻击宝石)> 1 4 宝石合成获得
+#ELSEACT
+  MESSAGEBOX <你的金币不够合成！/SCOLOR=58>
+BREAK
+
+[@合10级宝石]
+#IF
+  CHECKITEM <$STR(S$十级攻击宝石材料1)> 5
+#ELSEACT
+  MESSAGEBOX <你的材料不够合成！/SCOLOR=58>
+BREAK
+#IF
+  CheckGold <$STR(S$十级攻击宝石材料2)>
+#ACT
+  TAKE <$STR(S$十级攻击宝石材料1)> 5
+  TAKE 金币 <$STR(S$十级攻击宝石材料2)>
+  GIVE <$STR(S$十级攻击宝石)> 1 4 宝石合成获得
+#ELSEACT
+  MESSAGEBOX <你的金币不够合成！/SCOLOR=58>
+BREAK
+
+
+
+
+
+
+

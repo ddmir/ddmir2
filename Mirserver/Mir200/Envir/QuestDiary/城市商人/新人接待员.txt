@@ -1,0 +1,288 @@
+[@新人接待员]
+{
+#if
+#act
+PlayMusic 299.MP3
+#say
+<   ※ ※ ※ ※ ※ ※ ※ ※ 樱 花 国 际 网 络 中 心 ※ ※ ※ ※ ※ ※ ※ ※/SCOLOR=250>\ \
+<━━━━━━━━━━━><$DATETIME><━━━━━━━━━>\ \
+<>\
+<前往比齐省/@biqi>                                  <前往僵尸洞/@qianwangjian>\\
+<>\
+ <我要拜师傅/@baishi>                                  <我的体质怎么样？/@next>\\
+<>\
+
+　　　　　《2003年樱花传奇原始版》\ 
+<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━>\
+　　　　<樱花传奇国际网络中心　版权所有/SCOLOR=250>\ \
+
+
+
+[@qianwangjian]
+#IF
+#ACT
+give 回城卷 1
+give 鹤嘴锄 1
+mapmove 0 658 220
+
+
+
+[@baishi]
+<＝师徒系统＝>\
+『师父』:人物等级到达<46>级，就可以收徒弟了！\
+『徒弟』:人物等级必须在<40>级以下才能做别人徒弟！\
+『出师』:徒弟等级到达<46>级，徒弟自动出师！\
+『好处』:徒弟出师后师父会自动获得<20点>声望\ \
+<[我要拜师]/@master>　　<[强行脱离师徒关系]/@unmaster>
+
+[@next]
+#IF
+checkjob warrior
+#say
+你知道吗？你是一名<战士>哦！\
+拥有<强健的体魄>是你最为突出的优势。\
+无论面对任何险恶的环境你都能进退自如。\
+不过你这种职业有一点不足之处就是。\
+没有<远程攻击>的魔法。在组队中适合和道士共同打猎！\ \
+<返回/@main>\
+#ELSEACT
+GOTO @next_1_2
+
+[@next_1_2]
+#IF
+checkjob taoist
+#say
+你是一名伟大的<道士>。你有着博大的胸怀。\
+由于你的智慧与胸襟，你所修炼的都是一些博爱的武术。\
+在打猎的时候你最适合与战士配合。\ \
+<返回/@main>\
+#ELSESAY
+强大的精神力量造就了你——<魔法师>！\
+正是因为<精神力的强大>，你可以学习众多的攻击魔法！\
+不过在初期，你的<体质>是最让人担心的！\
+保护好自己的生命是最重要的！\ \
+<>\
+<>\
+<返回/@main>\
+
+
+
+[@biqi]
+#if
+checklevel 15
+#act
+mapmove 0 334 266
+#ELSESAY
+看你的体格很是<脆弱>。\
+你还是先在野外找 稻草人 钉耙猫 等小怪，把级别提升到<15级>以上再来找我吧。\
+奉劝你15级后再去僵尸洞又可以挖矿卖金币关键里面得的怪物<经验很高>的哦。\ \
+<>\
+<>\
+<返回/@main>\
+
+
+[@master]
+想拜师呀，你要拜的师父来了没有？\
+与你师父面对面站好，开始拜师。\ \
+<准备好了/@agree>\
+<我知道了/@exit>\ \ 
+<返回/@main>
+
+[@agree]
+;检查是不是已经是别人的师父
+#if
+   checkismaster
+#act
+   break
+#say
+没事别来这玩！！！\ \
+<返回/@main>
+
+;检查是不是已经拜师了
+#if
+   checkmaster
+#act 
+   break
+#say
+你都都已经拜了别人为师，怎么还拜师！！！ \ \
+<返回/@main>
+
+;检查对面的人物是不是别人的徒弟
+#if
+  checkposemaster
+#say
+你找了个什么人做师父，怎么现在还是别人的徒弟？\ \
+<返回/@main>
+#act
+  break
+
+;检查二个有没站好位置
+#if
+   checkposedir
+#elsesay
+你们二个面对面站好呀，不要乱动。\ \
+<返回/@main>
+#elseact
+  break
+
+#if
+  checklevel 40
+#say
+你都40多级了还要找师父？\ \
+<返回/@main>
+#act
+  break
+
+;检查对方等级
+#if
+  checkposelevel > 45
+#elsesay
+你找个什么师父呀，等级这么低？\ \
+<返回/@main>
+#elseact
+  break
+#act
+   master
+
+[@StartGetMaster]
+拜师仪式正式开始。\ \
+你是否确认拜师？\ \
+<确认/@RequestMaster>
+
+[@StartMaster]
+拜师仪式正式开始。\ \
+对方已经向你提出拜师请求。\ \
+
+
+[@RequestMaster]
+#if
+#act
+   master requestmaster
+
+[@WateMaster]
+你已向对方请求拜师，请耐心等待对方的答复。
+
+[@RevMaster]
+对方想拜你为师，你是否想收此人为徒？ \ \
+<同意/@ResposeMaster> \
+<不同意/@ResposeMasterFail>
+
+[@ResposeMaster]
+#if
+#act
+  master responsemaster ok
+
+[@ResposeMasterFail]
+#if
+#act
+  master responsemaster fail
+[@EndMaster]
+你们二个已经是师徒关系了。\ \
+<关闭/@exit>
+[@EndMasterFail]
+拜师失败！\ \
+<关闭/@exit>
+[@MasterDirErr]
+对方没站好位置
+
+[@MasterCheckDir]
+请站好位置\\
+
+[@HumanTypeErr]
+此人不可以做你的师父。
+
+
+;==========================================
+开始
+[@unmaster]
+#if
+   havemaster
+#act
+   unmaster
+#elsesay
+你都没师父，跑来做什么？？\ \
+<返回/@main>
+ 
+
+;=======================================================
+
+[@UnMasterCheckDir]
+按正常出师步骤，必须二个人对面对站好位置，\
+如果人来不了你只能选择强行出师了。\ \
+<我要强行出师/@fUnMaster>\
+<返回/@main>
+;=======================================================
+;对面位置不是人物时显示的信息
+[@UnMasterTypeErr]
+你对面站了个什么东西，怎么不太象人来的。\ \
+<返回/@main>
+[@UnIsMaster]
+必须由徒弟发出请求！！！\ \
+<返回/@main>
+[@UnMasterError]
+不要来捣乱！！！\ \
+<返回/@main>
+;=======================================================
+;开始程序后，双方显示的信息
+[@StartUnMaster]
+出师仪式现在开始！！！\ \
+是否确定真的要脱离师徒关系？\ \
+<确定/@RequestUnMaster>
+[@WateUnMaster]
+出师仪式现在开始！！！\ \
+
+;=======================================================
+;发出请求
+[@RequestUnMaster]
+#if
+  havemaster
+#act
+  unmaster requestunmaster
+;=======================================================
+;回应请求
+[@ResposeUnMaster]
+#if
+  havemaster
+#act
+  unmaster responseunmaster
+
+;===============================================
+;请求后显示的信息
+[@WateUnMaster]
+你已向对方发出请求，请耐心等待对方的答复。
+
+;===============================================
+;请求后对方显示的信息
+[@RevUnMaster]
+对方向你请求，你是否答应？ \ \
+<我愿意/@RequestUnMaster>
+<返回/@main>
+
+;===============================================
+
+[@ExeMasterFail]
+你都没师父，跑来做什么？ \ \
+[返回/@main]
+
+;==============================================
+;强行
+[@fUnMaster]
+#if
+  checkitem 金条 1
+  havemaster
+#act
+  take 金条 1
+  unmaster requestunmaster force
+#elsesay
+要收一根金条的手续费，你没有金条，\
+<确定/@exit>
+;==============================================
+;完成后的提示信息
+[@UnMasterEnd]
+呵呵，你已经脱离师徒关系了！！！ \ \
+<退出/@exit>
+
+
+
+
+}

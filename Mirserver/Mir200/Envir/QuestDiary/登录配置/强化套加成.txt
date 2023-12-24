@@ -1,0 +1,365 @@
+[@强化套装加成]
+{
+#IF
+#ACT
+  MOV N$强化套属性15 0
+  MOV N$强化套属性12 0
+  MOV N$强化套属性9 0
+  MOV N$强化套属性6 0
+
+#IF
+#ACT
+  GETITEMATTVAL 0 3 101 N$衣服强化值
+  GETITEMATTVAL 1 3 101 N$武器强化值
+  GETITEMATTVAL 2 3 101 N$披风强化值
+  GETITEMATTVAL 3 3 101 N$项链强化值
+  GETITEMATTVAL 4 3 101 N$头盔强化值
+  GETITEMATTVAL 5 3 101 N$左手镯强化值
+  GETITEMATTVAL 6 3 101 N$右手镯强化值
+  GETITEMATTVAL 7 3 101 N$左戒指强化值
+  GETITEMATTVAL 8 3 101 N$右戒指强化值
+  GETITEMATTVAL 9 3 101 N$护身符强化值
+  GETITEMATTVAL 10 3 101 N$腰带强化值
+  GETITEMATTVAL 11 3 101 N$鞋子强化值
+  GETITEMATTVAL 12 3 101 N$宝石强化值
+  GETITEMATTVAL 18 3 101 N$勋章强化值
+  GETITEMATTVAL 19 3 101 N$玉佩强化值
+  GETITEMATTVAL 17 3 101 N$盾牌强化值
+
+#IF
+  LARGE N$衣服强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$衣服强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$衣服强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$衣服强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$武器强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$武器强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$武器强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$武器强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$披风强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$披风强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$披风强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$披风强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$项链强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$项链强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$项链强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$项链强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$头盔强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$头盔强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$头盔强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$头盔强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$左手镯强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$左手镯强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$左手镯强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$左手镯强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$右手镯强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$右手镯强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$右手镯强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$右手镯强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$左戒指强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$左戒指强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$左戒指强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$左戒指强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$右戒指强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$右戒指强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$右戒指强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$右戒指强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$护身符强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$护身符强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$护身符强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$护身符强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$腰带强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$腰带强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$腰带强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$腰带强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$鞋子强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$鞋子强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$鞋子强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$鞋子强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$宝石强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$宝石强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$宝石强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$宝石强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$勋章强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$勋章强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$勋章强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$勋章强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$玉佩强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$玉佩强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$玉佩强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$玉佩强化值 5
+#ACT
+  INC N$强化套属性6 1
+#IF
+  LARGE N$盾牌强化值 14
+#ACT
+  INC N$强化套属性15 1
+#IF
+  LARGE N$盾牌强化值 11
+#ACT
+  INC N$强化套属性12 1
+#IF
+  LARGE N$盾牌强化值 8
+#ACT
+  INC N$强化套属性9 1
+#IF
+  LARGE N$盾牌强化值 5
+#ACT
+  INC N$强化套属性6 1
+
+#IF
+  EQUAL N$强化套属性15 16
+#ACT
+  GOTO @强化套给属性15
+#ELSEACT
+  RECYCFENGHAO SELF 强化套15
+  GOTO @检测套装12
+BREAK
+
+[@检测套装12]
+#IF
+  EQUAL N$强化套属性12 16
+#ACT
+  GOTO @强化套给属性12
+#ELSEACT
+  RECYCFENGHAO SELF 强化套12
+  GOTO @检测套装9
+BREAK
+
+[@检测套装9]
+#IF
+  EQUAL N$强化套属性9 16
+#ACT
+  GOTO @强化套给属性9
+#ELSEACT
+  RECYCFENGHAO SELF 强化套9
+  GOTO @检测套装6
+BREAK
+
+[@检测套装6]
+#IF
+  EQUAL N$强化套属性6 16
+#ACT
+  GOTO @强化套给属性6
+#ELSEACT
+  RECYCFENGHAO SELF 强化套6
+BREAK
+
+[@强化套给属性15]
+#IF
+  CHECKFENGHAO 强化套15
+#ELSEACT
+  RECYCFENGHAO SELF 强化套12
+  RECYCFENGHAO SELF 强化套9
+  RECYCFENGHAO SELF 强化套6
+  GIVEFENGHAO SELF 强化套15
+BREAK
+
+[@强化套给属性12]
+#IF
+  CHECKFENGHAO 强化套12
+#ELSEACT
+  RECYCFENGHAO SELF 强化套15
+  RECYCFENGHAO SELF 强化套9
+  RECYCFENGHAO SELF 强化套6
+  GIVEFENGHAO SELF 强化套12
+BREAK
+
+[@强化套给属性9]
+#IF
+  CHECKFENGHAO 强化套9
+#ELSEACT
+  RECYCFENGHAO SELF 强化套12
+  RECYCFENGHAO SELF 强化套15
+  RECYCFENGHAO SELF 强化套6
+  GIVEFENGHAO SELF 强化套9
+BREAK
+
+[@强化套给属性6]
+#IF
+  CHECKFENGHAO 强化套6
+#ELSEACT
+  LOG 111
+  RECYCFENGHAO SELF 强化套15
+  RECYCFENGHAO SELF 强化套12
+  RECYCFENGHAO SELF 强化套9
+  GIVEFENGHAO SELF 强化套6
+BREAK
+
+}

@@ -1,0 +1,189 @@
+[@MAIN]
+
+#IF
+#ACT
+  UIDLG Close ALL
+  UIDLG Open jiaoben012 300 120 0 0 1
+  UIDLG BindItemSlot jiaoben012 item_001:N$待强化装备
+  UIDLG LimitItemSlot jiaoben012 item_001:5:10:11:15:19:26:22:64:62:202:204:53:51:16:200:30
+  UIDLG LockItemSlot jiaoben012 item_002:1
+  UIDLG SetItemSlot jiaoben012 item_002:注释
+  UIDLG ItemSlotTip jiaoben012 item_002:　\\<最高强化等级为+15,强化成功+1,失败不掉级,/SCOLOR=254>\\　\\<　　【强化套装】/SCOLOR=251>\\<武器,衣服,头盔,项链,手镯,戒指,腰带,战靴,勋章,玉佩,魂珠/SCOLOR=70>\\<11件套最低强化至+6+9+12+15时有强力的额外属性加成/SCOLOR=70>\\　\\<强化需求：/SCOLOR=116>\\<强化卷轴*1/SCOLOR=250>\\<金币/SCOLOR=250>
+  
+
+
+
+  UIDLG SetbuttonText jiaoben012 btn_001:开始强化
+  UIDLG SetButtonGOTO jiaoben012 btn_001:@开始强化
+#SAY
+UICMD
+<开始强化/@开始强化>\
+BREAK
+
+[@开始强化]
+#IF
+  CheckItemSlot N$待强化装备
+#ELSEACT
+  MessAgeBox <你还没有放入需要强化的装备!/SCOLOR=58>
+BREAK
+
+#IF
+  CheckItem 强化卷轴 1
+#ELSEACT
+  MessAgeBox <你的身上没有强化卷轴!/SCOLOR=58>
+BREAK
+
+#IF
+  CHECKNEWITEMVALUE 0 101 > 14 4 N$待强化装备
+#ACT
+  MessAgeBox <该装备已强化满级!/SCOLOR=251>
+BREAK
+
+#IF
+#ACT
+  GOTO @强化需求配置
+
+#IF
+  CheckGold <$STR(N$强化金币)>
+#ELSEACT
+  MessAgeBox <你的身上没有<$STR(N$强化金币)>金币/SCOLOR=58>
+BREAK
+
+#IF
+  random <$STR(N$强化几率)>
+#ACT
+  PlayMusic duanzao.ogg
+  TAKE 金币 <$STR(N$强化金币)>
+  TAKE 强化卷轴 1
+  UPGRADEITEMEX 0 101 0 1 0 4 N$待强化装备 0 1
+  SendNewLineMsg 1 250 0 0 0 0 0 <恭喜你！强化成功。/SCOLOR=250>
+  GOTO @强化提示
+#ELSEACT
+  PlayMusic duanzao.ogg
+  TAKE 金币 <$STR(N$强化金币)>
+  TAKE 强化卷轴 1
+  SendNewLineMsg 1 250 0 0 0 0 0 <哦吼！强化失败了。/SCOLOR=58>
+BREAK
+
+
+[@强化提示]
+#IF
+  CHECKNEWITEMVALUE 0 101 > 11 4 N$待强化装备
+#ACT
+  GetItemInfo N$待强化装备 3 S$强化装备名
+  GETITEMATTVAL 0 3 101 N$最新强化值 N$待强化装备
+  SendNewLineMsg 0 250 0 0 0 0 0 <玩家/SCOLOR=251><[<$USERNAME>]/SCOLOR=254><成功把/SCOLOR=251><[<$STR(S$强化装备名)>]/SCOLOR=250><强化到/SCOLOR=251><+<$STR(N$最新强化值)>/SCOLOR=70><，大家为他欢呼吧！/SCOLOR=251>
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@强化需求配置]
+#IF
+  CHECKNEWITEMVALUE 0 101 < 3 4 N$待强化装备
+#ACT
+  MOV N$强化几率 1
+  MOV N$强化金币 1000
+BREAK
+
+#IF
+  CHECKNEWITEMVALUE 0 101 > 2 4 N$待强化装备
+  CHECKNEWITEMVALUE 0 101 < 6 4 N$待强化装备
+#ACT
+  MOV N$强化几率 5
+  MOV N$强化金币 3000
+BREAK
+
+#IF
+  CHECKNEWITEMVALUE 0 101 > 5 4 N$待强化装备
+  CHECKNEWITEMVALUE 0 101 < 9 4 N$待强化装备
+#ACT
+  MOV N$强化几率 10
+  MOV N$强化金币 5000
+BREAK
+
+#IF
+  CHECKNEWITEMVALUE 0 101 > 8 4 N$待强化装备
+  CHECKNEWITEMVALUE 0 101 < 12 4 N$待强化装备
+#ACT
+  MOV N$强化几率 20
+  MOV N$强化金币 8000
+BREAK
+
+#IF
+  CHECKNEWITEMVALUE 0 101 = 12 4 N$待强化装备
+#ACT
+  MOV N$强化几率 30
+  MOV N$强化金币 10000
+BREAK
+
+#IF
+  CHECKNEWITEMVALUE 0 101 = 13 4 N$待强化装备
+#ACT
+  MOV N$强化几率 50
+  MOV N$强化金币 15000
+BREAK
+
+#IF
+  CHECKNEWITEMVALUE 0 101 = 14 4 N$待强化装备
+#ACT
+  MOV N$强化几率 70
+  MOV N$强化金币 20000
+BREAK
+
+#IF
+  CHECKNEWITEMVALUE 0 101 = 15 4 N$待强化装备
+#ACT
+  MOV N$强化几率 100
+  MOV N$强化金币 30000
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

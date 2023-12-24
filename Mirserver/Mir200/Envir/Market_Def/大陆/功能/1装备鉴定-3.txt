@@ -1,0 +1,69 @@
+[@MAIN]
+#IF
+#ACT
+  GOTO @ZBJD
+BREAK
+
+
+[@ZBJD]
+{
+
+#IF
+#ACT
+  UIDLG Close ALL
+  UIDLG Open jiaoben010 320 150 0 0 1
+  UIDLG BindItemSlot jiaoben010 item_001:N$鉴定装备
+  UIDLG LimitItemSlot jiaoben010 item_001:5:10:11:15:19:26:22:64:62:202:204:53:51:16:200:30
+  UIDLG LockItemSlot jiaoben010 item_002:1
+  UIDLG SetItemSlot jiaoben010 item_002:注释
+  UIDLG ItemSlotTip jiaoben010 item_002:<品质加成：/SCOLOR=116><良品+1%/SCOLOR=250><上品+2%/SCOLOR=168><精品+3%/SCOLOR=58><极品+4%/SCOLOR=19>\\　\\<鉴定需求：/SCOLOR=116><鉴定卷轴*1/SCOLOR=254><(放在背包即可自动使用)/SCOLOR=250>\\　　　　　<金币*10000/SCOLOR=254>
+
+  UIDLG SetRichText jiaoben010 WBK_001:　　　　<每次消耗一个鉴定卷轴/SCOLOR=249>
+  UIDLG SetButtonGOTO jiaoben010 btn_001:@开始鉴定
+
+#SAY
+  UICMD
+  <开始鉴定/@开始鉴定>\
+BREAK
+
+[@开始鉴定]
+#IF
+  CheckItemSlot N$鉴定装备
+#ELSEACT
+  MessAgeBox <你还没有放入需要鉴定的装备!/SCOLOR=58>
+BREAK
+
+#IF
+  CheckItem 鉴定卷轴 1
+#ELSEACT
+  MessAgeBox <你的身上没有鉴定卷轴!/SCOLOR=58>
+BREAK
+
+#IF
+  CHECKNOTIDENTIFIED N$鉴定装备 3
+#ELSEACT
+  MessAgeBox <该装备不可鉴定!/SCOLOR=58>
+BREAK
+
+#IF
+  CheckGold 10000
+#ELSEACT
+  MessAgeBox <你的身上没有10000金币/SCOLOR=58>
+BREAK
+
+#IF
+  random 4
+#ACT
+  take 鉴定卷轴 1
+  take 金币 10000
+  RESETITEMATT N$鉴定装备 3
+  MessAgeBox <恭喜您的装备鉴定成功!/SCOLOR=250>
+#ELSEACT
+  take 鉴定卷轴 1
+  take 金币 10000
+  MessAgeBox <鉴定未成功，请重新鉴定!/SCOLOR=58>
+BREAK
+
+
+
+}

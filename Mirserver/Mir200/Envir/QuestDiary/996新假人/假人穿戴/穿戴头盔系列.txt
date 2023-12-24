@@ -1,0 +1,120 @@
+[@拾取头盔触发]
+{
+
+#IF
+CHECKJOB warrior
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\战士佩戴列表.txt <$STR(S$头盔名称)>
+#ACT
+DELAYGOTO 100 @战士替换头盔
+BREAK
+
+#IF
+CHECKJOB wizard
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\法师佩戴列表.txt <$STR(S$头盔名称)>
+#ACT
+DELAYGOTO 100 @法师替换头盔
+BREAK
+
+#IF
+CHECKJOB taoist
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\道士佩戴列表.txt <$STR(S$头盔名称)>
+#ACT
+DELAYGOTO 100 @道士替换头盔
+BREAK
+;-------------------------------------------------
+[@战士替换头盔]
+#IF
+CHECKUSEITEM 4
+#ACT
+MOV N64 <$AC>
+MOV M64 <$MAXAC>
+MOV S$原始头盔 <$HELMET>
+TakeOnItem <$STR(S$头盔名称)> 4
+#ELSEACT
+TakeOnItem <$STR(S$头盔名称)> 4
+DELAYGOTO 1 @保存头盔数据
+BREAK
+
+#IF
+LARGE <$MAXAC> M64
+#ACT
+DELAYGOTO 1 @保存头盔数据
+BREAK
+
+#IF
+LARGE <$AC> N64
+#ACT
+DELAYGOTO 1 @保存头盔数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始头盔)> 4
+BREAK
+
+;-------------------------------------------------
+
+[@法师替换头盔]
+#IF
+CHECKUSEITEM 4
+#ACT
+MOV N64 <$MC>
+MOV M64 <$MAXMC>
+MOV S$原始头盔 <$HELMET>
+TakeOnItem <$STR(S$头盔名称)> 4
+#ELSEACT
+TakeOnItem <$STR(S$头盔名称)> 4
+DELAYGOTO 1 @保存头盔数据
+BREAK
+
+#IF
+LARGE <$MAXMC> M64
+#ACT
+DELAYGOTO 1 @保存头盔数据
+BREAK
+
+#IF
+LARGE <$MC> N64
+#ACT
+DELAYGOTO 1 @保存头盔数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始头盔)> 4
+BREAK
+
+;-------------------------------------------------
+
+[@道士替换头盔]
+#IF
+CHECKUSEITEM 4
+#ACT
+MOV N64 <$SC>
+MOV M64 <$MAXSC>
+MOV S$原始头盔 <$HELMET>
+TakeOnItem <$STR(S$头盔名称)> 4
+#ELSEACT
+TakeOnItem <$STR(S$头盔名称)> 4
+DELAYGOTO 1 @保存头盔数据
+BREAK
+
+#IF
+LARGE <$MAXSC> M64
+#ACT
+DELAYGOTO 1 @保存头盔数据
+BREAK
+
+#IF
+LARGE <$SC> N64
+#ACT
+DELAYGOTO 1 @保存头盔数据
+BREAK
+
+#ELSEACT
+TakeOnItem <$STR(S$原始头盔)> 4
+BREAK
+
+[@保存头盔数据]
+#IF
+#ACT
+
+}

@@ -1,0 +1,351 @@
+[@传送员]
+{
+#IF
+CHECKLEVELEX ? 15
+#ACT
+BREAK
+#SAY
+　　 <$USERNAME> 欢迎来到 <滴滴引擎/SCOLOR=70>\
+　　\
+　　　　<√基本传送/AUTOCOLOR=250>　　　<√初级传送/@初级传送>　　　<√高级传送/@高级传送>　\
+　　\
+　　　　※<盟重土城/@盟重土城>※<比奇大城/@比奇大城>※<新手小村/@新手小村>※<银杏山谷/@银杏山谷>※\
+　　\
+　　　　※<白 日 门/@白日门>※<封 魔 谷/@封魔谷>※<比奇皇宫/@比奇皇宫>※<沙城区域/@沙城区域>※\　\
+　　　　　　　　　<人物满15级　完全免费/AUTOCOLOR=7>
+
+#IF
+NOT CHECKLEVELEX ? 15
+#ACT
+BREAK
+#SAY
+　　 <$USERNAME> 欢迎来到 <滴滴引擎/SCOLOR=70>\
+　　\　\
+　　　　击杀这些 鸡 鹿 稻草人提升到15级 再找我。　\　\
+　　　　祝你游戏愉快！　\　\
+
+　　　　<游戏攻略/@游戏攻略>　　　　<新手训练/@新手小村>　　　　<关　　闭/@exit>　\
+
+
+
+
+
+
+[@初级传送]
+#ACT
+#SAY
+　　 <$USERNAME> 欢迎来到 <滴滴引擎/SCOLOR=70>\
+　　\
+　　　　<√基本传送/@传送员>　　　<√初级传送/AUTOCOLOR=250>　　　<√高级传送/@高级传送>　\
+　　\
+　　　　※<比奇矿区/@比奇矿区>※<蜈蚣洞口/@蜈蚣洞口>※<沃玛洞口/@沃玛洞口>※\
+　　\
+　　　　※<石墓洞口/@石墓洞口>※<祖玛洞口/@祖玛洞口>※<封魔洞口/@封魔洞口>※<赤月洞口/@赤月洞口>※\　\
+　　　　　　　　<第一行免费　第二行2K金币/SCOLOR=7>
+
+
+
+
+
+[@高级传送]
+#ACT
+#SAY
+　　 <$USERNAME> 欢迎来到 <滴滴引擎/SCOLOR=70>\
+　　\
+　　　　<√基本传送/@传送员>　　　<√初级传送/@初级传送>　　　<√高级传送/AUTOCOLOR=250>　\
+　　\
+　　　　※<矿区东部/@矿区东部>※<一 线 天/@一线天>※<沃玛二层/@沃玛二层>※\
+　　\
+　　　　※<石墓五层/@石墓五层>※<祖玛五层/@祖玛五层>※<霸者大厅/@霸者大厅>※<抉择之地/@抉择之地>※\　\
+　　　　　　　　<第一行2W金币　第二行5W金币/SCOLOR=7>
+
+
+
+
+
+
+[@盟重土城]
+#IF
+CHECKLEVELEX ? 15
+#ACT
+movr N1 321 337
+movr N2 324 338
+mapmove 3 <$STR(N1)> <$STR(N2)>
+SENDMSG 1 [<$USERNAME>]进入盟重土城
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你未达到15级，先去练级吧
+break
+
+[@比奇大城]
+#IF
+CHECKLEVELEX ? 15
+#ACT
+mapmove 0 331 266 5
+SENDMSG 1 [<$USERNAME>]进入比奇大城
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你未达到15级，先去练级吧
+break
+
+[@新手小村]
+#IF
+#ACT
+mapmove 0 296 625
+SENDMSG 1 [<$USERNAME>]进入新手小村
+break
+
+[@银杏山谷]
+#IF
+CHECKLEVELEX ? 15
+#ACT
+mapmove 0 634 612
+SENDMSG 1 [<$USERNAME>]进入银杏山谷
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你未达到15级，先去练级吧
+break
+
+[@白日门]
+#IF
+CHECKLEVELEX ? 15
+#ACT
+mapmove 11 177 324
+SENDMSG 1 [<$USERNAME>]进入白日门
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你未达到15级，先去练级吧
+break
+
+[@封魔谷]
+#IF
+CHECKLEVELEX ? 15
+#ACT
+mapmove 4 241 202
+SENDMSG 1 [<$USERNAME>]进入封魔谷
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你未达到15级，先去练级吧
+break
+
+[@比奇皇宫]
+#IF
+CHECKLEVELEX ? 15
+#ACT
+mapmove 0 344 192
+SENDMSG 1 [<$USERNAME>]进入比奇皇宫
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你未达到15级，先去练级吧
+break
+
+[@沙城区域]
+#IF
+CHECKLEVELEX ? 15
+#ACT
+mapmove 3 700 380
+SENDMSG 1 [<$USERNAME>]进入沙城区域
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你未达到15级，先去练级吧
+break
+
+
+
+
+
+
+[@骷髅洞口]
+#IF
+CHECKLEVELEX ? 26
+#ACT
+mapmove 0 145 35
+SENDMSG 1 [<$USERNAME>]进入骷髅洞口
+#ELSEACT
+mapmove 0 42 109
+SENDMSG 1 [<$USERNAME>]进入骷髅洞口
+break
+
+[@比奇矿区]
+#IF
+#ACT
+mapmove 0 661 216
+SENDMSG 1 [<$USERNAME>]进入比奇矿区
+break
+
+[@蜈蚣洞口]
+#IF
+#ACT
+mapmove 3 141 91
+SENDMSG 1 [<$USERNAME>]进入蜈蚣洞口
+#ELSEACT
+break
+
+[@沃玛洞口]
+#IF
+#ACT
+mapmove 1 86 281
+SENDMSG 1 [<$USERNAME>]进入沃玛洞口
+#ELSEACT
+break
+
+[@石墓洞口]
+#IF
+CHECKGOLD 2000
+#ACT
+TAKE 金币 2000
+mapmove 3 304 325
+SENDMSG 1 [<$USERNAME>]进入石墓洞口
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你没有2千金币
+break
+
+[@祖玛洞口]
+#IF
+CHECKGOLD 2000
+#ACT
+TAKE 金币 2000
+mapmove 3 859 180
+SENDMSG 1 [<$USERNAME>]进入祖玛洞口
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你没有2千金币
+break
+
+[@封魔洞口]
+#IF
+CHECKGOLD 2000
+#ACT
+TAKE 金币 2000
+mapmove 4 139 68
+SENDMSG 1 [<$USERNAME>]进入封魔洞口
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你没有2千金币
+break
+
+[@赤月洞口]
+#IF
+CHECKGOLD 2000
+#ACT
+TAKE 金币 2000
+mapmove 11 352 241
+SENDMSG 1 [<$USERNAME>]进入赤月洞口
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你没有2千金币
+break
+
+
+
+
+
+[@圣域之门]
+#IF
+CHECKGOLD 20000
+#ACT
+TAKE 金币 20000
+mapmove 0 109 417
+SENDMSG 1 [<$USERNAME>]进入圣域之门
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你没有2万金币
+break
+
+[@矿区东部]
+#IF
+CHECKGOLD 20000
+#ACT
+TAKE 金币 20000
+mapmove D402 9 146
+SENDMSG 1 [<$USERNAME>]进入废矿区东部
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你没有2万金币
+break
+
+[@一线天]
+#IF
+CHECKGOLD 20000
+#ACT
+TAKE 金币 20000
+mapmove D618 14 84
+SENDMSG 1 [<$USERNAME>]进入一线天
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你没有2万金币
+break
+
+[@沃玛二层]
+#IF
+CHECKGOLD 20000
+#ACT
+TAKE 金币 20000
+mapmove D023 198 195
+SENDMSG 1 [<$USERNAME>]进入沃玛寺庙二层
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你没有2万金币
+break
+
+[@石墓五层]
+#IF
+CHECKGOLD 50000
+#ACT
+TAKE 金币 50000
+mapmove D715 29 344
+SENDMSG 1 [<$USERNAME>]进入石墓五层
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你没有5万金币
+break
+
+[@祖玛五层]
+#IF
+CHECKGOLD 50000
+#ACT
+TAKE 金币 50000
+mapmove D505 96 101
+SENDMSG 1 [<$USERNAME>]进入祖玛寺庙五层
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你没有5万金币
+break
+
+[@霸者大厅]
+#IF
+CHECKGOLD 50000
+#ACT
+TAKE 金币 50000
+mapmove D2008 84 84
+SENDMSG 1 [<$USERNAME>]进入霸者大厅
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你没有5万金币
+break
+
+[@抉择之地]
+#IF
+CHECKGOLD 50000
+#ACT
+TAKE 金币 50000
+mapmove D1004 120 37
+SENDMSG 1 [<$USERNAME>]进入抉择之地
+#ELSEACT
+MESSAGEBOX 　\　\　\　\　　　　　　　　　　　你没有5万金币
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

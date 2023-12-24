@@ -1,0 +1,49 @@
+[@开启夺宝大乱斗]
+#IF
+#ACT
+  MOV G1 1
+  THROWITEM DBDT 68 79 1 夺宝宝箱 1|60 0 1
+  Gmexecute 开始提问 @开始夺宝
+break
+
+[@关闭夺宝大乱斗]
+#IF
+#ACT
+  MOV G1 0
+break
+
+
+[@刷BOSS时间]
+#IF
+  LARGE G2 0
+#ACT
+  DEC G2 1
+
+#IF
+  LARGE G3 0
+#ACT
+  DEC G3 1
+
+#IF
+  LARGE G4 0
+#ACT
+  DEC G4 1
+
+#IF
+  LARGE G5 0
+#ACT
+  DEC G5 1
+
+#IF
+  LARGE G6 0
+#ACT
+  DEC G6 1
+BREAK
+
+
+
+
+
+
+
+

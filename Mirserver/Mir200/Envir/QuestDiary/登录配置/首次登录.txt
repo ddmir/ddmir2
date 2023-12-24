@@ -1,0 +1,32 @@
+{
+[@新人登录]
+#IF
+ISDUMMY
+#ACT
+BREAK
+
+#IF
+  EQUAL T2 
+#ACT
+  MOV T2 <$SERVERNAME><$USERNAME>
+
+#IF
+#ACT
+  MAPMOVE 0 294 620 4
+  GIVE 土城传送石 1
+  GIVE 皇城传送石 1
+  GIVE 金创药(小量) 99
+  GIVE 魔法药(小量) 99
+
+#IF
+  Gender Man
+#ACT
+  GIVE 木剑 1
+  GIVE 布衣(男) 1
+
+#IF
+  Gender Woman
+#ACT
+  GIVE 木剑 1
+  GIVE 布衣(女) 1
+}

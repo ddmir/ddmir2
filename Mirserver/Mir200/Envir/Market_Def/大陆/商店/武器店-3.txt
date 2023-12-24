@@ -1,0 +1,6 @@
+(@buy)
+%100
+
+[@MAIN]
+#ACT
+#CALL [\NPCÉÌµê\ÎäÆ÷µê.txt] @ÎäÆ÷µê

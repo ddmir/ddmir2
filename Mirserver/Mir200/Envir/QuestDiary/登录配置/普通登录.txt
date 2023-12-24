@@ -1,0 +1,30 @@
+{
+[@Õý³£µÇÂ¼]
+#IF
+ISDUMMY
+#ACT
+BREAK
+
+#OR
+  SMALL <$RUNDATEMIN> 30
+  EQUAL T1 
+#ACT
+  
+BREAK
+
+#IF
+  CHECKLEVELEX < 10
+#ACT
+  
+BREAK
+
+#IF
+  CHECKLEVELEX > 9
+  CHECKLEVELEX < 35
+#ACT
+  
+#ELSEACT
+  
+BREAK
+
+}

@@ -1,0 +1,43 @@
+;此文件放在 D:\Mirserver\Mir200\Envir\MonUseItems\
+;=============================人形怪物配制文件=======================
+[BaseInfo]
+;职业
+Job = 0
+;性别
+Gender = 0
+;头发
+Hair = 5
+;使用魔法
+Magic = 烈火剑法,刺杀剑术,野蛮冲撞,基本剑术
+;==============================身上装备============================
+[UseItems]
+;衣服
+DRESSNAME = 轩辕圣甲(女)
+;武器
+WEAPONNAME = 轩辕煞魂斩
+;照明物
+RIGHTHANDNAME = 轩辕璧
+;项链
+NECKLACENAME = 轩辕圣链
+;头盔
+HELMETNAME = 轩辕盔
+;左手镯
+ARMRINGLNAME = 轩辕手
+;右手镯
+ARMRINGRNAME = 轩辕手
+;左戒指
+RINGLNAME = 轩辕戒指.麻痹
+;右戒指
+RINGRNAME = 轩辕戒指.复活
+;物品
+BUJUKNAME = 
+;腰带
+BELTNAME = 轩辕腰带
+;鞋子
+BOOTSNAME = 轩辕靴
+;宝石
+CHARMNAME =  轩辕舍利
+;出身时背包物品
+INITITEMS = 超级金创药,超级魔法药
+;死亡掉装备几率 数字越小掉装备几率越高
+DieDropUseItemRate = 2000

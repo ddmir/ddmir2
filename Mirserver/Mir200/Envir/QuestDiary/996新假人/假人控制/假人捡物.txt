@@ -1,0 +1,93 @@
+[@捡取开关]
+{
+#IF
+equal <$CURRTEMSTDMODE> 5
+#ACT
+MOV S$武器名称 <$CURRTEMNAME>
+#CALL [\996新假人\假人穿戴\穿戴武器系列.txt] @拾取武器触发
+break
+
+#OR
+equal <$CURRTEMSTDMODE> 10
+equal <$CURRTEMSTDMODE> 11
+#ACT
+MOV S$衣服名称 <$CURRTEMNAME>
+#CALL [\996新假人\假人穿戴\穿戴衣服系列.txt] @拾取衣服触发
+break
+
+
+#IF
+equal <$CURRTEMSTDMODE> 15
+#ACT
+MOV S$头盔名称 <$CURRTEMNAME>
+#CALL [\996新假人\假人穿戴\穿戴头盔系列.txt] @拾取头盔触发
+break
+
+#OR
+equal <$CURRTEMSTDMODE> 19
+equal <$CURRTEMSTDMODE> 20
+equal <$CURRTEMSTDMODE> 21
+#ACT
+MOV S$项链名称 <$CURRTEMNAME>
+#CALL [\996新假人\假人穿戴\穿戴项链系列.txt] @拾取项链触发
+break
+
+#OR
+equal <$CURRTEMSTDMODE> 24
+equal <$CURRTEMSTDMODE> 26
+#ACT
+MOV S$手镯名称 <$CURRTEMNAME>
+#CALL [\996新假人\假人穿戴\穿戴手镯系列.txt] @拾取手镯触发
+break
+
+#OR
+equal <$CURRTEMSTDMODE> 22
+equal <$CURRTEMSTDMODE> 23
+#ACT
+MOV S$戒指名称 <$CURRTEMNAME>
+#CALL [\996新假人\假人穿戴\穿戴戒指系列.txt] @拾取戒指触发
+break
+
+#IF
+equal <$CURRTEMSTDMODE> 64
+#ACT
+MOV S$腰带名称 <$CURRTEMNAME>
+#CALL [\996新假人\假人穿戴\穿戴腰带系列.txt] @拾取腰带触发
+break
+
+#IF
+equal <$CURRTEMSTDMODE> 62
+#ACT
+MOV S$靴子名称 <$CURRTEMNAME>
+#CALL [\996新假人\假人穿戴\穿戴靴子系列.txt] @拾取靴子触发
+break
+
+#IF
+equal <$CURRTEMSTDMODE> 30
+#ACT
+MOV S$勋章名称 <$CURRTEMNAME>
+#CALL [\996新假人\假人穿戴\穿戴勋章系列.txt] @拾取勋章触发
+break
+#elseact
+
+#IF
+CHECKJOB warrior
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\战士佩戴列表.txt <$CURRTEMNAME>
+#ACT
+#CALL [\996新假人\假人控制\假人换装.txt] @假人自动佩戴装备
+
+#IF
+CHECKJOB wizard
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\法师佩戴列表.txt <$CURRTEMNAME>
+#ACT
+#CALL [\996新假人\假人控制\假人换装.txt] @假人自动佩戴装备
+
+#IF
+CHECKJOB taoist
+CHECKTEXTLIST ..\QuestDiary\996新假人\假人穿戴\道士佩戴列表.txt <$CURRTEMNAME>
+#ACT
+#CALL [\996新假人\假人控制\假人换装.txt] @假人自动佩戴装备
+
+
+
+}
