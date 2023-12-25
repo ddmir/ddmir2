@@ -21,4 +21,4 @@ The project will be divided into three parts, the first part is the server, the 
 ![1](https://github.com/ddmir/ddmir2/assets/154742217/934a282c-0051-4910-8eed-5af9e999259f)
 ![2](https://github.com/ddmir/ddmir2/assets/154742217/a584d8fa-cc32-4fa2-b060-e77a4c2dff07)
 ![3](https://github.com/ddmir/ddmir2/assets/154742217/294ebec2-6b52-493f-b54b-d26eb9c5ea16)
-![4](https://github.com/ddmir/ddmir2/assets/154742217/8497926c-a69f-4a33-bba8-17164a49d884)
+![5](https://github.com/ddmir/ddmir2/assets/154742217/2e476f6a-b6ea-490e-9879-6e35a9f8cbdf)
