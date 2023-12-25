@@ -133,7 +133,7 @@ Fairy7=
 Fairy8=
 Fairy9=
 [Setup]
-ItemNumber=40239568
+ItemNumber=40252467
 ItemNumberEx=1073784946
 ClientFile1=mir.dat
 MonUpLvNeedKillBase=100
